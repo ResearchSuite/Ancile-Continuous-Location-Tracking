@@ -1,0 +1,112 @@
+{
+  "activities": [
+    {
+      "identifier": "eligibility",
+      "type": "activity",
+      "element": {
+        "identifier": "eligibility",
+        "type": "form",
+        "items": [
+          {
+            "identifier": "header",
+            "type": "sectionTitle",
+            "title": "Are you 18 or older?"
+          },
+          {
+            "identifier": "age",
+            "type": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "authFlow",
+      "type": "activity",
+      "element": {
+        "identifier": "authFlow",
+        "type": "elementList",
+        "elements": [
+          {
+            "identifier": "ancileAuth",
+            "type": "AncileAuth",
+            "title": "Authenticate with Ancile",
+            "buttonText": "Authenticate"
+          },
+          {
+            "identifier": "coreAuth",
+            "type": "CoreAuth",
+            "title": "Authenticate with Core",
+            "buttonText": "Authenticate"
+          },
+          {
+            "identifier": "ohmageLogin",
+            "type": "OhmageOMHLogin",
+            "title": "Authenticate with Ohmage"
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "weeklySurvey",
+      "type": "activity",
+      "element": {
+        "type": "elementFile",
+        "identifier": "weeklySurvey",
+        "elementFileName": "weeklySurvey"
+      },
+      "resultTransforms": [
+        {
+          "transform": "WeeklySurvey",
+          "inputMapping": [
+            {"stepIdentifier":"sleep_1", "parameter":"sleep_1"},
+            {"stepIdentifier":"sleep_2", "parameter":"sleep_2"},
+            {"stepIdentifier":"sleep_3", "parameter":"sleep_3"},
+            {"stepIdentifier":"food_1", "parameter":"food_1"},
+            {"stepIdentifier":"food_2", "parameter":"food_2"},
+            {"stepIdentifier":"food_3", "parameter":"food_3"},
+            {"stepIdentifier":"food_4", "parameter":"food_4"},
+            {"stepIdentifier":"commute_1", "parameter":"commute_1"},
+            {"stepIdentifier":"commute_2", "parameter":"commute_2"},
+            {"stepIdentifier":"commute_3", "parameter":"commute_3"},
+            {"stepIdentifier":"commute_4", "parameter":"commute_4"},
+            {"stepIdentifier":"commute_5", "parameter":"commute_5"},
+
+          ]
+        }
+      ]
+    },
+    {
+      "identifier": "notificationTime",
+      "type": "activity",
+      "element": {
+          "identifier":"notificationTime",
+          "type":"timePicker",
+          "text":"Please choose when you would like to be reminded to perform your weekly survey.",
+          "optional": false
+      }
+    },
+    { "identifier": "homeLocation",
+      "type": "activity",
+      "element": {
+            "identifier":"homeLocation",
+            "type":"location",
+            "title":"Home Location",
+            "text":"Please enter your home location"
+                 
+      }
+                 
+    },
+    { "identifier": "workLocation",
+      "type": "activity",
+      "element": {
+            "identifier":"workLocation",
+            "type":"location",
+            "title":"Work Location",
+            "text":"Please enter your work location"
+                 
+            }
+                 
+    }
+              
+  ]
+}

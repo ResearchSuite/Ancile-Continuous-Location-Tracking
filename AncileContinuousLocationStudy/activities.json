@@ -95,35 +95,25 @@
         {
           "transform": "WeeklySurvey",
           "inputMapping": [
-            {"stepIdentifier":"sleep_1", "parameter":"sleep_1"},
-            {"stepIdentifier":"sleep_2", "parameter":"sleep_2"},
-            {"stepIdentifier":"sleep_3", "parameter":"sleep_3"},
-            {"stepIdentifier":"food_1", "parameter":"food_1"},
-            {"stepIdentifier":"food_2", "parameter":"food_2"},
-            {"stepIdentifier":"food_3", "parameter":"food_3"},
-            {"stepIdentifier":"food_4", "parameter":"food_4"},
-            {"stepIdentifier":"commute_1", "parameter":"commute_1"},
-            {"stepIdentifier":"commute_2", "parameter":"commute_2"},
-            {"stepIdentifier":"commute_3", "parameter":"commute_3"},
-            {"stepIdentifier":"commute_4", "parameter":"commute_4"},
-            {"stepIdentifier":"commute_5", "parameter":"commute_5"},
-
+                {"stepIdentifier":"travel_plans", "parameter":"travel_plans"},
+                {"stepIdentifier":"days_on_campus", "parameter":"days_on_campus"}
           ]
         }
       ]
     },
                  
-                 {
-                 "identifier": "dailySurvey",
-                 "type": "activity",
-                 "element": {
-                 "type": "elementFile",
-                 "identifier": "dailySurvey",
-                 "elementFileName": "dailySurvey"
-                 },
-                 "resultTransforms": [
-                                    ]
-                 },
+    {
+      "identifier": "dailySurvey",
+      "type": "activity",
+      "element": {
+            "type": "elementFile",
+            "identifier": "dailySurvey",
+            "elementFileName": "dailySurvey"
+        },
+      "resultTransforms": [
+                 
+      ]
+    },
     {
       "identifier": "dailyNotificationTime",
       "type": "activity",

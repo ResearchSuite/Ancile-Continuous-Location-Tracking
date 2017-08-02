@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
     }
     
     var isSignedIn: Bool {
-        return self.ancileClient.isSignedIn //&& //self.ohmageManager.isSignedIn
+        return self.ancileClient.isSignedIn && self.ohmageManager.isSignedIn
     }
     
     var isPasscodeSet: Bool {
@@ -174,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
     open func storyboardIDForCurrentState() -> String {
         if self.isEligible &&
             self.isConsented &&
-            //self.isSignedIn &&
+            self.isSignedIn &&
             self.isPasscodeSet {
             return "Splash"
         }

@@ -11,10 +11,10 @@ import UserNotifications
 
 open class ANCNotificationManager: NSObject {
     
-    static let kWeeklyNotificationIdentifer: String = "WeeklyNotification"
+    static let kDailyNotificationIdentifer: String = "DailyNotification"
     
-    static let kWeeklyNotificationTitle: String = "Hey 👋"
-    static let kWeeklyNotificationBody: String = "It's time to take your weekly survey!"
+    static let kDailyNotificationTitle: String = "Hey 👋"
+    static let kDailyNotificationBody: String = "It's time to complete your Ancile Daily Survey!"
 
     static private func getNextDateFromComponents(components: DateComponents) -> Date? {
         return Calendar(identifier: .gregorian).nextDate(after: Date(), matching: components, matchingPolicy: .nextTime)
@@ -28,8 +28,8 @@ open class ANCNotificationManager: NSObject {
             
             // Enable or disable features based on authorization
             let content = UNMutableNotificationContent()
-            content.title = kWeeklyNotificationTitle
-            content.body = kWeeklyNotificationBody
+            content.title = kDailyNotificationTitle
+            content.body = kDailyNotificationBody
             content.sound = UNNotificationSound.default()
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
@@ -55,14 +55,14 @@ open class ANCNotificationManager: NSObject {
             notification.fireDate = fireDate
             //            notification.repeatInterval = NSCalendar.Unit.weekOfYear
             notification.repeatInterval = NSCalendar.Unit.day
-            notification.alertBody = "\(kWeeklyNotificationTitle), \(kWeeklyNotificationBody)"
+            notification.alertBody = "\(kDailyNotificationTitle), \(kDailyNotificationBody)"
             UIApplication.shared.scheduleLocalNotification(notification)
             
         }
         
     }
     
-    static public func setNotifications() {
+    static public func setNotifications(fireDate: DateComponents) {
         
         //always clear notification before setting
         cancelNotifications()
@@ -75,7 +75,7 @@ open class ANCNotificationManager: NSObject {
             //        components.weekday = 2
             components.hour = 9
             
-            setNotification(identifier: kWeeklyNotificationIdentifer, components: components)
+            setNotification(identifier: kDailyNotificationIdentifer, components: fireDate)
 
         }
 

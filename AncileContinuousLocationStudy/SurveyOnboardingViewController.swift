@@ -14,10 +14,8 @@ import UserNotifications
 class SurveyOnboardingViewController: UIViewController {
     
     var dailyNotifSet = false
-    var weeklyNotifSet = false
     var homeSet = false
     var workSet = false
-    var weeklySurveyCompleted = false
     var dailySurveyCompleted = false
     var resultAddressWork : String = ""
     var resultAddressHome : String = ""
@@ -83,41 +81,7 @@ class SurveyOnboardingViewController: UIViewController {
             self.present(tvc, animated: true, completion: nil)
         }
         
-        else if !weeklyNotifSet {
-            
-            guard let task = AppDelegate.appDelegate.activityManager.task(for: "weeklyNotificationTime"),
-                let activity = AppDelegate.appDelegate.activityManager.activity(for: "weeklyNotificationTime") else {
-                    return
-            }
-            
-            let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-                
-                guard reason == ORKTaskViewControllerFinishReason.completed else {
-                    self?.dismiss(animated: true, completion: {
-                        self?.startSurveys()
-                    })
-
-                    return
-                }
-                
-                let taskResult = taskViewController.result
-                
-                self?.weeklyNotifSet = true
-                
-                AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-                
-                self?.dismiss(animated: true, completion: {
-                    self?.startSurveys()
-                    
-                })
-                
-            })
-            
-            self.present(tvc, animated: true, completion: nil)
-            
-            
-        }
-
+    
         
         else if !homeSet {
             
@@ -279,40 +243,7 @@ class SurveyOnboardingViewController: UIViewController {
 
         }
         
-        else if !weeklySurveyCompleted {
             
-            guard let task = AppDelegate.appDelegate.activityManager.task(for: "weeklySurvey"),
-                let activity = AppDelegate.appDelegate.activityManager.activity(for: "weeklySurvey") else {
-                    return
-            }
-            
-            let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-                
-                guard reason == ORKTaskViewControllerFinishReason.completed else {
-                    self?.dismiss(animated: true, completion: {
-                        self?.startSurveys()
-                    })
-
-                    return
-                }
-                
-                let taskResult = taskViewController.result
-                
-                self?.weeklySurveyCompleted = true
-                
-                AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-                
-                self?.dismiss(animated: true, completion: {
-                    self?.startSurveys()
-                    
-                })
-                
-            })
-            
-            self.present(tvc, animated: true, completion: nil)
-
-        }
-        
         else if !dailySurveyCompleted {
             
             guard let task = AppDelegate.appDelegate.activityManager.task(for: "dailySurvey"),
@@ -364,51 +295,11 @@ class SurveyOnboardingViewController: UIViewController {
         fireDate.hour = hour!
         fireDate.minute = minutes!
         
+        ANCNotificationManager.setNotifications(fireDate: fireDate as DateComponents)
+        
         self.store.setValueInState(value: String(describing:hour!) as NSSecureCoding, forKey: "notificationHour")
         self.store.setValueInState(value: String(describing:minutes!) as NSSecureCoding, forKey: "notificationMinutes")
         
-        
-        if #available(iOS 10.0, *) {
-            let content = UNMutableNotificationContent()
-            content.title = "Ancile Study"
-            content.body = "It's time to complete your Ancile Daily Survey"
-            content.sound = UNNotificationSound.default()
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate as DateComponents,
-                                                        repeats: true)
-            
-            let identifier = "UYLLocalNotification"
-            let request = UNNotificationRequest(identifier: identifier,
-                                                content: content, trigger: trigger)
-            
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            AppDelegate.appDelegate?.center.add(request, withCompletionHandler: { (error) in
-                if let error = error {
-                    // Something went wrong
-                }
-            })
-            
-        } else {
-            // Fallback on earlier versions
-            
-            let dateToday = Date()
-            let day = userCalendar.component(.day, from: dateToday)
-            let month = userCalendar.component(.month, from: dateToday)
-            let year = userCalendar.component(.year, from: dateToday)
-            
-            fireDate.day = day
-            fireDate.month = month
-            fireDate.year = year
-            
-            let fireDateLocal = userCalendar.date(from:fireDate as DateComponents)
-            
-            let localNotification = UILocalNotification()
-            localNotification.fireDate = fireDateLocal
-            localNotification.alertBody = "It's time to complete your Ancile Daily Survey"
-            localNotification.timeZone = TimeZone(abbreviation: "EDT")!
-            //set the notification
-            UIApplication.shared.scheduleLocalNotification(localNotification)
-        }
         
         
     }

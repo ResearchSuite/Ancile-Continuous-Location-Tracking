@@ -15,7 +15,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     var store: ANCStore!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    var items: [String] = ["","Reset your Home Location","","Reset your Work Location","","Set Weekly Notification Time","Set Daily Notification Time","Take the Weekly Survey","Take the Daily Survey","","Sign out"]
+    var items: [String] = ["","Reset your Home Location","","Reset your Work Location","","Set Daily Notification Time","Take the Daily Survey","","Sign out"]
     var resultAddressHome : String = ""
     var resultAddressWork: String = ""
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -57,7 +57,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NSLog(workLocation)
         
         
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 9 {
+        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 7 {
             cell.textLabel?.textColor = UIColor.black
             cell.backgroundColor = UIColor.init(red:0.95, green:0.95, blue:0.95, alpha:1.0)
             
@@ -70,7 +70,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if indexPath.row == 4 {
                 cell.textLabel?.text = workLocation
             }
-            if indexPath.row == 9 {
+            if indexPath.row == 7 {
                 cell.textLabel?.text = ""
             }
           
@@ -89,7 +89,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 9 {
+        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 7 {
             return 40.0
         }
         else {
@@ -114,22 +114,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if indexPath.row == 5 {
-            setWeeklyNotification()
-        }
-        
-        if indexPath.row == 6 {
             setDailyNotification()
         }
         
-        if indexPath.row == 7 {
-            launchWeeklySurvey()
-        }
-        
-        if indexPath.row == 8 {
+        if indexPath.row == 6 {
             launchDailySurvey()
         }
         
-        if indexPath.row == 10 {
+        if indexPath.row == 8 {
             signOut()
         }
         
@@ -292,41 +284,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.present(tvc, animated: true, completion: nil)
     }
     
-    func setWeeklyNotification () {
-        
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "weeklyNotificationTime"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "weeklyNotificationTime") else {
-                return
-        }
-        
-        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-            
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: {
-                   
-                })
-                return
-            }
-            
-            let taskResult = taskViewController.result
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            let result = taskResult.stepResult(forStepIdentifier: "weeklyNotificationTime")
-            let timeAnswer = result?.firstResult as? ORKTimeOfDayQuestionResult
-            let resultAnswer = timeAnswer?.dateComponentsAnswer
-                        
-            
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            self?.dismiss(animated: true, completion: {
-                
-                
-            })
-            
-        })
-        
-        self.present(tvc, animated: true, completion: nil)
-        
-    }
     
     func setDailyNotification () {
         
@@ -363,35 +320,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func launchWeeklySurvey () {
-        
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "weeklySurvey"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "weeklySurvey") else {
-                return
-        }
-        
-        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-            
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: {
-                })
-                
-                return
-            }
-            
-            let taskResult = taskViewController.result
-                        
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            self?.dismiss(animated: true, completion: {
-                
-            })
-            
-        })
-        
-        self.present(tvc, animated: true, completion: nil)
-        
-    }
     
     func launchDailySurvey () {
         
@@ -446,48 +374,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.store.setValueInState(value: String(describing:hour!) as NSSecureCoding, forKey: "notificationHour")
         self.store.setValueInState(value: String(describing:minutes!) as NSSecureCoding, forKey: "notificationMinutes")
         
-        
-        if #available(iOS 10.0, *) {
-            let content = UNMutableNotificationContent()
-            content.title = "Ancile Study"
-            content.body = "It's time to complete your Ancile Daily Survey"
-            content.sound = UNNotificationSound.default()
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate as DateComponents,
-                                                        repeats: true)
-            
-            let identifier = "UYLLocalNotification"
-            let request = UNNotificationRequest(identifier: identifier,
-                                                content: content, trigger: trigger)
-            
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            AppDelegate.appDelegate?.center.add(request, withCompletionHandler: { (error) in
-                if let error = error {
-                    // Something went wrong
-                }
-            })
-            
-        } else {
-            // Fallback on earlier versions
-            
-            let dateToday = Date()
-            let day = userCalendar.component(.day, from: dateToday)
-            let month = userCalendar.component(.month, from: dateToday)
-            let year = userCalendar.component(.year, from: dateToday)
-            
-            fireDate.day = day
-            fireDate.month = month
-            fireDate.year = year
-            
-            let fireDateLocal = userCalendar.date(from:fireDate as DateComponents)
-            
-            let localNotification = UILocalNotification()
-            localNotification.fireDate = fireDateLocal
-            localNotification.alertBody = "It's time to complete your Ancile Daily Survey"
-            localNotification.timeZone = TimeZone(abbreviation: "EDT")!
-            //set the notification
-            UIApplication.shared.scheduleLocalNotification(localNotification)
-        }
+        ANCNotificationManager.setNotifications(fireDate: fireDate as DateComponents)
         
         
     }

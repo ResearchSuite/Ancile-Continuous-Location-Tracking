@@ -198,8 +198,8 @@ open class ANCOnboardingViewController: UIViewController {
         }
     
         else {
-            ANCNotificationManager.setNotifications()
-            ANCNotificationManager.printPendingNotifications()
+//            ANCNotificationManager.setNotifications()
+//            ANCNotificationManager.printPendingNotifications()
            
 //            appDelegate.showViewController(animated: true)
         }

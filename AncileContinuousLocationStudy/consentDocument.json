@@ -1,88 +1,88 @@
 {
-  "identifier": "ancilePhoneStudyConsentDocument",
-  "type": "standardConsentDocument",
-  "title": "Ancile: A Framework for Managing Microscale Data",
-  "sections": [
-    {
-      "identifier": "overview",
-      "type": "standardConsentSection",
-      "sectionType": "overview",
-      "summary": "The purpose of this study is to establish the technical feasibility of a software framework for collecting data from mobile phones and other electronic devices.",
-      "content": "You are being asked to join a research study called “Ancile: A Framework for Managing Microscale Data.” The purpose of this study is to establish the technical feasibility of a software framework for collecting data from mobile phones and other electronic devices."
-    },
-    {
-      "identifier": "dataGathering",
-      "type": "standardConsentSection",
-      "sectionType": "dataGathering",
-      "summary": "This study will collect generic information (metadata) about your mobile phone, analyze self-reported information, and ask you to perform tasks such as answering weekly surveys.",
-      "content": "This study will collect generic information (metadata) about your mobile phone, analyze self-reported information, and ask you to perform tasks such as answering weekly surveys. Phone metadata include type of your phone, version and operating system. Additionally, the app will check the capabilities of the phone such as Wi-Fi, location services, bluetooth, as well as the availability of HealthKit (iOS) / Google Fit (Android). The app will also collect information about WiFi and Cellular usage, battery life, and data transfer consumed by the app."
-    },
-    {
-      "identifier": "privacy",
-      "type": "standardConsentSection",
-      "sectionType": "privacy",
-      "summary": "This study only focuses on survey responses and phone metadata.",
-      "content": "This study only focuses on survey responses and phone metadata. We do not collect the content of your interactions with others. We will NOT access your personal contacts, text message content, personal photos (other than the generic photo taken using the camera via the app), or websites visited."
-    },
-    {
-      "identifier": "dataUse",
-      "type": "standardConsentSection",
-      "sectionType": "dataUse",
-      "summary": "We will combine your study data with those of other study participants to gain insights on how to improve campus resources and facilities.",
-      "content": "We will combine your study data with those of other study participants to gain insights on how to improve campus resources and facilities. We will not share your information with any advertisers or other commercial third parties. Study data will be stored in a manner that maintains strict information technology procedures to safeguard participant information and to prevent improper access."
-    },
-    {
-      "identifier": "timeCommitment",
-      "type": "standardConsentSection",
-      "sectionType": "timeCommitment",
-      "summary": "You will respond to two weekly survey questions that take less than one minute to complete.",
-      "content": "You will respond to two weekly survey questions that take less than one minute to complete."
-    },
-    {
-      "identifier": "studySurvey",
-      "type": "standardConsentSection",
-      "sectionType": "studySurvey",
-      "summary": "You will complete a demographic survey at the beginning of the study and respond to two survey questions about your Cornell Tech experience in the past week.",
-      "content": "You will complete a demographic survey at the beginning of the study and respond to two survey questions about your Cornell Tech experience in the past week."
-    },
-    {
-      "identifier": "studyTasks",
-      "type": "standardConsentSection",
-      "sectionType": "studyTasks",
-      "summary": "Your only task is to provide responses to two survey questions every week. You will be notified to provide your responses in the app.",
-      "content": "Your only task is to provide responses to two survey questions every week. You will be notified to provide your responses in the app."
-    },
-    {
-      "identifier": "withdrawing",
-      "type": "standardConsentSection",
-      "sectionType": "withdrawing",
-      "summary": "Your involvement in this research is entirely voluntary, and you can stop or withdraw from the study at any time. You may request that we delete your data at any time.",
-      "content": "Your involvement in this research is entirely voluntary, and you can stop or withdraw from the study at any time. You may request that we delete your data at any time."
-    },
-    {
-      "identifier": "payment",
-      "type": "standardConsentSection",
-      "sectionType": "custom",
-      "title": "Payment",
-      "summary": "There is no payment for participating in this study.",
-      "content": "There is no payment for participating in this study.",
-      "customImageTitle": "splash"
-    }
-  ],
-  "signatures": [
-    {
-      "identifier": "participant",
-      "type": "participantConsentSignature",
-      "title": "Participant"
-    },
-    {
-      "identifier": "investigator",
-      "type": "investigatorConsentSignature",
-      "title": "Investigator",
-      "givenName": "Jonny",
-      "familyName": "Appleseed",
-      "signatureImageTitle": "signature",
-      "signatureDateString": "3/10/15"
-    }
-  ]
+    "identifier":"ancilePhoneStudyConsentDocument",
+    "type":"standardConsentDocument",
+    "title":"Ancile: A Framework for Managing Microscale Data",
+    "sections":[
+                {
+                "identifier":"onlyInDocument",
+                "type":"standardConsentSection",
+                "sectionType":"onlyInDocument",
+                "htmlContent":"<p><strong>Consent for Participation </strong></p><p><strong>Campus</strong><span style=\"font-weight: 400;\">:</span> <span style=\"font-weight: 400;\">Cornell University</span></p><p><strong>Title: </strong><span style=\"font-weight: 400;\">Ancile: A Framework for Managing Microscale Data</span></p><p><strong>Principal Investigator</strong><span style=\"font-weight: 400;\">: Nate Foster</span></p><p><strong>Sponsor</strong><span style=\"font-weight: 400;\">: NSF </span></p>"
+                },
+                {
+                "identifier":"overview",
+                "type":"standardConsentSection",
+                "sectionType":"overview",
+                "title":"Introduction",
+                "summary":"This study will collect generic information about your mobile phone, analyze self-reported information, and ask you to perform tasks such as answering surveys and taking a photo using your mobile phone.",
+                "htmlContent":"<p><span style=\"font-weight: 400;\">You are being asked to join a research study called &ldquo;Ancile: A Framework for Managing Microscale Data.&rdquo; The purpose of this study is to establish the technical feasibility of a software framework for collecting data from mobile phones and other electronic devices. This study will collect generic information about your mobile phone, analyze self-reported information, and ask you to perform tasks such as answering surveys and taking a photo using your mobile phone.</span></p><p><span style=\"font-weight: 400;\">This consent form will explain:</span></p><ul><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">the purpose of the study</span></li><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">what you will be asked to do </span></li><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">the potential risks and benefits of participating</span></li></ul><p><strong>Why is this research study being done?</strong></p><p><span style=\"font-weight: 400;\">People today generate a tremendous amount of data as a byproduct of their daily activities through the use of mobile phones, wearable devices, and online services. The availability of this &ldquo;microscale&rdquo; data creates exciting opportunities for solving complex planning problems (e.g., using location data to decide where to place a new caf&eacute; on campus to best serve the Cornell community) but it also raises serious concerns about security and privacy.</span></p><p><span style=\"font-weight: 400;\">The Ancile Project is developing a new software platform for managing microscale data in a privacy-sensitive manner. The purpose of this study is to establish the feasibility of this software platform by collecting information from electronic devices used by participants. We will ask each participant to install an application on their phone, and respond to periodic requests for surveys and active tasks such as taking a photo.</span></p><p><span style=\"font-weight: 400;\">The data collected may help you become more self aware of your personal habits. In addition, data streams collected for multiple participants will provide insights about the overall behavior of Cornell University community.</span></p><p><strong>How this study will contribute to existing knowledge in the field.</strong></p><p><span style=\"font-weight: 400;\">This project will contribute to research on understanding how microscale data can be used to solve planning problems and improve resource allocation. Results from this research could provide deeper insights about the aggregate behavior of the Cornell community and could help improve use of facilities, dining, and transportation services.</span></p> <p><strong>How many people will take part in this study? </strong></p><p><span style=\"font-weight: 400;\">This research study hopes to enroll approximately 150 participants.</span></p><p><strong>How long will you be in this study?</strong><span style=\"font-weight: 400;\">&nbsp;</span></p><p><span style=\"font-weight: 400;\">If you choose to take part in this study, the study period will last for a total of 4 months from the time you enroll in the study. You may be asked to renew your participation, and you will be able to use the mobile application for longer if you wish. </span></p><p><span style=\"font-weight: 400;\"><br /></span><strong>What will happen in this research study?</strong></p><p><span style=\"font-weight: 400;\">We are requesting digital consent for your participation in this study. If you agree to participate, you will complete an assessment survey in order to confirm your eligibility and determine whether this study is appropriate for you.</span></p><p><span style=\"font-weight: 400;\">If eligible for the study, you should be willing to allow notifications on your smartphone to be enabled throughout the study and respond to brief surveys on a weekly basis. You may choose to withdraw at any time. Refusal to participate or withdrawal of your consent or participation in the study will not result in any penalty or loss of benefits or rights to which you might otherwise be entitled. In the future, we may initiate follow-on studies that do involve specific compensation for participation and completion, and any compensation will be made clear at the time of participant recruitment. However, participation in this study has no such compensation.</span></p><p><strong>What are the study procedures?</strong></p><p><span style=\"font-weight: 400;\">Below is a list of the procedures associated with this study:</span></p><ul><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Completely read this consent form and sign at the end</span></li><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Complete an assessment report to determine your eligibility</span></li><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Install the Ancile application and complete a self report</span></li><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Accept permissions to enable notifications and allow access to the camera</span></li><li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Answer surveys and perform active tasks such as taking a photo</span></li></ul>"
+                },
+                {
+                "identifier":"dataGathering",
+                "type":"standardConsentSection",
+                "sectionType":"dataGathering",
+                "title": "Collected Data",
+                "formalTitle":"What data will be collected?",
+                "summary":"When you register for this study, we will collect personal information as well as some technical capabilities of your smartphone (Wi-Fi, location services, etc)",
+                "htmlContent":"<p><span style=\"font-weight: 400;\">Ancile app: </span><span style=\"font-weight: 400;\">When you register for this study, we will collect personal information including your name, age, status (student, faculty, etc.) &nbsp;and Cornell NetID. Your personal contact information will be stored separate from all other project data and will only be accessed by the research team if necessary. It will not be shared outside of our research team.</span></p><p><span style=\"font-weight: 400;\">Technical smartphone information collection:</span><span style=\"font-weight: 400;\"> The Ancile application (the &ldquo;app&rdquo;) will collect information about type of your phone, version and operating system. Additionally, the app will check the capabilities of the phone such as Wi-Fi, location services, bluetooth, as well as the availability of specific data collection services (HealthKit for iOS and Google Fit for Android). The app will collect the information about WiFi and Cellular usage, battery life, background and foreground data transfer of the app. In addition, the app will ask for permission to use your smartphone camera (when you install the app, you will be alerted via a &ldquo;pop-up&rdquo; that the camera will be used) and will send you notifications to complete daily tasks.</span></p><p><span style=\"font-weight: 400;\">Daily mobile phone data</span><span style=\"font-weight: 400;\">: The app will track your use of the Ancile research study app and features in the app. This will enable the researchers to find out more about how often the app is used by participants, which specific features of the app are used, etc. It is important to note that we do not collect the content of your interactions with others. </span><strong>We will NOT access your personal contacts, text message content, personal photos (other than the generic photo taken using the camera via the app), or websites visited.</strong><span style=\"font-weight: 400;\"> This functionality is critical to the study, and these tracking devices are necessary to use the app and participate in the study. During the training, we will show you these data collection features visually. You may change your preferences about which data the app can access from time to time during the study, and you may obtain more information about the data being collected at any time by contacting the researcher. </span></p><p><span style=\"font-weight: 400;\">In case we have trouble contacting you</span><span style=\"font-weight: 400;\">: During the study, we will ask you to keep the app installed on your smartphone, and we will send you notifications via app if we need to contact you. Removing the application or turning off notifications permanently will prevent us from contacting you and should be done only if you intend to withdraw from the study, which you are free to do. In this case, we may contact you by email if we are unable to contact you via the app. Note that email is inherently insecure so we cannot guarantee the confidentiality of email-based communication. You may temporarily turn off notification on your phone as you choose&mdash;e.g., while sleeping, in class, or at a concert.</span></p><p><strong>Permission to contact you once the study is over (optional):</strong></p><p><span style=\"font-weight: 400;\">After the study concludes, we may have additional questions about your experience of being in the study. We are asking your permission to contact you in the app or by email after the study to ask you questions about your experience. You may withdraw permission to contact you at any time, as it will not affect your participation in the study.</span></p>"
+                },
+                {
+                "identifier":"custom",
+                "type":"standardConsentSection",
+                "sectionType":"custom",
+                "title": "Risks",
+                "formalTitle":"What are the risks of the research study?",
+                "summary":"There are some risks associated with this study. You might feel uncomfortable being asked to perform activities when you are going about your daily routine.",
+                "htmlContent":"<p><span style=\"font-weight: 400;\">There are some risks associated with this study. You might feel uncomfortable being asked to perform activities when you are going about your daily routine. You may get notifications at unexpected times of day, which might be bothersome. </span></p><p><span style=\"font-weight: 400;\">It is also possible that someone may know you are participating in a study&mdash;e.g., if you receive a notification or keep the application open on your phone. Even though there is no disease or condition identified in this study, someone may learn you are participating in a study, which could make you self-conscious. The mobile app will upload data from your smartphone, which might slightly increase your data usage which may be subject to increased charges depending on your data plan. Responding to surveys or performing activities using a mobile phone while driving is inherently dangerous and may also be illegal. Be safe: wait until you are in a safe place to perform any tasks related to the study.</span></p><p><span style=\"font-weight: 400;\">You may have concerns about data security, privacy and confidentiality. Your study data, including this consent, will be maintained in an encrypted database. Only a limited number of researchers will have access to any personally identifying survey or device information. Although we will use state-of-the-art technology to protect your information, there is a small risk of loss of confidentiality. This risk is low because we will separate your personal information (information that can directly identify you, such as your name or phone number) from the app to protect your privacy. However, even with removal of this information, it is sometimes possible to re-identify an individual. This risk, while low, should still be considered before enrolling. Participation in this study may involve risks that are not known at this time.</span></p><p><span style=\"font-weight: 400;\">If you have any questions about this research study you should contact the Principal Investigator, Nate Foster, at jnfoster@cs.cornell.edu.</span></p><p><strong>What are the benefits of this research study?</strong></p><p><span style=\"font-weight: 400;\">While there are no direct benefits to participating in this study, we hope to gain insights that will improve services on the Cornell University campus in the future.</span></p><p><strong>If you do not want to take part in this research study, what are your other choices?</strong></p><p><span style=\"font-weight: 400;\">Your involvement in this research is entirely voluntary, and you can stop or withdraw from the study at any time. You may request that we delete your data at any time.</span></p>",
+                "customImageTitle":"splash"
+                },
+                {
+                "identifier":"payment",
+                "type":"standardConsentSection",
+                "sectionType":"custom",
+                "title": "Costs",
+                "formalTitle":"Are there any costs for being in this research study?",
+                "summary":"There are no costs associated with participating in this study or using the Ancile app.",
+                "htmlContent":"There are no costs associated with participating in this study or using the Ancile app. Because you may be receiving text messages as part of this study and may complete assessments using your smartphone, you may be subject to data overage usage charges per your smartphone data plan if you are using your own smartphone and one has not been provided to you by a member of the study team.</span></p><p><strong>Will you receive any payments for participating in this research study?</strong></p><p><span style=\"font-weight: 400;\">No.</span></p>",
+                "customImageTitle":"splash"
+                },
+                {
+                "identifier":"privacy",
+                "type":"standardConsentSection",
+                "sectionType":"privacy",
+                "summary":"This study only focuses on survey responses and phone metadata.",
+                "htmlContent":"<p><strong>What are your rights as a research participant?</strong></p><p><span style=\"font-weight: 400;\">Your participation in this project is voluntary. If you do not join the study, you will not be penalized or lose benefits to which you are entitled. If you join the study you may withdraw at any time without prejudice to your affiliations with Cornell University, and you may request that your data be deleted at any time. </span></p><p><span style=\"font-weight: 400;\"> &nbsp;</span></p><p><strong>What happens if new information is learned?</strong></p><p><span style=\"font-weight: 400;\">Any new information that develops during this study, which might affect your decision to participate, will be given to you immediately. Your consent to continue to take part in this study may be obtained again.</span></p><p><strong>Who else will see your information? </strong></p><p><span style=\"font-weight: 400;\">The results of this study could be published or presented at scientific meetings, lectures, or other events, but would not include any information that would let others know who you are, unless you give explicit permission to do so. When project data is shared as described later in this document, it will be released to others. We may publish results of this study in scientific journals and may present it at scientific meetings. If we do, we will not identify you. </span></p><p><strong>How do we protect confidentiality?</strong></p><p><span style=\"font-weight: 400;\">As you take part in this research project it will be necessary for the research team and others to use and share some of your private protected information. We are asking your permission to receive, use and share that information. In order to protect your privacy, we will use a random code instead of your name on all of your study data. This unique code cannot be used to directly re-identify you. Any survey or device data that identifies you (including name, birthdate, mobile phone number, etc.) will be removed before the data is transferred to researchers for the study. </span></p><p><span style=\"font-weight: 400;\">We will combine your study data, including survey responses and data obtained from active tasks, with those of other study participants. The combined data will be transferred to a computer program where all of the information can be used by researchers who have obtained permission to use the study data. Your data may be shared with other researchers outside of the Cornell University, but without information that can be linked to identify you. Any data sharing with external parties will be limited to academic researchers. They will not be allowed to share the data further, and will be required to delete all copies of the data after their studies conclude. We will not share your information with any advertisers or other commercial third parties. Data will be stored in a manner that maintains strict information technology procedures to safeguard participant information and to prevent improper access.</span></p><p><strong>Will you be able to access your records?</strong></p><p><span style=\"font-weight: 400;\">You have the right to know who has and who will see your records. To request this information, or for any questions related to your information, you may contact the Research Principal Investigator at jnfoster@cs.cornell.edu.</span></p><p><strong>How long will your information be kept? </strong></p><p><span style=\"font-weight: 400;\">There is no limit on the length of time we will keep your</span> <span style=\"font-weight: 400;\">information for this research because it may be analyzed for many years. We will keep it as long as it is</span> <span style=\"font-weight: 400;\">useful, unless you decide you no longer want to take part or</span> <span style=\"font-weight: 400;\">we close the study. You are allowing access to this information indefinitely.</span></p>"
+                },
+                {
+                "identifier":"withdrawing",
+                "type":"standardConsentSection",
+                "sectionType":"withdrawing",
+                "title": "Withdrawing",
+                "formalTitle":"Can you change your mind?",
+                "summary":"Your involvement in this research is entirely voluntary, and you can stop or withdraw from the study at any time. You may request that we delete your data at any time.",
+                "htmlContent":"<p><span style=\"font-weight: 400;\">If you change your mind about being in the study, you may withdraw at any time. If you want us to stop collecting your information, you must send an email or letter to the Principal Investigator at the following address:</span></p><p><span style=\"font-weight: 400;\">Nate Foster</span></p><p><span style=\"font-weight: 400;\">Department of Computer Science</span></p><p><span style=\"font-weight: 400;\">Gates Hall</span></p><p><span style=\"font-weight: 400;\">107 Hoy Rd</span></p><p><span style=\"font-weight: 400;\">Ithaca, NY 14853</span></p><p><span style=\"font-weight: 400;\">jnfoster@cs.cornell.edu </span></p><p><span style=\"font-weight: 400;\">Note that email is inherently insecure so we cannot guarantee the confidentiality of email-based communication. Your letter should state that you have changed your mind and no longer wish to participate in the study. We may continue to use the information we have already collected unless you ask us to delete it (we need to know what happens to everyone who starts a research study, not just those who remain).</span></p>"
+                },
+                {
+                "identifier":"onlyInDocument",
+                "type":"standardConsentSection",
+                "sectionType":"onlyInDocument",
+                "htmlContent":"<p><strong>Will information about this study be available to the public?</strong></p><p><span style=\"font-weight: 400;\">Yes. A summary of the results will be available at the Ancile project website (http://ancile.github.io). This website will not include information that can identify you. You will be able to search this website at any time.</span></p><p><strong>Does the investigator of this study receive money if you take part? </strong></p><p><span style=\"font-weight: 400;\">Funding for this research study is provided by the NSF, with technology support from Cornell University.</span></p><p><span style=\"font-weight: 400;\"><br /></span><strong>Who can answer your questions about this study?</strong></p><p><span style=\"font-weight: 400;\">If you have any questions about the study, you may contact jnfoster@cs.cornell.edu. If you have questions about your rights as a research participant, concerns about being in the study, or would like to offer input, you may contact the Office of the Cornell Institutional Review Board (IRB, the committee that oversees research at this institution) at 607-255-6182. You may access their website at http://www.irb.cornell.edu. You may also report your concerns or complaints anonymously through Ethicspoint (http://www.ethicspoint.com/) or by calling toll free at 1-866-293-3077. Ethicspoint is an independent organization that serves as a liaison between the University and the person bringing the complaint so that anonymity can be ensured. A signed copy of this consent form will be given to you. </span></p><p><strong>Participant Statement</strong></p><p><span style=\"font-weight: 400;\">I have read the above description of the research study. I have been told the risks and benefits involved and all my questions have been answered to my satisfaction. A member of the research team will answer any future questions that I may have. I voluntarily agree to participate in this research study described above, and I know that I can withdraw from the study at any time without penalty. By signing this form, I have not given up any of my legal rights.</span></p><p><strong>Investigator&rsquo;s Statement</strong></p><p><span style=\"font-weight: 400;\">I have offered an opportunity for further explanation of the risks, which are or may be associated with this study, and to answer any further questions relating to it.</span></p>"
+                }
+                ],
+    "signatures":[
+                  {
+                  "identifier":"participant",
+                  "type":"participantConsentSignature",
+                  "title":"Participant"
+                  },
+                  {
+                  "identifier":"investigator",
+                  "type":"investigatorConsentSignature",
+                  "title":"Investigator",
+                  "givenName":"Nate",
+                  "familyName":"Foster",
+                  "signatureImageTitle":"signature",
+                  "signatureDateString":"3/10/15"
+                  }
+                  ]
 }

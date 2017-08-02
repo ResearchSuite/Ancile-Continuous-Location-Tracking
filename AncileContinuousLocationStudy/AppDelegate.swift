@@ -14,7 +14,6 @@ import ResearchSuiteAppFramework
 import Gloss
 import sdlrkx
 import CoreLocation
-import UserNotifications
 import AncileStudyServerClient
 import ResearchKit
 import UserNotifications
@@ -40,10 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
     var locationRegionHome: CLCircularRegion!
     var locationRegionWork: CLCircularRegion!
     
-    @available(iOS 10.0, *)
-    var center: UNUserNotificationCenter!{
-        return UNUserNotificationCenter.current()
-    }
+//    @available(iOS 10.0, *)
+//    var center: UNUserNotificationCenter!{
+//        return UNUserNotificationCenter.current()
+//    }
     
     func initializeOhmage(credentialsStore: OhmageOMHSDKCredentialStore) -> OhmageOMHManager {
         
@@ -259,19 +258,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
         
         self.showViewController(animated: false)
         
-        if #available(iOS 10.0, *) {
-            // self.center = UNUserNotificationCenter.current()
-            self.center.delegate = self
-            self.center.requestAuthorization(options: [UNAuthorizationOptions.sound ], completionHandler: { (granted, error) in
-                if error == nil{
-                    // UIApplication.shared.registerForRemoteNotifications()
-                }
-            })
-        } else {
-            let settings  = UIUserNotificationSettings(types: [UIUserNotificationType.alert , UIUserNotificationType.badge , UIUserNotificationType.sound], categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(settings)
-            
-        }
+//        if #available(iOS 10.0, *) {
+//            // self.center = UNUserNotificationCenter.current()
+//            self.center.delegate = self
+//            self.center.requestAuthorization(options: [UNAuthorizationOptions.sound ], completionHandler: { (granted, error) in
+//                if error == nil{
+//                    // UIApplication.shared.registerForRemoteNotifications()
+//                }
+//            })
+//        } else {
+//            let settings  = UIUserNotificationSettings(types: [UIUserNotificationType.alert , UIUserNotificationType.badge , UIUserNotificationType.sound], categories: nil)
+//            UIApplication.shared.registerUserNotificationSettings(settings)
+//            
+//        }
         
         //ANCNotificationManager.printPendingNotifications()
         
@@ -287,7 +286,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         self.store.setValueInState(value: true as NSSecureCoding, forKey: "shouldDoDaily")
-        NSLog(String(describing: self.store.valueInState(forKey: "shouldDoDaily")))
         let storyboard = UIStoryboard(name: "Splash", bundle: Bundle.main)
         let vc = storyboard.instantiateInitialViewController()
         self.transition(toRootViewController: vc!, animated: true)

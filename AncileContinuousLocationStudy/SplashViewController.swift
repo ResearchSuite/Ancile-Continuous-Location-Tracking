@@ -38,6 +38,7 @@ class SplashViewController: UIViewController {
         if (shouldDoDaily) {
             
             self.launchDailySurvey()
+            
         }
         
       
@@ -62,9 +63,8 @@ class SplashViewController: UIViewController {
             AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
             
             self?.dismiss(animated: true, completion: {
-                let storyboard = UIStoryboard(name: "Splash",bundle: Bundle.main)
-                let vc = storyboard.instantiateInitialViewController()
-                AppDelegate.appDelegate.transition(toRootViewController: vc!, animated: true)
+                self?.store.set(value: false as NSSecureCoding, key: "shouldDoDaily")
+
             })
             
         })

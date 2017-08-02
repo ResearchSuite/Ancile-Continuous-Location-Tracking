@@ -2,252 +2,46 @@
   "type": "elementList",
   "identifier": "demographics",
   "elements": [
-               {
-               "identifier":"sleep_1",
-               "type":"timePicker",
-               "text":"When did you sleep last night?",
-               "optional":false
-               },
-               {
-               "identifier":"sleep_2",
-               "type":"timePicker",
-               "text":"What time did you wake up today?",
-               "optional":false
-               },
-               {
-               "identifier": "sleep_3",
-               "type": "multipleChoiceText",
-               "text": "Did you sleep enough last night?",
-               "items": [
-                         {
-                         "prompt": "Yes",
-                         "value": "yes"
-                         },
-                         {
-                         "prompt": "No",
-                         "value": "no"
-                         }
-                         ]
-               },
-               {
-               "identifier": "food_1",
-               "type": "multipleChoiceText",
-               "text": "Did you eat breakfast?",
-               "items": [
-                         {
-                         "prompt": "Yes at home",
-                         "value": "yes at home"
-                         },
-                         {
-                         "prompt": "Yes on campus",
-                         "value": "yes on campus"
-                         },
-                         {
-                         "prompt": "Yes, ordered food",
-                         "value": "yes, ordered food"
-                         },
-                         {
-                         "prompt": "No",
-                         "value": "no"
-                         }
-                         ]
-               },
-               {
-               "identifier": "food_2",
-               "type": "multipleChoiceText",
-               "text": "What do you plan to eat for lunch?",
-               "items": [
-                         {
-                         "prompt": "Brought my lunch",
-                         "value": "brought my lunch"
-                         },
-                         {
-                         "prompt": "Ate on campus",
-                         "value": "ate on campus"
-                         },
-                         {
-                         "prompt": "Ate outside",
-                         "value": "ate outside"
-                         },
-                         {
-                         "prompt": "Ordered or bought food to eat on campus",
-                         "value": "ordered or bought food to eat on campus"
-                         },
-                         {
-                         "prompt": "Skipped lunch",
-                         "value": "skipped lunch"
-                         }
-                         ]
-               },
-               {
-               "identifier": "food_3",
-               "type": "multipleChoiceText",
-               "text": "Where did you plan to eat for lunch?",
-               "items": [
-                         {
-                         "prompt": "At my desk",
-                         "value": "at my desk"
-                         },
-                         {
-                         "prompt": "Cafeteria alone",
-                         "value": "cafeteria alone"
-                         },
-                         {
-                         "prompt": "Cafeteria with team",
-                         "value": "cafeteria with team"
-                         },
-                         {
-                         "prompt": "Off campus",
-                         "value": "off campus"
-                         }
-                         ]
-               },
-               {
-               "identifier": "food_4",
-               "type": "multipleChoiceText",
-               "text": "Where did you eat dinner?",
-               "items": [
-                         {
-                         "prompt": "At my desk",
-                         "value": "at my desk"
-                         },
-                         {
-                         "prompt": "Cafeteria alone",
-                         "value": "cafeteria alone"
-                         },
-                         {
-                         "prompt": "Cafeteria with team",
-                         "value": "cafeteria with team"
-                         },
-                         {
-                         "prompt": "Off campus",
-                         "value": "off campus"
-                         }
-                         ]
-               },
-               {
-               "identifier": "commute_1",
-               "type": "multipleChoiceText",
-               "text": "How did you commute to campus?",
-               "items": [
-                         {
-                         "prompt": "Walk",
-                         "value": "walk"
-                         },
-                         {
-                         "prompt": "Subway",
-                         "value": "subway"
-                         },
-                         {
-                         "prompt": "Bus",
-                         "value": "bus"
-                         },
-                         {
-                         "prompt": "Tram",
-                         "value": "tram"
-                         },
-                         {
-                         "prompt": "Car",
-                         "value": "car"
-                         },
-                         {
-                         "prompt": "Bike",
-                         "value": "bike"
-                         },
-                         {
-                         "prompt": "Ferry",
-                         "value": "ferry"
-                         },
-                         {
-                         "prompt": "Other",
-                         "value": "other"
-                         }
-                         ]
-               },
-               {
-               "identifier": "commute_2",
-               "type": "multipleChoiceText",
-               "text": "What did you do during your commute?",
-               "items": [
-                         {
-                         "prompt": "Music",
-                         "value": "music"
-                         },
-                         {
-                         "prompt": "Podcast",
-                         "value": "podcast"
-                         },
-                         {
-                         "prompt": "Read non-work stuff",
-                         "value": "read non-work stuff"
-                         },
-                         {
-                         "prompt": "Work-related stuff",
-                         "value": "work-related stuff"
-                         },
-                         {
-                         "prompt": "Talked with someone else",
-                         "value": "talked with someone else"
-                         },
-                         {
-                         "prompt": "Other",
-                         "value": "other"
-                         }
-                         ]
-               },
-               {
-               "identifier": "commute_3",
-               "type": "scale",
-               "text": "How much do you enjoy your commute to work?",
-               "minimumValue": 1,
-               "maximumValue": 5,
-               "defaultValue": 1,
-               "stepValue": 1,
-               "minimumDescription":"Absolutely hated it",
-               "maximumDescription":"Absolutely loved it"
-               },
-               {
-               "identifier": "commute_4",
-               "type": "scale",
-               "text": "How much do you enjoy your commute to home?",
-               "minimumValue": 1,
-               "maximumValue": 5,
-               "defaultValue": 1,
-               "stepValue": 1,
-               "minimumDescription":"Absolutely hated it",
-               "maximumDescription":"Absolutely loved it"
-               },
-               {
-               "identifier": "commute_5",
-               "type": "multipleChoiceText",
-               "text": "Do you stop on your way back home?",
-               "items": [
-                         {
-                         "prompt": "Yes, for social activities",
-                         "value": "yes, for social activities"
-                         },
-                         {
-                         "prompt": "Yes, for shopping",
-                         "value": "yes, for shopping"
-                         },
-                         {
-                         "prompt": "Yes, for gym",
-                         "value": "yes, for gym"
-                         },
-                         {
-                         "prompt": "No, directly home",
-                         "value": "no, directly home"
-                         },
-                         {
-                         "prompt": "Other",
-                         "value": "other"
-                         }
-                         ]
-               },
-               {
-               "identifier": "onboarding_completed_instructions",
-               "type": "instruction",
-               "title": "Onboarding Completed!"
-               }
-            ]
+    {
+      "identifier": "days_on_campus",
+      "type": "multipleChoiceText",
+      "text": "What days of the week do you expect to be on campus?",
+      "items": [
+        {
+          "prompt": "Monday",
+          "value": "monday"
+        },
+        {
+          "prompt": "Tuesday",
+          "value": "tuesday"
+        },
+        {
+          "prompt": "Wednesday",
+          "value": "wednesday"
+        },
+        {
+          "prompt": "Thursday",
+          "value": "thursday"
+        },
+        {
+          "prompt": "Friday",
+          "value": "friday"
+        },
+        {
+          "prompt": "Saturday",
+          "value": "saturday"
+        },
+        {
+          "prompt": "Sunday",
+          "value": "sunday"
+        }
+      ]
+    },
+    {
+      "identifier": "travel_plans",
+      "type": "textfield",
+      "text": "Do you have any unusual travel plans for the current week?",
+      "multipleLines": true
+    }
+  ]
 }

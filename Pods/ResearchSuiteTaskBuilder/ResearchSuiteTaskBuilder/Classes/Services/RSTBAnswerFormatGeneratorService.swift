@@ -9,7 +9,7 @@
 import ResearchKit
 import Gloss
 
-class RSTBAnswerFormatGeneratorService: NSObject {
+open class RSTBAnswerFormatGeneratorService: NSObject {
     
     static fileprivate var _service: RSTBAnswerFormatGeneratorService = RSTBAnswerFormatGeneratorService()
     static open var service: RSTBAnswerFormatGeneratorService {

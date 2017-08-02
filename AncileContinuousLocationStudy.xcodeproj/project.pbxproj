@@ -17,34 +17,27 @@
 		CF39FE5B1F2F91C50056E010 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF39FE5A1F2F91C50056E010 /* HealthKit.framework */; };
 		CF39FE5D1F2F92DD0056E010 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */; };
 		CF39FE5F1F2F92F50056E010 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */; };
+		CFC941B81F3104DB008B5D9F /* ANCNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */; };
+		CFC941BA1F31052B008B5D9F /* ANCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941B91F31052B008B5D9F /* ANCHomeViewController.swift */; };
+		CFC941BC1F31055F008B5D9F /* ANCWeeklySurveyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941BB1F31055F008B5D9F /* ANCWeeklySurveyResult.swift */; };
+		CFC941BE1F31057B008B5D9F /* ANCWeeklySurveyResult+OMHDatapoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941BD1F31057B008B5D9F /* ANCWeeklySurveyResult+OMHDatapoint.swift */; };
+		CFC941C01F3105A0008B5D9F /* ANCStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941BF1F3105A0008B5D9F /* ANCStore.swift */; };
+		CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */; };
+		CFC941C61F3113E6008B5D9F /* consentDocument.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C51F3113E6008B5D9F /* consentDocument.json */; };
+		CFC941C81F31140E008B5D9F /* weeklySurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C71F31140E008B5D9F /* weeklySurvey.json */; };
+		CFC941CA1F321BD7008B5D9F /* SurveyOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */; };
+		CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */; };
 		CFED4F741F267B7B006D9C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F731F267B7B006D9C22 /* Assets.xcassets */; };
 		CFED4F771F267B7B006D9C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F751F267B7B006D9C22 /* LaunchScreen.storyboard */; };
 		CFED4F821F267B7B006D9C22 /* AncileContinuousLocationStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F811F267B7B006D9C22 /* AncileContinuousLocationStudyTests.swift */; };
 		CFED4FA11F268459006D9C22 /* ANCActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F8D1F268459006D9C22 /* ANCActivity.swift */; };
 		CFED4FA21F268459006D9C22 /* ANCActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F8E1F268459006D9C22 /* ANCActivityManager.swift */; };
-		CFED4FA31F268459006D9C22 /* ANCAncileAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F8F1F268459006D9C22 /* ANCAncileAuthDelegate.swift */; };
-		CFED4FA41F268459006D9C22 /* ANCAuthStepGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F901F268459006D9C22 /* ANCAuthStepGenerator.swift */; };
-		CFED4FA51F268459006D9C22 /* ANCConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F911F268459006D9C22 /* ANCConsentDocument.swift */; };
-		CFED4FA61F268459006D9C22 /* ANCCoreAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F921F268459006D9C22 /* ANCCoreAuthDelegate.swift */; };
-		CFED4FA71F268459006D9C22 /* AncileStudyServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F931F268459006D9C22 /* AncileStudyServerClient.swift */; };
-		CFED4FA81F268459006D9C22 /* AncileStudyServerClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F941F268459006D9C22 /* AncileStudyServerClientError.swift */; };
-		CFED4FA91F268459006D9C22 /* ANCOhmageAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F951F268459006D9C22 /* ANCOhmageAuthDelegate.swift */; };
 		CFED4FAA1F268459006D9C22 /* ANCOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F961F268459006D9C22 /* ANCOnboardingViewController.swift */; };
-		CFED4FAB1F268459006D9C22 /* ANCOpenURLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F971F268459006D9C22 /* ANCOpenURLDelegate.swift */; };
-		CFED4FAC1F268459006D9C22 /* ANCOpenURLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F981F268459006D9C22 /* ANCOpenURLManager.swift */; };
-		CFED4FAD1F268459006D9C22 /* ANCRedirectStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F991F268459006D9C22 /* ANCRedirectStep.swift */; };
-		CFED4FAE1F268459006D9C22 /* ANCRedirectStepDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F9A1F268459006D9C22 /* ANCRedirectStepDelegate.swift */; };
-		CFED4FAF1F268459006D9C22 /* ANCRedirectStepDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F9B1F268459006D9C22 /* ANCRedirectStepDescriptor.swift */; };
-		CFED4FB01F268459006D9C22 /* ANCRedirectStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F9C1F268459006D9C22 /* ANCRedirectStepViewController.swift */; };
-		CFED4FB11F268459006D9C22 /* ANCStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F9D1F268459006D9C22 /* ANCStore.swift */; };
-		CFED4FB21F268459006D9C22 /* ANCWeeklySurveyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F9E1F268459006D9C22 /* ANCWeeklySurveyResult.swift */; };
-		CFED4FB31F268459006D9C22 /* ANCWeeklySurveyResult+OMHDatapoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F9F1F268459006D9C22 /* ANCWeeklySurveyResult+OMHDatapoint.swift */; };
 		CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4FA01F268459006D9C22 /* AppDelegate.swift */; };
 		CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FB51F26847A006D9C22 /* Main.storyboard */; };
 		CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FBB1F268B75006D9C22 /* OMHClient.plist */; };
 		CFED4FC21F268C5D006D9C22 /* activities.json in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FBF1F268C5D006D9C22 /* activities.json */; };
-		CFED4FC31F268C5D006D9C22 /* consentInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FC01F268C5D006D9C22 /* consentInfo.json */; };
-		CFED4FC41F268C5D006D9C22 /* weeklySurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FC11F268C5D006D9C22 /* weeklySurvey.json */; };
+		CFED4FC41F268C5D006D9C22 /* dailySurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FC11F268C5D006D9C22 /* dailySurvey.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +65,16 @@
 		CF39FE5A1F2F91C50056E010 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCNotificationManager.swift; sourceTree = "<group>"; };
+		CFC941B91F31052B008B5D9F /* ANCHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCHomeViewController.swift; sourceTree = "<group>"; };
+		CFC941BB1F31055F008B5D9F /* ANCWeeklySurveyResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCWeeklySurveyResult.swift; sourceTree = "<group>"; };
+		CFC941BD1F31057B008B5D9F /* ANCWeeklySurveyResult+OMHDatapoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ANCWeeklySurveyResult+OMHDatapoint.swift"; sourceTree = "<group>"; };
+		CFC941BF1F3105A0008B5D9F /* ANCStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCStore.swift; sourceTree = "<group>"; };
+		CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOpenURLManager.swift; sourceTree = "<group>"; };
+		CFC941C51F3113E6008B5D9F /* consentDocument.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = consentDocument.json; sourceTree = "<group>"; };
+		CFC941C71F31140E008B5D9F /* weeklySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weeklySurvey.json; sourceTree = "<group>"; };
+		CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SurveyOnboarding.storyboard; sourceTree = "<group>"; };
+		CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyOnboardingViewController.swift; sourceTree = "<group>"; };
 		CFED4F661F267B7B006D9C22 /* AncileContinuousLocationStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AncileContinuousLocationStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFED4F731F267B7B006D9C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFED4F761F267B7B006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,29 +84,12 @@
 		CFED4F831F267B7B006D9C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFED4F8D1F268459006D9C22 /* ANCActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCActivity.swift; sourceTree = "<group>"; };
 		CFED4F8E1F268459006D9C22 /* ANCActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCActivityManager.swift; sourceTree = "<group>"; };
-		CFED4F8F1F268459006D9C22 /* ANCAncileAuthDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCAncileAuthDelegate.swift; sourceTree = "<group>"; };
-		CFED4F901F268459006D9C22 /* ANCAuthStepGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCAuthStepGenerator.swift; sourceTree = "<group>"; };
-		CFED4F911F268459006D9C22 /* ANCConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCConsentDocument.swift; sourceTree = "<group>"; };
-		CFED4F921F268459006D9C22 /* ANCCoreAuthDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCCoreAuthDelegate.swift; sourceTree = "<group>"; };
-		CFED4F931F268459006D9C22 /* AncileStudyServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AncileStudyServerClient.swift; sourceTree = "<group>"; };
-		CFED4F941F268459006D9C22 /* AncileStudyServerClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AncileStudyServerClientError.swift; sourceTree = "<group>"; };
-		CFED4F951F268459006D9C22 /* ANCOhmageAuthDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOhmageAuthDelegate.swift; sourceTree = "<group>"; };
 		CFED4F961F268459006D9C22 /* ANCOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOnboardingViewController.swift; sourceTree = "<group>"; };
-		CFED4F971F268459006D9C22 /* ANCOpenURLDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOpenURLDelegate.swift; sourceTree = "<group>"; };
-		CFED4F981F268459006D9C22 /* ANCOpenURLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOpenURLManager.swift; sourceTree = "<group>"; };
-		CFED4F991F268459006D9C22 /* ANCRedirectStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCRedirectStep.swift; sourceTree = "<group>"; };
-		CFED4F9A1F268459006D9C22 /* ANCRedirectStepDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCRedirectStepDelegate.swift; sourceTree = "<group>"; };
-		CFED4F9B1F268459006D9C22 /* ANCRedirectStepDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCRedirectStepDescriptor.swift; sourceTree = "<group>"; };
-		CFED4F9C1F268459006D9C22 /* ANCRedirectStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCRedirectStepViewController.swift; sourceTree = "<group>"; };
-		CFED4F9D1F268459006D9C22 /* ANCStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCStore.swift; sourceTree = "<group>"; };
-		CFED4F9E1F268459006D9C22 /* ANCWeeklySurveyResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCWeeklySurveyResult.swift; sourceTree = "<group>"; };
-		CFED4F9F1F268459006D9C22 /* ANCWeeklySurveyResult+OMHDatapoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ANCWeeklySurveyResult+OMHDatapoint.swift"; sourceTree = "<group>"; };
 		CFED4FA01F268459006D9C22 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFED4FB61F26847A006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFED4FBB1F268B75006D9C22 /* OMHClient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OMHClient.plist; sourceTree = "<group>"; };
 		CFED4FBF1F268C5D006D9C22 /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
-		CFED4FC01F268C5D006D9C22 /* consentInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = consentInfo.json; sourceTree = "<group>"; };
-		CFED4FC11F268C5D006D9C22 /* weeklySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weeklySurvey.json; sourceTree = "<group>"; };
+		CFED4FC11F268C5D006D9C22 /* dailySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dailySurvey.json; sourceTree = "<group>"; };
 		F90FFBA1A2E8B33DC8F4412F /* Pods_AncileContinuousLocationStudyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AncileContinuousLocationStudyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,6 +177,7 @@
 				CFED4FA01F268459006D9C22 /* AppDelegate.swift */,
 				CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */,
 				CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */,
+				CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */,
 			);
 			path = AncileContinuousLocationStudy;
 			sourceTree = "<group>";
@@ -210,6 +197,7 @@
 				CFED4FB51F26847A006D9C22 /* Main.storyboard */,
 				CFED4F751F267B7B006D9C22 /* LaunchScreen.storyboard */,
 				CF02C0A81F27C33B00271928 /* Splash.storyboard */,
+				CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -228,24 +216,14 @@
 			isa = PBXGroup;
 			children = (
 				CFED4F8D1F268459006D9C22 /* ANCActivity.swift */,
+				CFC941BD1F31057B008B5D9F /* ANCWeeklySurveyResult+OMHDatapoint.swift */,
+				CFC941B91F31052B008B5D9F /* ANCHomeViewController.swift */,
+				CFC941BF1F3105A0008B5D9F /* ANCStore.swift */,
+				CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */,
+				CFC941BB1F31055F008B5D9F /* ANCWeeklySurveyResult.swift */,
+				CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */,
 				CFED4F8E1F268459006D9C22 /* ANCActivityManager.swift */,
-				CFED4F8F1F268459006D9C22 /* ANCAncileAuthDelegate.swift */,
-				CFED4F901F268459006D9C22 /* ANCAuthStepGenerator.swift */,
-				CFED4F911F268459006D9C22 /* ANCConsentDocument.swift */,
-				CFED4F921F268459006D9C22 /* ANCCoreAuthDelegate.swift */,
-				CFED4F931F268459006D9C22 /* AncileStudyServerClient.swift */,
-				CFED4F941F268459006D9C22 /* AncileStudyServerClientError.swift */,
-				CFED4F951F268459006D9C22 /* ANCOhmageAuthDelegate.swift */,
 				CFED4F961F268459006D9C22 /* ANCOnboardingViewController.swift */,
-				CFED4F971F268459006D9C22 /* ANCOpenURLDelegate.swift */,
-				CFED4F981F268459006D9C22 /* ANCOpenURLManager.swift */,
-				CFED4F991F268459006D9C22 /* ANCRedirectStep.swift */,
-				CFED4F9A1F268459006D9C22 /* ANCRedirectStepDelegate.swift */,
-				CFED4F9B1F268459006D9C22 /* ANCRedirectStepDescriptor.swift */,
-				CFED4F9C1F268459006D9C22 /* ANCRedirectStepViewController.swift */,
-				CFED4F9D1F268459006D9C22 /* ANCStore.swift */,
-				CFED4F9E1F268459006D9C22 /* ANCWeeklySurveyResult.swift */,
-				CFED4F9F1F268459006D9C22 /* ANCWeeklySurveyResult+OMHDatapoint.swift */,
 			);
 			name = Ancile;
 			sourceTree = "<group>";
@@ -262,10 +240,11 @@
 			isa = PBXGroup;
 			children = (
 				CF02C0AF1F27E16900271928 /* homeLocation.json */,
+				CFC941C51F3113E6008B5D9F /* consentDocument.json */,
+				CFC941C71F31140E008B5D9F /* weeklySurvey.json */,
 				CF02C0B01F27E16900271928 /* workLocation.json */,
 				CFED4FBF1F268C5D006D9C22 /* activities.json */,
-				CFED4FC01F268C5D006D9C22 /* consentInfo.json */,
-				CFED4FC11F268C5D006D9C22 /* weeklySurvey.json */,
+				CFED4FC11F268C5D006D9C22 /* dailySurvey.json */,
 			);
 			name = json;
 			sourceTree = "<group>";
@@ -368,13 +347,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */,
-				CFED4FC41F268C5D006D9C22 /* weeklySurvey.json in Resources */,
+				CFED4FC41F268C5D006D9C22 /* dailySurvey.json in Resources */,
 				CFED4FC21F268C5D006D9C22 /* activities.json in Resources */,
+				CFC941CA1F321BD7008B5D9F /* SurveyOnboarding.storyboard in Resources */,
+				CFC941C81F31140E008B5D9F /* weeklySurvey.json in Resources */,
+				CFC941C61F3113E6008B5D9F /* consentDocument.json in Resources */,
 				CF02C0A91F27C33B00271928 /* Splash.storyboard in Resources */,
 				CF02C0B11F27E16900271928 /* homeLocation.json in Resources */,
 				CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */,
 				CFED4F771F267B7B006D9C22 /* LaunchScreen.storyboard in Resources */,
-				CFED4FC31F268C5D006D9C22 /* consentInfo.json in Resources */,
 				CFED4F741F267B7B006D9C22 /* Assets.xcassets in Resources */,
 				CF02C0B21F27E16900271928 /* workLocation.json in Resources */,
 			);
@@ -487,28 +468,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFED4FA41F268459006D9C22 /* ANCAuthStepGenerator.swift in Sources */,
-				CFED4FAE1F268459006D9C22 /* ANCRedirectStepDelegate.swift in Sources */,
-				CFED4FA71F268459006D9C22 /* AncileStudyServerClient.swift in Sources */,
-				CFED4FB31F268459006D9C22 /* ANCWeeklySurveyResult+OMHDatapoint.swift in Sources */,
-				CFED4FA91F268459006D9C22 /* ANCOhmageAuthDelegate.swift in Sources */,
 				CF39FE5D1F2F92DD0056E010 /* SplashViewController.swift in Sources */,
-				CFED4FAD1F268459006D9C22 /* ANCRedirectStep.swift in Sources */,
 				CF02C0AE1F27CF9300271928 /* LogicalLocationSample.swift in Sources */,
-				CFED4FB01F268459006D9C22 /* ANCRedirectStepViewController.swift in Sources */,
-				CFED4FB21F268459006D9C22 /* ANCWeeklySurveyResult.swift in Sources */,
 				CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */,
-				CFED4FA81F268459006D9C22 /* AncileStudyServerClientError.swift in Sources */,
 				CF02C0AC1F27CF7D00271928 /* LocationSample.swift in Sources */,
-				CFED4FAB1F268459006D9C22 /* ANCOpenURLDelegate.swift in Sources */,
-				CFED4FAF1F268459006D9C22 /* ANCRedirectStepDescriptor.swift in Sources */,
+				CFC941BC1F31055F008B5D9F /* ANCWeeklySurveyResult.swift in Sources */,
+				CFC941C01F3105A0008B5D9F /* ANCStore.swift in Sources */,
+				CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */,
+				CFC941BA1F31052B008B5D9F /* ANCHomeViewController.swift in Sources */,
+				CFC941BE1F31057B008B5D9F /* ANCWeeklySurveyResult+OMHDatapoint.swift in Sources */,
+				CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */,
 				CFED4FAA1F268459006D9C22 /* ANCOnboardingViewController.swift in Sources */,
+				CFC941B81F3104DB008B5D9F /* ANCNotificationManager.swift in Sources */,
 				CFED4FA11F268459006D9C22 /* ANCActivity.swift in Sources */,
-				CFED4FA31F268459006D9C22 /* ANCAncileAuthDelegate.swift in Sources */,
-				CFED4FAC1F268459006D9C22 /* ANCOpenURLManager.swift in Sources */,
-				CFED4FA51F268459006D9C22 /* ANCConsentDocument.swift in Sources */,
-				CFED4FA61F268459006D9C22 /* ANCCoreAuthDelegate.swift in Sources */,
-				CFED4FB11F268459006D9C22 /* ANCStore.swift in Sources */,
 				CFED4FA21F268459006D9C22 /* ANCActivityManager.swift in Sources */,
 				CF39FE5F1F2F92F50056E010 /* SettingsViewController.swift in Sources */,
 			);

@@ -1,0 +1,88 @@
+{
+  "identifier": "ancilePhoneStudyConsentDocument",
+  "type": "standardConsentDocument",
+  "title": "Ancile: A Framework for Managing Microscale Data",
+  "sections": [
+    {
+      "identifier": "overview",
+      "type": "standardConsentSection",
+      "sectionType": "overview",
+      "summary": "The purpose of this study is to establish the technical feasibility of a software framework for collecting data from mobile phones and other electronic devices.",
+      "content": "You are being asked to join a research study called “Ancile: A Framework for Managing Microscale Data.” The purpose of this study is to establish the technical feasibility of a software framework for collecting data from mobile phones and other electronic devices."
+    },
+    {
+      "identifier": "dataGathering",
+      "type": "standardConsentSection",
+      "sectionType": "dataGathering",
+      "summary": "This study will collect generic information (metadata) about your mobile phone, analyze self-reported information, and ask you to perform tasks such as answering weekly surveys.",
+      "content": "This study will collect generic information (metadata) about your mobile phone, analyze self-reported information, and ask you to perform tasks such as answering weekly surveys. Phone metadata include type of your phone, version and operating system. Additionally, the app will check the capabilities of the phone such as Wi-Fi, location services, bluetooth, as well as the availability of HealthKit (iOS) / Google Fit (Android). The app will also collect information about WiFi and Cellular usage, battery life, and data transfer consumed by the app."
+    },
+    {
+      "identifier": "privacy",
+      "type": "standardConsentSection",
+      "sectionType": "privacy",
+      "summary": "This study only focuses on survey responses and phone metadata.",
+      "content": "This study only focuses on survey responses and phone metadata. We do not collect the content of your interactions with others. We will NOT access your personal contacts, text message content, personal photos (other than the generic photo taken using the camera via the app), or websites visited."
+    },
+    {
+      "identifier": "dataUse",
+      "type": "standardConsentSection",
+      "sectionType": "dataUse",
+      "summary": "We will combine your study data with those of other study participants to gain insights on how to improve campus resources and facilities.",
+      "content": "We will combine your study data with those of other study participants to gain insights on how to improve campus resources and facilities. We will not share your information with any advertisers or other commercial third parties. Study data will be stored in a manner that maintains strict information technology procedures to safeguard participant information and to prevent improper access."
+    },
+    {
+      "identifier": "timeCommitment",
+      "type": "standardConsentSection",
+      "sectionType": "timeCommitment",
+      "summary": "You will respond to two weekly survey questions that take less than one minute to complete.",
+      "content": "You will respond to two weekly survey questions that take less than one minute to complete."
+    },
+    {
+      "identifier": "studySurvey",
+      "type": "standardConsentSection",
+      "sectionType": "studySurvey",
+      "summary": "You will complete a demographic survey at the beginning of the study and respond to two survey questions about your Cornell Tech experience in the past week.",
+      "content": "You will complete a demographic survey at the beginning of the study and respond to two survey questions about your Cornell Tech experience in the past week."
+    },
+    {
+      "identifier": "studyTasks",
+      "type": "standardConsentSection",
+      "sectionType": "studyTasks",
+      "summary": "Your only task is to provide responses to two survey questions every week. You will be notified to provide your responses in the app.",
+      "content": "Your only task is to provide responses to two survey questions every week. You will be notified to provide your responses in the app."
+    },
+    {
+      "identifier": "withdrawing",
+      "type": "standardConsentSection",
+      "sectionType": "withdrawing",
+      "summary": "Your involvement in this research is entirely voluntary, and you can stop or withdraw from the study at any time. You may request that we delete your data at any time.",
+      "content": "Your involvement in this research is entirely voluntary, and you can stop or withdraw from the study at any time. You may request that we delete your data at any time."
+    },
+    {
+      "identifier": "payment",
+      "type": "standardConsentSection",
+      "sectionType": "custom",
+      "title": "Payment",
+      "summary": "There is no payment for participating in this study.",
+      "content": "There is no payment for participating in this study.",
+      "customImageTitle": "splash"
+    }
+  ],
+  "signatures": [
+    {
+      "identifier": "participant",
+      "type": "participantConsentSignature",
+      "title": "Participant"
+    },
+    {
+      "identifier": "investigator",
+      "type": "investigatorConsentSignature",
+      "title": "Investigator",
+      "givenName": "Jonny",
+      "familyName": "Appleseed",
+      "signatureImageTitle": "signature",
+      "signatureDateString": "3/10/15"
+    }
+  ]
+}

@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     var store: ANCStore!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    var items: [String] = ["","Reset your Home Location","","Reset your Work Location","","Sign out"]
+    var items: [String] = ["","Reset your Home Location","","Reset your Work Location","","Set Weekly Notification Time","Set Daily Notification Time","Take the Weekly Survey","Take the Daily Survey","","Sign out"]
     var resultAddressHome : String = ""
     var resultAddressWork: String = ""
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -56,7 +56,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NSLog(workLocation)
         
         
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 {
+        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 9 {
             cell.textLabel?.textColor = UIColor.black
             cell.backgroundColor = UIColor.init(red:0.95, green:0.95, blue:0.95, alpha:1.0)
             
@@ -69,6 +69,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if indexPath.row == 4 {
                 cell.textLabel?.text = workLocation
             }
+            if indexPath.row == 9 {
+                cell.textLabel?.text = ""
+            }
+          
             
         }
         else {
@@ -84,7 +88,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 {
+        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 9 {
             return 40.0
         }
         else {
@@ -109,7 +113,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if indexPath.row == 5 {
-          //  self.signOut()
+            setWeeklyNotification()
+        }
+        
+        if indexPath.row == 6 {
+            setDailyNotification()
+        }
+        
+        if indexPath.row == 7 {
+            launchWeeklySurvey()
+        }
+        
+        if indexPath.row == 8 {
+            launchDailySurvey()
+        }
+        
+        if indexPath.row == 10 {
+            signOut()
         }
         
     }
@@ -187,7 +207,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self?.tableView.reloadData()
             }
             
-            self?.appDelegate?.updateMonitoredRegions(regionChanged: "home")
+          //  self?.appDelegate?.updateMonitoredRegions(regionChanged: "home")
             
             self?.dismiss(animated: true, completion: {
             })
@@ -260,7 +280,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self?.tableView.reloadData()
             }
             
-            self?.appDelegate?.updateMonitoredRegions(regionChanged: "work")
+          //  self?.appDelegate?.updateMonitoredRegions(regionChanged: "work")
 
             
             self?.dismiss(animated: true, completion: {
@@ -269,6 +289,26 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         })
         
         self.present(tvc, animated: true, completion: nil)
+    }
+    
+    func setWeeklyNotification () {
+        
+    }
+    
+    func setDailyNotification () {
+        
+    }
+    
+    func launchWeeklySurvey () {
+        
+    }
+    
+    func launchDailySurvey () {
+        
+    }
+    
+    func signOut () {
+        
     }
 
 

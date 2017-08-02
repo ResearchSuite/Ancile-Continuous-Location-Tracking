@@ -10,7 +10,7 @@ import UIKit
 
 open class RSRPIntermediateResult: NSObject {
     
-    open let type: String
+    public let type: String
     open var uuid: UUID
     open var taskIdentifier: String
     open var taskRunUUID: UUID

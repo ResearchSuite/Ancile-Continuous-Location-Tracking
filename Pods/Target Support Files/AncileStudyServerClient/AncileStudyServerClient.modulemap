@@ -1,0 +1,6 @@
+framework module AncileStudyServerClient {
+  umbrella header "AncileStudyServerClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CBCB9A99FE51508E85E05B9547A312E6'
+               BlueprintIdentifier = '0C2F221AAC842CBD708870F6B27DE218'
                BlueprintName = 'OMHClient'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'OMHClient.framework'>

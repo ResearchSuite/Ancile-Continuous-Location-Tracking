@@ -44,8 +44,8 @@ class SplashViewController: UIViewController {
     
     func launchDailySurvey() {
         
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "weeklySurvey"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "weeklySurvey") else {
+        guard let task = AppDelegate.appDelegate.activityManager.task(for: "dailySurvey"),
+            let activity = AppDelegate.appDelegate.activityManager.activity(for: "dailySurvey") else {
                 return
         }
         

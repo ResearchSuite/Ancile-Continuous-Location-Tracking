@@ -36,26 +36,18 @@ open class OMHClient: NSObject {
         super.init()
     }
     
-    open func signIn(username: String, password: String, completion: @escaping ((SignInResponse?, Error?) -> ())) {
+    open func OAuthURL() -> URL? {
+        return URL(string: "\(self.baseURL)/oauth/authorize?client_id=\(self.clientID)&response_type=code")
+    }
+    
+    open func studyEnrollmentURL(studyIdentifier: String) -> URL? {
+        return URL(string: "\(self.baseURL)/studies/\(studyIdentifier)/enroll")
+    }
+    
+    open func processAuthResponse(isRefresh: Bool, completion: @escaping ((SignInResponse?, Error?) -> ())) -> ((DataResponse<Any>) -> ()) {
         
-        let urlString = "\(self.baseURL)/oauth/token"
-        let parameters = [
-            "grant_type": "password",
-            "username": username,
-            "password": password
-        ]
-        
-        let headers = ["Authorization": "Basic \(self.basicAuthString)"]
-        
-        let request = Alamofire.request(
-            urlString,
-            method: .post,
-            parameters: parameters,
-            encoding: URLEncoding.default,
-            headers: headers)
-      
-        request.responseJSON(queue: self.dispatchQueue) { jsonResponse in
-
+        return { jsonResponse in
+            
             //check for lower level errors
             if let error = jsonResponse.result.error as? NSError {
                 if error.code == NSURLErrorNotConnectedToInternet {
@@ -93,7 +85,12 @@ open class OMHClient: NSObject {
                 }
                 
                 if error == "invalid_grant" {
-                    completion(nil, OMHClientError.credentialsFailure(descrition: errorDescription))
+                    if isRefresh {
+                        completion(nil, OMHClientError.invalidRefreshToken)
+                    }
+                    else {
+                        completion(nil, OMHClientError.credentialsFailure(descrition: errorDescription))
+                    }
                     return
                 }
                 else {
@@ -118,6 +115,68 @@ open class OMHClient: NSObject {
             
         }
         
+    }
+    
+    open func signIn(username: String, password: String, completion: @escaping ((SignInResponse?, Error?) -> ())) {
+        
+        let urlString = "\(self.baseURL)/oauth/token"
+        let parameters = [
+            "grant_type": "password",
+            "username": username,
+            "password": password
+        ]
+        
+        let headers = ["Authorization": "Basic \(self.basicAuthString)"]
+        
+        let request = Alamofire.request(
+            urlString,
+            method: .post,
+            parameters: parameters,
+            encoding: URLEncoding.default,
+            headers: headers)
+        
+        request.responseJSON(queue: self.dispatchQueue, completionHandler: self.processAuthResponse(isRefresh: false, completion: completion))
+        
+    }
+    
+    open func signIn(code: String, completion: @escaping ((SignInResponse?, Error?) -> ())) {
+        
+        let urlString = "\(self.baseURL)/oauth/token"
+        let parameters = [
+            "grant_type": "authorization_code",
+            "code": code
+        ]
+        
+        let headers = ["Authorization": "Basic \(self.basicAuthString)"]
+        
+        let request = Alamofire.request(
+            urlString,
+            method: .post,
+            parameters: parameters,
+            encoding: URLEncoding.default,
+            headers: headers)
+        
+        request.responseJSON(queue: self.dispatchQueue, completionHandler: self.processAuthResponse(isRefresh: false, completion: completion))
+        
+    }
+    
+    open func refreshAccessToken(refreshToken: String, completion: @escaping ((SignInResponse?, Error?) -> ()))  {
+        let urlString = "\(self.baseURL)/oauth/token"
+        let parameters = [
+            "grant_type": "refresh_token",
+            "refresh_token": refreshToken]
+        
+        let headers = ["Authorization": "Basic \(self.basicAuthString)"]
+        
+        let request = Alamofire.request(
+            urlString,
+            method: .post,
+            parameters: parameters,
+            encoding: URLEncoding.default,
+            headers: headers)
+        
+        request.responseJSON(queue: self.dispatchQueue, completionHandler: self.processAuthResponse(isRefresh: true, completion: completion))
+
     }
     
     open func postSample(sample: OMHDataPoint, token: String, completion: @escaping ((Bool, Error?) -> ())) {
@@ -281,85 +340,4 @@ open class OMHClient: NSObject {
     
     }
     
-    open func refreshAccessToken(refreshToken: String, completion: @escaping ((SignInResponse?, Error?) -> ()))  {
-        let urlString = "\(self.baseURL)/oauth/token"
-        let parameters = [
-            "grant_type": "refresh_token",
-            "refresh_token": refreshToken]
-        
-        let headers = ["Authorization": "Basic \(self.basicAuthString)"]
-        
-        let request = Alamofire.request(
-            urlString,
-            method: .post,
-            parameters: parameters,
-            encoding: URLEncoding.default,
-            headers: headers)
-        
-        request.responseJSON(queue: self.dispatchQueue) { jsonResponse in
-            
-            //check for lower level errors
-            if let error = jsonResponse.result.error as? NSError {
-                if error.code == NSURLErrorNotConnectedToInternet {
-                    completion(nil, OMHClientError.unreachableError(underlyingError: error))
-                    return
-                }
-                else {
-                    completion(nil, OMHClientError.otherError(underlyingError: error))
-                    return
-                }
-            }
-            
-            //check for our errors
-            //credentialsFailure
-            guard let response = jsonResponse.response else {
-                completion(nil, OMHClientError.malformedResponse(responseBody: jsonResponse))
-                return
-            }
-            
-            if let response = jsonResponse.response,
-                response.statusCode == 502 {
-                debugPrint(jsonResponse)
-                completion(nil, OMHClientError.badGatewayError)
-                return
-            }
-            
-            if response.statusCode != 200 {
-                
-                guard jsonResponse.result.isSuccess,
-                    let json = jsonResponse.result.value as? [String: Any],
-                    let error = json["error"] as? String,
-                    let errorDescription = json["error_description"] as? String else {
-                        completion(nil, OMHClientError.malformedResponse(responseBody: jsonResponse.result.value))
-                        return
-                }
-                
-                if error == "invalid_grant" {
-                    completion(nil, OMHClientError.invalidRefreshToken)
-                    return
-                }
-                else {
-                    completion(nil, OMHClientError.serverError(error: error, errorDescription: errorDescription))
-                    return
-                }
-                
-            }
-            
-            //malformed body
-            guard jsonResponse.result.isSuccess,
-                let json = jsonResponse.result.value as? [String: Any],
-                let accessToken = json["access_token"] as? String,
-                let refreshToken = json["refresh_token"] as? String else {
-                    completion(nil, OMHClientError.malformedResponse(responseBody: jsonResponse.result.value))
-                    return
-            }
-            
-            
-            let signInResponse = SignInResponse(accessToken: accessToken, refreshToken: refreshToken)
-            completion(signInResponse, nil)
-            
-        }
-    }
-    
-
 }

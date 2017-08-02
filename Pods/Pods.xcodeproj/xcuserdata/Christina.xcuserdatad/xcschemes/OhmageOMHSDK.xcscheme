@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4D8BBB513D7DC4EEBD3E30E96163C4FD'
+               BlueprintIdentifier = '1797A00503BA7409C0373252CFF3CF30'
                BlueprintName = 'OhmageOMHSDK'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'OhmageOMHSDK.framework'>

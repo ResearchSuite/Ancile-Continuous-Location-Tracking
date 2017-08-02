@@ -9,7 +9,7 @@
 import UIKit
 import ResearchKit
 
-open class RSRPResultsProcessor: NSObject {
+public class RSRPResultsProcessor: NSObject {
     
     let frontEnd: RSRPFrontEndService
     let backEnds: [RSRPBackEnd]
@@ -27,7 +27,7 @@ open class RSRPResultsProcessor: NSObject {
         super.init()
     }
     
-    open func processResult(taskResult: ORKTaskResult, resultTransforms: [RSRPResultTransform]) {
+    public func processResult(taskResult: ORKTaskResult, resultTransforms: [RSRPResultTransform]) {
         let intermediateResults = self.frontEnd.processResult(taskResult: taskResult, resultTransforms: resultTransforms)
         let backEnds = self.backEnds
         backEnds.forEach { backEnd in

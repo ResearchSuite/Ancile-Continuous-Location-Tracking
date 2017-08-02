@@ -19,33 +19,70 @@
         ]
       }
     },
-    {
-      "identifier": "authFlow",
-      "type": "activity",
-      "element": {
-        "identifier": "authFlow",
-        "type": "elementList",
-        "elements": [
-          {
-            "identifier": "ancileAuth",
-            "type": "AncileAuth",
-            "title": "Authenticate with Ancile",
-            "buttonText": "Authenticate"
-          },
-          {
-            "identifier": "coreAuth",
-            "type": "CoreAuth",
-            "title": "Authenticate with Core",
-            "buttonText": "Authenticate"
-          },
-          {
-            "identifier": "ohmageLogin",
-            "type": "OhmageOMHLogin",
-            "title": "Authenticate with Ohmage"
-          }
-        ]
-      }
-    },
+                {
+                 "identifier": "consent",
+                 "type": "activity",
+                 "element": {
+                 "type": "elementList",
+                 "identifier": "consentTask",
+                 "elements": [
+                              {
+                              "identifier": "visualConsentStep",
+                              "type": "visualConsent",
+                              "consentDocumentFilename": "consentDocument"
+                              },
+                              {
+                              "identifier": "consentReviewStep",
+                              "type": "consentReview",
+                              "consentDocumentFilename": "consentDocument",
+                              "reasonForConsent": "You need to consent!"
+                              }
+                              ]
+                 }
+                 },
+                 {
+                 "identifier": "authFlow",
+                 "type": "activity",
+                 "element": {
+                 "identifier": "authFlow",
+                 "type": "elementList",
+                 "elements": [
+                              {
+                              "identifier": "ancileAuth",
+                              "type": "AncileAuth",
+                              "title": "Authenticate with Ancile",
+                              "buttonText": "Authenticate"
+                              },
+                              {
+                              "identifier": "coreAuth",
+                              "type": "CoreAuth",
+                              "title": "Authenticate with Core",
+                              "buttonText": "Authenticate"
+                              },
+                              {
+                              "identifier": "ohmageLogin",
+                              "type": "OhmageOMHRedirectLogin",
+                              "title": "Authenticate with Ohmage",
+                              "buttonText": "Authenticate"
+                              },
+                              {
+                              "identifier": "securing_data_instructions",
+                              "type": "instruction",
+                              "title": "Secure That Data!",
+                              "text": "You'll be prompted to create a 4 digit passcode.\n\nPasscodes help keep participant data secure."
+                              },
+                              {
+                              "identifier": "passcode",
+                              "type": "passcode"
+                              },
+                              {
+                              "identifier": "onboarding_completed_instructions",
+                              "type": "instruction",
+                              "title": "Onboarding Done!\n👏👏👏"
+                              }
+                              ]
+                 }
+                 },
     {
       "identifier": "weeklySurvey",
       "type": "activity",
@@ -75,15 +112,39 @@
         }
       ]
     },
+                 
+                 {
+                 "identifier": "dailySurvey",
+                 "type": "activity",
+                 "element": {
+                 "type": "elementFile",
+                 "identifier": "dailySurvey",
+                 "elementFileName": "dailySurvey"
+                 },
+                 "resultTransforms": [
+                                    ]
+                 },
     {
-      "identifier": "notificationTime",
+      "identifier": "dailyNotificationTime",
       "type": "activity",
       "element": {
-          "identifier":"notificationTime",
+          "identifier":"dailyNotificationTime",
           "type":"timePicker",
+          "title": "Daily Survey Notification",
           "text":"Please choose when you would like to be reminded to perform your weekly survey.",
           "optional": false
       }
+    },
+    {
+      "identifier": "weeklyNotificationTime",
+      "type": "activity",
+      "element": {
+            "identifier":"weeklyNotificationTime",
+            "type":"timePicker",
+            "title":"Weekly Survey Notification",
+            "text":"Please choose when you would like to be reminded to perform your daily survey.",
+            "optional": false
+        }
     },
     { "identifier": "homeLocation",
       "type": "activity",

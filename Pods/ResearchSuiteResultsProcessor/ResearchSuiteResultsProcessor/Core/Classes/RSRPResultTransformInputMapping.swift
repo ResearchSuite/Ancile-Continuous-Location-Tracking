@@ -15,11 +15,11 @@ public enum RSRPResultTransformInputMappingType {
     case constant
 }
 
-open class RSRPResultTransformInputMapping: Decodable {
+public class RSRPResultTransformInputMapping: Decodable {
     
-    open let mappingType: RSRPResultTransformInputMappingType
-    open let value: AnyObject
-    open let parameter: String
+    public let mappingType: RSRPResultTransformInputMappingType
+    public let value: AnyObject
+    public let parameter: String
     
     required public init?(json: JSON) {
         

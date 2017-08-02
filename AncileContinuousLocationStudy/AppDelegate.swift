@@ -197,6 +197,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+       
+        self.window?.tintColor = UIColor(red:1.00, green:0.80, blue:0.00, alpha:1.0)
+     //   [self.window setTintColor:[UIColor greenColor]];
         
         if UserDefaults.standard.object(forKey: "FirstRun") == nil {
             UserDefaults.standard.set("1stRun", forKey: "FirstRun")
@@ -491,7 +494,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
             CTFDelayDiscountingRawResultsTransformer.self,
             YADLSpotRaw.self,
             YADLFullRaw.self,
-            ANCWeeklySurveyResult.self
+            ANCWeeklySurveyResult.self,
+            ANCDailySurveyResult.self
         ]
     }
     

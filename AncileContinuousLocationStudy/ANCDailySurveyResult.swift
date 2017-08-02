@@ -5,6 +5,20 @@
 //  Created by Christina Tsangouri on 8/2/17.
 //  Copyright © 2017 Christina Tsangouri. All rights reserved.
 //
+
+import UIKit
+import ResearchKit
+import ResearchSuiteResultsProcessor
+import Gloss
+import OMHClient
+
+//
+//  ANCDailySurveyResult.swift
+//  AncileContinuousLocationStudy
+//
+//  Created by Christina Tsangouri on 8/2/17.
+//  Copyright © 2017 Christina Tsangouri. All rights reserved.
+//
 //
 
 import UIKit
@@ -108,7 +122,7 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
             }
             return choices
         }()
-
+        
         let commute_3: NSNumber? = {
             guard let stepResult = parameters["commute_3"],
                 let result = stepResult.firstResult as? ORKScaleQuestionResult,
@@ -117,7 +131,7 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
             }
             return scale
         }()
-
+        
         let commute_4: NSNumber? = {
             guard let stepResult = parameters["commute_4"],
                 let result = stepResult.firstResult as? ORKScaleQuestionResult,
@@ -138,9 +152,6 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
         }()
         
         
-
-        
-        
         let daily = ANCDailySurveyResult(
             uuid: UUID(),
             taskIdentifier: taskIdentifier,
@@ -156,18 +167,15 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
             commute_2: commute_2,
             commute_3: commute_3,
             commute_4: commute_4,
-            commute_5: commute_5
-            )
+            commute_5: commute_5)
         
-//        weekly.startDate = parameters["days_on_campus"]?.startDate ?? Date()
-//        weekly.endDate = parameters["travel_plans"]?.endDate ?? Date()
-//        
+            daily.startDate = parameters["sleep_1"]?.startDate ?? Date()
+            daily.endDate = parameters["commute_5"]?.endDate ?? Date()
+        //
         return daily
         
     }
     
-    public let travelPlans: String?
-    public let daysOnCampus: [String]?
     public let sleep_1: DateComponents?
     public let sleep_2: DateComponents?
     public let sleep_3: [String]?
@@ -199,7 +207,7 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
         commute_5: [String]?
         ) {
         
-     
+        
         self.sleep_1 = sleep_1
         self.sleep_2 = sleep_2
         self.sleep_3 = sleep_3
@@ -218,21 +226,10 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
             type: "DailyStatus",
             uuid: uuid,
             taskIdentifier: taskIdentifier,
-            taskRunUUID: taskRunUUID,
-            sleep_1: sleep_1,
-            sleep_2: sleep_2,
-            sleep_3: sleep_3,
-            food_1: food_1,
-            food_2: food_2,
-            food_3: food_3,
-            food_4: food_4,
-            commute_1: commute_1,
-            commute_2: commute_2,
-            commute_3: commute_3,
-            commute_4: commute_4,
-            commute_5: commute_5
+            taskRunUUID: taskRunUUID
         )
     }
     
 }
+
 

@@ -14,6 +14,7 @@ class SplashViewController: UIViewController {
 
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     var store: ANCStore!
+    @IBOutlet weak var splashImageView: UIImageView!
     
     
     

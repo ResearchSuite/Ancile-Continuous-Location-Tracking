@@ -27,6 +27,8 @@
 		CFC941C81F31140E008B5D9F /* weeklySurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C71F31140E008B5D9F /* weeklySurvey.json */; };
 		CFC941CA1F321BD7008B5D9F /* SurveyOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */; };
 		CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */; };
+		CFC941D01F325C63008B5D9F /* ANCDailySurveyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941CF1F325C63008B5D9F /* ANCDailySurveyResult.swift */; };
+		CFC941D21F325CDE008B5D9F /* ANCDailySurveyResult+OMHDatapoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941D11F325CDE008B5D9F /* ANCDailySurveyResult+OMHDatapoint.swift */; };
 		CFED4F741F267B7B006D9C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F731F267B7B006D9C22 /* Assets.xcassets */; };
 		CFED4F771F267B7B006D9C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F751F267B7B006D9C22 /* LaunchScreen.storyboard */; };
 		CFED4F821F267B7B006D9C22 /* AncileContinuousLocationStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F811F267B7B006D9C22 /* AncileContinuousLocationStudyTests.swift */; };
@@ -75,6 +77,8 @@
 		CFC941C71F31140E008B5D9F /* weeklySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weeklySurvey.json; sourceTree = "<group>"; };
 		CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SurveyOnboarding.storyboard; sourceTree = "<group>"; };
 		CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyOnboardingViewController.swift; sourceTree = "<group>"; };
+		CFC941CF1F325C63008B5D9F /* ANCDailySurveyResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCDailySurveyResult.swift; sourceTree = "<group>"; };
+		CFC941D11F325CDE008B5D9F /* ANCDailySurveyResult+OMHDatapoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ANCDailySurveyResult+OMHDatapoint.swift"; sourceTree = "<group>"; };
 		CFED4F661F267B7B006D9C22 /* AncileContinuousLocationStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AncileContinuousLocationStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFED4F731F267B7B006D9C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFED4F761F267B7B006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */,
 				CFED4F8E1F268459006D9C22 /* ANCActivityManager.swift */,
 				CFED4F961F268459006D9C22 /* ANCOnboardingViewController.swift */,
+				CFC941CF1F325C63008B5D9F /* ANCDailySurveyResult.swift */,
+				CFC941D11F325CDE008B5D9F /* ANCDailySurveyResult+OMHDatapoint.swift */,
 			);
 			name = Ancile;
 			sourceTree = "<group>";
@@ -472,9 +478,11 @@
 				CF02C0AE1F27CF9300271928 /* LogicalLocationSample.swift in Sources */,
 				CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */,
 				CF02C0AC1F27CF7D00271928 /* LocationSample.swift in Sources */,
+				CFC941D21F325CDE008B5D9F /* ANCDailySurveyResult+OMHDatapoint.swift in Sources */,
 				CFC941BC1F31055F008B5D9F /* ANCWeeklySurveyResult.swift in Sources */,
 				CFC941C01F3105A0008B5D9F /* ANCStore.swift in Sources */,
 				CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */,
+				CFC941D01F325C63008B5D9F /* ANCDailySurveyResult.swift in Sources */,
 				CFC941BA1F31052B008B5D9F /* ANCHomeViewController.swift in Sources */,
 				CFC941BE1F31057B008B5D9F /* ANCWeeklySurveyResult+OMHDatapoint.swift in Sources */,
 				CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */,

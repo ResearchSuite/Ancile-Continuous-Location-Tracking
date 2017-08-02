@@ -3,6 +3,11 @@
   "identifier": "demographics",
   "elements": [
                {
+               "identifier": "welcome_daily",
+               "type": "instruction",
+               "title": "Daily Survey"
+               },
+               {
                "identifier":"sleep_1",
                "type":"timePicker",
                "text":"When did you sleep last night?",
@@ -245,9 +250,9 @@
                          ]
                },
                {
-               "identifier": "onboarding_completed_instructions",
+               "identifier": "end_daily",
                "type": "instruction",
-               "title": "Onboarding Completed!"
+               "title": "Thanks!"
                }
             ]
 }

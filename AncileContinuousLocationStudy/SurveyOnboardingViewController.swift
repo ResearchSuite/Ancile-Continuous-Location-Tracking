@@ -74,7 +74,7 @@ class SurveyOnboardingViewController: UIViewController {
                 AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
                 
                 self?.dismiss(animated: true, completion: {
-                    
+                    self?.startSurveys()
                     
                 })
                 

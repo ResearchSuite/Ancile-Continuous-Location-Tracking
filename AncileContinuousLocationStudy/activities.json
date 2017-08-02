@@ -131,7 +131,7 @@
           "identifier":"dailyNotificationTime",
           "type":"timePicker",
           "title": "Daily Survey Notification",
-          "text":"Please choose when you would like to be reminded to perform your weekly survey.",
+          "text":"Please choose when you would like to be reminded to perform your daily survey.",
           "optional": false
       }
     },
@@ -142,7 +142,7 @@
             "identifier":"weeklyNotificationTime",
             "type":"timePicker",
             "title":"Weekly Survey Notification",
-            "text":"Please choose when you would like to be reminded to perform your daily survey.",
+            "text":"Please choose when you would like to be reminded to perform your weekly survey.",
             "optional": false
         }
     },

@@ -2,6 +2,12 @@
   "type": "elementList",
   "identifier": "demographics",
   "elements": [
+               {
+               "identifier": "welcome_weekly",
+               "type": "instruction",
+               "title": "Weekly Survey"
+               },
+          
     {
       "identifier": "days_on_campus",
       "type": "multipleChoiceText",
@@ -42,6 +48,11 @@
       "type": "textfield",
       "text": "Do you have any unusual travel plans for the current week?",
       "multipleLines": true
-    }
+    },
+               {
+               "identifier": "end_weekly",
+               "type": "instruction",
+               "title": "Thanks!"
+               }
   ]
 }

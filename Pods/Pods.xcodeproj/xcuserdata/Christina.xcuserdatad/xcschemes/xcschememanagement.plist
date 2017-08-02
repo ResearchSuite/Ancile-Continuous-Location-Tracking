@@ -2,84 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>AncileStudyServerClient.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Gloss.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>OMHClient.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>OhmageOMHSDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-AncileContinuousLocationStudy.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-AncileContinuousLocationStudyTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ReSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ResearchKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ResearchSuiteAppFramework.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ResearchSuiteExtensions.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ResearchSuiteResultsProcessor.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ResearchSuiteTaskBuilder.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SecureQueue.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>sdlrkx.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0C2F221AAC842CBD708870F6B27DE218</key>
@@ -112,7 +34,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4D8BBB513D7DC4EEBD3E30E96163C4FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53F6A3F9311E72E9689FB9FE2480B56A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>73F1DB894608C1CCB44B9183D1E073A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7561C6848BEEA05B49E24F58A642E9AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75E1C975CFEB6F1C39B7F3FF925616E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,6 +69,21 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8B2977E9925E6E63FED660891242AC20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8DFA08BADA6E7BB7C141EF0D315C6373</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>99DFE6FEA1E619950441810164597794</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A027700E84FE34C621C4A04282F9F371</key>
 		<dict>
 			<key>primary</key>
@@ -137,12 +94,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C1B8CA229C9AF3CEBF0EB217B203B49C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5543BB52F17E8C60F66951A4C5B63C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C96189EED1B48C9994ABD88B8B406736</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CBCB9A99FE51508E85E05B9547A312E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D3F8F8EA34CCD63C894EA6E3633AB0B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB48D0F52B417A0B1A7C7EE5DF64A36A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

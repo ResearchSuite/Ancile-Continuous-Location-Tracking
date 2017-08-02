@@ -59,6 +59,7 @@ public class OhmageOMHManager: NSObject {
     }
     
     static private var _sharedManager: OhmageOMHManager?
+    private var redirectCompletion: ((Error?) -> ())?
     
     
     //returns true if configured
@@ -178,6 +179,73 @@ public class OhmageOMHManager: NSObject {
             
         }
         
+    }
+    
+    public func beginRedirectSignIn(completion: @escaping ((Error?) -> ())) {
+        
+        if self.isSignedIn {
+            completion(OhmageOMHError.alreadySignedIn)
+            return
+        }
+        
+        if let url = self.client.OAuthURL() {
+            self.redirectCompletion = completion
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    public func enrollUserInStudy(studyIdentifier: String, completion: @escaping ((Error?) -> ())) {
+        if !self.isSignedIn {
+            completion(OhmageOMHError.notSignedIn)
+            return
+        }
+        
+        if let url = self.client.studyEnrollmentURL(studyIdentifier: studyIdentifier) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { success in
+                    completion(nil)
+                })
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+                completion(nil)
+            }
+        }
+    }
+    
+    func getQueryStringParameter(url: String, param: String) -> String? {
+        guard let url = URLComponents(string: url) else { return nil }
+        return url.queryItems?.first(where: { $0.name == param })?.value
+    }
+    
+    public func handleURL(url: URL) -> Bool {
+
+        if let code = self.getQueryStringParameter(url: url.absoluteString, param: "code") {
+            self.client.signIn(code: code) { (signInResponse, error) in
+                
+                if let err = error {
+                    
+                    self.redirectCompletion?(err)
+                    return
+                    
+                }
+                
+                if let response = signInResponse {
+                    self.setCredentials(accessToken: response.accessToken, refreshToken: response.refreshToken)
+                }
+                
+                self.reachabilityManager.startListening()
+                self.redirectCompletion?(nil)
+                
+            }
+        }
+        
+        return true
     }
     
     public func signOut(completion: @escaping ((Error?) -> ())) {

@@ -1,23 +1,28 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.0)
+  - AncileStudyServerClient (0.1.0):
+    - Alamofire (~> 4.0)
+    - ResearchSuiteExtensions
+    - ResearchSuiteTaskBuilder
   - Gloss (1.2.4)
-  - OhmageOMHSDK (0.3.0):
-    - OhmageOMHSDK/Core (= 0.3.0)
-  - OhmageOMHSDK/Core (0.3.0):
+  - OhmageOMHSDK (0.4.0):
+    - OhmageOMHSDK/Core (= 0.4.0)
+  - OhmageOMHSDK/Core (0.4.0):
     - Alamofire (~> 4)
-    - OMHClient
+    - OMHClient (~> 0.1)
     - SecureQueue
-  - OhmageOMHSDK/RKSupport (0.3.0):
+  - OhmageOMHSDK/RKSupport (0.4.0):
     - OhmageOMHSDK/Core
     - ResearchKit (~> 1.4)
-  - OhmageOMHSDK/RSRPSupport (0.3.0):
+    - ResearchSuiteExtensions (~> 0.2)
+  - OhmageOMHSDK/RSRPSupport (0.4.0):
     - OhmageOMHSDK/Core
     - ResearchSuiteResultsProcessor
-  - OhmageOMHSDK/RSTBSupport (0.3.0):
+  - OhmageOMHSDK/RSTBSupport (0.4.0):
     - OhmageOMHSDK/Core
     - OhmageOMHSDK/RKSupport
     - ResearchSuiteTaskBuilder
-  - OMHClient (0.0.5):
+  - OMHClient (0.1.0):
     - Alamofire (~> 4.0)
   - ResearchKit (1.4.1)
   - ResearchSuiteAppFramework (0.0.2):
@@ -28,86 +33,101 @@ PODS:
     - ResearchSuiteResultsProcessor (~> 0.3)
     - ResearchSuiteTaskBuilder (~> 0.5)
     - ReSwift (~> 3.0)
+  - ResearchSuiteExtensions (0.2.0):
+    - ResearchSuiteExtensions/Common (= 0.2.0)
+    - ResearchSuiteExtensions/Core (= 0.2.0)
+    - ResearchSuiteExtensions/RSTBSupport (= 0.2.0)
+  - ResearchSuiteExtensions/Common (0.2.0):
+    - ResearchKit (~> 1.4)
+  - ResearchSuiteExtensions/Core (0.2.0):
+    - ResearchKit (~> 1.4)
+    - ResearchSuiteExtensions/Common
+  - ResearchSuiteExtensions/RSTBSupport (0.2.0):
+    - Gloss (~> 1)
+    - ResearchSuiteExtensions/Core
+    - ResearchSuiteTaskBuilder (~> 0.4)
   - ResearchSuiteResultsProcessor (0.3.1):
     - ResearchSuiteResultsProcessor/Core (= 0.3.1)
   - ResearchSuiteResultsProcessor/Core (0.3.1):
     - Gloss (~> 1.1)
     - ResearchKit (~> 1.3)
-  - ResearchSuiteResultsProcessor/OMHHelper (0.3.1):
-    - OMHClient
-    - ResearchSuiteResultsProcessor/Core
-  - ResearchSuiteTaskBuilder (0.6.0):
+  - ResearchSuiteTaskBuilder (0.7.0):
     - Gloss (~> 1.1)
     - ResearchKit (~> 1.3)
   - ReSwift (3.0.0)
-  - sdlrkx (0.12.0):
-    - sdlrkx/Behavioral (= 0.12.0)
-    - sdlrkx/Behavioral-RSRPOhmageBackend (= 0.12.0)
-    - sdlrkx/Behavioral-RSRPSupport (= 0.12.0)
-    - sdlrkx/Behavioral-RSTBSupport (= 0.12.0)
-    - sdlrkx/Helpers (= 0.12.0)
-    - sdlrkx/VSR (= 0.12.0)
-    - sdlrkx/VSR-RSRPOhmageBackend (= 0.12.0)
-    - sdlrkx/VSR-RSRPSupport (= 0.12.0)
-    - sdlrkx/VSR-RSTBSupport (= 0.12.0)
-  - sdlrkx/Behavioral (0.12.0):
+  - sdlrkx (0.14.0):
+    - sdlrkx/Behavioral (= 0.14.0)
+    - sdlrkx/Behavioral-RSRPOhmageBackend (= 0.14.0)
+    - sdlrkx/Behavioral-RSRPSupport (= 0.14.0)
+    - sdlrkx/Behavioral-RSTBSupport (= 0.14.0)
+    - sdlrkx/Helpers (= 0.14.0)
+    - sdlrkx/VSR (= 0.14.0)
+    - sdlrkx/VSR-RSRPOhmageBackend (= 0.14.0)
+    - sdlrkx/VSR-RSRPSupport (= 0.14.0)
+    - sdlrkx/VSR-RSTBSupport (= 0.14.0)
+  - sdlrkx/Behavioral (0.14.0):
     - ResearchKit (~> 1.4)
+    - ResearchSuiteExtensions/Common (~> 0.1)
     - sdlrkx/Helpers
-  - sdlrkx/Behavioral-RSRPOhmageBackend (0.12.0):
+  - sdlrkx/Behavioral-RSRPOhmageBackend (0.14.0):
     - OMHClient
-    - ResearchSuiteResultsProcessor/OMHHelper
     - sdlrkx/Behavioral-RSRPSupport
-  - sdlrkx/Behavioral-RSRPSupport (0.12.0):
+  - sdlrkx/Behavioral-RSRPSupport (0.14.0):
     - ResearchKit (~> 1.4)
     - ResearchSuiteResultsProcessor (~> 0.2)
     - sdlrkx/Behavioral
-  - sdlrkx/Behavioral-RSTBSupport (0.12.0):
+  - sdlrkx/Behavioral-RSTBSupport (0.14.0):
     - Gloss (~> 1)
     - ResearchSuiteTaskBuilder (~> 0.4)
     - sdlrkx/Behavioral
-  - sdlrkx/Helpers (0.12.0)
-  - sdlrkx/VSR (0.12.0):
+  - sdlrkx/Helpers (0.14.0)
+  - sdlrkx/VSR (0.14.0):
     - Gloss (~> 1)
     - ResearchKit (~> 1.4)
+    - ResearchSuiteExtensions/Common (~> 0.1)
     - sdlrkx/Helpers
-  - sdlrkx/VSR-RSRPOhmageBackend (0.12.0):
+  - sdlrkx/VSR-RSRPOhmageBackend (0.14.0):
     - OMHClient
-    - ResearchSuiteResultsProcessor/OMHHelper
     - sdlrkx/VSR-RSRPSupport
-  - sdlrkx/VSR-RSRPSupport (0.12.0):
+  - sdlrkx/VSR-RSRPSupport (0.14.0):
     - ResearchKit (~> 1.4)
     - ResearchSuiteResultsProcessor (~> 0.2)
     - sdlrkx/VSR
-  - sdlrkx/VSR-RSTBSupport (0.12.0):
+  - sdlrkx/VSR-RSTBSupport (0.14.0):
     - Gloss (~> 1)
+    - ResearchSuiteExtensions/Common (~> 0.1)
     - ResearchSuiteTaskBuilder (~> 0.4)
     - sdlrkx/VSR
   - SecureQueue (0.0.5)
 
 DEPENDENCIES:
-  - OhmageOMHSDK
-  - OhmageOMHSDK/RKSupport
-  - OhmageOMHSDK/RSRPSupport
-  - OhmageOMHSDK/RSTBSupport
-  - ResearchKit (~> 1.3)
+  - AncileStudyServerClient
+  - OhmageOMHSDK (~> 0.4)
+  - OhmageOMHSDK/RKSupport (~> 0.4)
+  - OhmageOMHSDK/RSRPSupport (~> 0.4)
+  - OhmageOMHSDK/RSTBSupport (~> 0.4)
+  - ResearchKit (~> 1.4.1)
   - ResearchSuiteAppFramework
+  - ResearchSuiteExtensions
   - ResearchSuiteResultsProcessor
-  - ResearchSuiteTaskBuilder
+  - ResearchSuiteTaskBuilder (~> 0.7)
   - sdlrkx
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AncileStudyServerClient: a3e271ed0e2337504b6b55f0d85a52074fd1af9b
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
-  OhmageOMHSDK: dbf66a8b19ff1434238fd162e473ac27f8d07267
-  OMHClient: 42414617fe3e38724ef237d42a62411c7129c27d
+  OhmageOMHSDK: 166e6409585f30f5bf495cba32c5706fdf01d749
+  OMHClient: 0cf53a006075ccb5de616e5e870458d1e6b1ff68
   ResearchKit: 3533ea3a2270e4ed7ff830e19755dc959fdfd430
   ResearchSuiteAppFramework: 00ce09861de562b5569934ad4e316f33929718b3
+  ResearchSuiteExtensions: cc4dd82bb9300ec58c1ab7618b52ad947d2dc6bb
   ResearchSuiteResultsProcessor: 6d1e7d44fd7be8a9801377616cc1cba20e6fe590
-  ResearchSuiteTaskBuilder: 661dad5fde37d413a2d5d0daf70751351649d630
+  ResearchSuiteTaskBuilder: 1c96808e65e798282b543582746dc22ea8efaad4
   ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
-  sdlrkx: cca6b86889540d38f94b28614291acabad7924f0
+  sdlrkx: 15b87ba91b410ba8605950a5a75e2a5e60cb9d34
   SecureQueue: 3aa95a5bba534c3aa938ae634333cbcf5919060b
 
-PODFILE CHECKSUM: 3ad32e0f9da0096db8ea0bfddc7ff89ca505da60
+PODFILE CHECKSUM: eb205fbff39a4f762e8e4878e1b16b5024fb79ab
 
 COCOAPODS: 1.0.1

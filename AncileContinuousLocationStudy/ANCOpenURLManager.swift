@@ -7,24 +7,25 @@
 //
 
 import UIKit
+import ResearchSuiteExtensions
 
 open class ANCOpenURLManager: NSObject {
     
-    static public let URLScheme: String = "ancile3ec3082ca348453caa716cc0ec41791e"
     
-    var openURLDelegates: [ANCOpenURLDelegate]
+    
+    var openURLDelegates: [RSOpenURLDelegate]
     
     public init(
-        openURLDelegates: [ANCOpenURLDelegate]?
+        openURLDelegates: [RSOpenURLDelegate]?
         ) {
         self.openURLDelegates = openURLDelegates ?? []
         super.init()
     }
     
-    open func handleURL(url: URL) -> Bool {
+    open func handleURL(app: UIApplication, url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         let delegates = self.openURLDelegates
         for delegate in delegates {
-            let handled = delegate.handleURL(url: url)
+            let handled = delegate.handleURL(app: app, url: url, options: options)
             if handled { return true }
         }
         return false

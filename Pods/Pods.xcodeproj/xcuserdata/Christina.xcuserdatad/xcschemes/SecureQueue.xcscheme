@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DB48D0F52B417A0B1A7C7EE5DF64A36A'
+               BlueprintIdentifier = 'A38EB0350D29D1CD220E8DD3A999618D'
                BlueprintName = 'SecureQueue'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SecureQueue.framework'>

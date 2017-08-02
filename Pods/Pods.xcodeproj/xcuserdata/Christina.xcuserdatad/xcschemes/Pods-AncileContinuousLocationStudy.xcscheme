@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75E1C975CFEB6F1C39B7F3FF925616E3"
+               BlueprintIdentifier = "2CDD14C7F24F7D1511D118B14868E1F4"
                BuildableName = "Pods_AncileContinuousLocationStudy.framework"
                BlueprintName = "Pods-AncileContinuousLocationStudy"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75E1C975CFEB6F1C39B7F3FF925616E3"
+            BlueprintIdentifier = "2CDD14C7F24F7D1511D118B14868E1F4"
             BuildableName = "Pods_AncileContinuousLocationStudy.framework"
             BlueprintName = "Pods-AncileContinuousLocationStudy"
             ReferencedContainer = "container:Pods.xcodeproj">

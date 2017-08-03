@@ -40,23 +40,28 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
     
     public static func transform(taskIdentifier: String, taskRunUUID: UUID, parameters: [String : AnyObject]) -> RSRPIntermediateResult? {
         
-        let sleep_1: DateComponents? = {
+        let sleep_1: String? = {
             guard let stepResult = parameters["sleep_1"],
                 let result = stepResult.firstResult as? ORKTimeOfDayQuestionResult,
                 let timeOfDay = result.dateComponentsAnswer else {
                     return nil
             }
-            return timeOfDay
+            
+            let timeOfDayString = String(describing: timeOfDay)
+            
+            return timeOfDayString
         }()
         
         
-        let sleep_2: DateComponents? = {
+        let sleep_2: String? = {
             guard let stepResult = parameters["sleep_2"],
                 let result = stepResult.firstResult as? ORKTimeOfDayQuestionResult,
                 let timeOfDay = result.dateComponentsAnswer else {
                     return nil
             }
-            return timeOfDay
+            let timeOfDayString = String(describing: timeOfDay)
+            
+            return timeOfDayString
         }()
         
         
@@ -176,8 +181,8 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
         
     }
     
-    public let sleep_1: DateComponents?
-    public let sleep_2: DateComponents?
+    public let sleep_1: String?
+    public let sleep_2: String?
     public let sleep_3: [String]?
     public let food_1: [String]?
     public let food_2: [String]?
@@ -193,8 +198,8 @@ open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer
         uuid: UUID,
         taskIdentifier: String,
         taskRunUUID: UUID,
-        sleep_1: DateComponents?,
-        sleep_2: DateComponents?,
+        sleep_1: String?,
+        sleep_2: String?,
         sleep_3: [String]?,
         food_1: [String]?,
         food_2: [String]?,

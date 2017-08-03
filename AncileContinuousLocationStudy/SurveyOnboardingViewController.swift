@@ -25,6 +25,8 @@ class SurveyOnboardingViewController: UIViewController {
         super.viewDidLoad()
         
         self.store = ANCStore()
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -84,6 +86,9 @@ class SurveyOnboardingViewController: UIViewController {
     
         
         else if !homeSet {
+            
+            AppDelegate.appDelegate.locationManager.requestAlwaysAuthorization()
+
             
             guard let task = AppDelegate.appDelegate.activityManager.task(for: "homeLocation"),
                 let activity = AppDelegate.appDelegate.activityManager.activity(for: "homeLocation") else {

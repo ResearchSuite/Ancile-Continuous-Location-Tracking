@@ -78,7 +78,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else {
             cell.textLabel?.text = self.items[indexPath.row]
-            cell.textLabel?.textColor = UIColor(red:1.00, green:0.80, blue:0.00, alpha:1.0)
+            cell.textLabel?.textColor = UIColor(red: 1, green: 0.6784, blue: 0, alpha: 1.0)
+            
+            //UIColor(red:1.00, green:0.80, blue:0.00, alpha:1.0)
             
         }
         

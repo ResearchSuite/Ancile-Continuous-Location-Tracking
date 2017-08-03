@@ -63,15 +63,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if indexPath.row == 0 {
                 cell.textLabel?.text = ""
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
             }
             if indexPath.row == 2 {
                 cell.textLabel?.text = homeLocation
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+
             }
             if indexPath.row == 4 {
                 cell.textLabel?.text = workLocation
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+
             }
             if indexPath.row == 7 {
                 cell.textLabel?.text = ""
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
             }
           
             

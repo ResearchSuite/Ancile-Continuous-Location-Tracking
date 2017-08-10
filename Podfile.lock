@@ -5,6 +5,7 @@ PODS:
     - ResearchSuiteExtensions
     - ResearchSuiteTaskBuilder
   - Gloss (1.2.4)
+  - GRMustache.swift (2.0.0)
   - OhmageOMHSDK (0.4.0):
     - OhmageOMHSDK/Core (= 0.4.0)
   - OhmageOMHSDK/Core (0.4.0):
@@ -33,22 +34,24 @@ PODS:
     - ResearchSuiteResultsProcessor (~> 0.3)
     - ResearchSuiteTaskBuilder (~> 0.5)
     - ReSwift (~> 3.0)
-  - ResearchSuiteExtensions (0.2.0):
-    - ResearchSuiteExtensions/Common (= 0.2.0)
-    - ResearchSuiteExtensions/Core (= 0.2.0)
-    - ResearchSuiteExtensions/RSTBSupport (= 0.2.0)
-  - ResearchSuiteExtensions/Common (0.2.0):
+  - ResearchSuiteExtensions (0.4.0):
+    - ResearchSuiteExtensions/Common (= 0.4.0)
+    - ResearchSuiteExtensions/Core (= 0.4.0)
+    - ResearchSuiteExtensions/RSTBSupport (= 0.4.0)
+  - ResearchSuiteExtensions/Common (0.4.0):
     - ResearchKit (~> 1.4)
-  - ResearchSuiteExtensions/Core (0.2.0):
+  - ResearchSuiteExtensions/Core (0.4.0):
     - ResearchKit (~> 1.4)
     - ResearchSuiteExtensions/Common
-  - ResearchSuiteExtensions/RSTBSupport (0.2.0):
+  - ResearchSuiteExtensions/RSTBSupport (0.4.0):
     - Gloss (~> 1)
+    - GRMustache.swift (~> 2.0)
     - ResearchSuiteExtensions/Core
     - ResearchSuiteTaskBuilder (~> 0.4)
-  - ResearchSuiteResultsProcessor (0.3.1):
-    - ResearchSuiteResultsProcessor/Core (= 0.3.1)
-  - ResearchSuiteResultsProcessor/Core (0.3.1):
+    - SwiftyMarkdown (~> 0.3)
+  - ResearchSuiteResultsProcessor (0.4.0):
+    - ResearchSuiteResultsProcessor/Core (= 0.4.0)
+  - ResearchSuiteResultsProcessor/Core (0.4.0):
     - Gloss (~> 1.1)
     - ResearchKit (~> 1.3)
   - ResearchSuiteTaskBuilder (0.7.0):
@@ -99,6 +102,7 @@ PODS:
     - ResearchSuiteTaskBuilder (~> 0.4)
     - sdlrkx/VSR
   - SecureQueue (0.0.5)
+  - SwiftyMarkdown (0.3.4)
 
 DEPENDENCIES:
   - AncileStudyServerClient
@@ -117,17 +121,19 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AncileStudyServerClient: a3e271ed0e2337504b6b55f0d85a52074fd1af9b
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
+  GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
   OhmageOMHSDK: 166e6409585f30f5bf495cba32c5706fdf01d749
   OMHClient: 0cf53a006075ccb5de616e5e870458d1e6b1ff68
   ResearchKit: 3533ea3a2270e4ed7ff830e19755dc959fdfd430
   ResearchSuiteAppFramework: 00ce09861de562b5569934ad4e316f33929718b3
-  ResearchSuiteExtensions: cc4dd82bb9300ec58c1ab7618b52ad947d2dc6bb
-  ResearchSuiteResultsProcessor: 6d1e7d44fd7be8a9801377616cc1cba20e6fe590
+  ResearchSuiteExtensions: 1b35e5567425d839f08f9d0618cf5434def9490d
+  ResearchSuiteResultsProcessor: bd30e0f4685e086060d45c1372fc610470cd2387
   ResearchSuiteTaskBuilder: 1c96808e65e798282b543582746dc22ea8efaad4
   ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
   sdlrkx: 15b87ba91b410ba8605950a5a75e2a5e60cb9d34
   SecureQueue: 3aa95a5bba534c3aa938ae634333cbcf5919060b
+  SwiftyMarkdown: e227c4f67000248358be3d566e5f51e9a020757d
 
-PODFILE CHECKSUM: eb205fbff39a4f762e8e4878e1b16b5024fb79ab
+PODFILE CHECKSUM: 57036a805d0c8111af8f4c8e353c8a3e3e49cd44
 
 COCOAPODS: 1.0.1

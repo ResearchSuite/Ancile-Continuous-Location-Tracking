@@ -53,7 +53,7 @@ open class ANCClient: NSObject {
     public init(baseURL: String, mobileURLScheme: String, store: ANCClientCredentialStore, dispatchQueue: DispatchQueue? = nil) {
         self.baseURL = baseURL
         self.store = store
-        self._authToken = store.get(key: ANCClient.kAncileAuthToken) as? String
+        self._authToken = store.get(key:ANCClient.kAncileAuthToken) as? String
         self.dispatchQueue = dispatchQueue
         super.init()
         

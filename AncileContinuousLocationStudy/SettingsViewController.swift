@@ -52,9 +52,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let homeLocation = self.store.valueInState(forKey: "home_location") as! String
         let workLocation = self.store.valueInState(forKey: "work_location") as! String
         
-        NSLog("locations")
-        NSLog(homeLocation)
-        NSLog(workLocation)
         
         
         if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 7 {
@@ -85,8 +82,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         else {
             cell.textLabel?.text = self.items[indexPath.row]
             cell.textLabel?.textColor = UIColor(red: 1, green: 0.6784, blue: 0, alpha: 1.0)
-            
-            //UIColor(red:1.00, green:0.80, blue:0.00, alpha:1.0)
             
         }
         
@@ -122,15 +117,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if indexPath.row == 5 {
-            setDailyNotification()
+            self.setDailyNotification()
         }
         
         if indexPath.row == 6 {
-            launchDailySurvey()
+            self.launchDailySurvey()
         }
         
         if indexPath.row == 8 {
-            signOut()
+            self.signOut()
         }
         
     }
@@ -281,7 +276,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self?.tableView.reloadData()
             }
             
-          //  self?.appDelegate?.updateMonitoredRegions(regionChanged: "work")
+            self?.appDelegate?.updateMonitoredRegions(regionChanged: "work")
 
             
             self?.dismiss(animated: true, completion: {

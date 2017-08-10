@@ -17,6 +17,7 @@ target 'AncileContinuousLocationStudy' do
   pod "ResearchSuiteAppFramework"
   pod "ResearchSuiteExtensions"
   pod "AncileStudyServerClient"
+  
 
 
   target 'AncileContinuousLocationStudyTests' do

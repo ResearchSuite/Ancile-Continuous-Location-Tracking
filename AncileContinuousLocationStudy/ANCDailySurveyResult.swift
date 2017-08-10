@@ -12,21 +12,6 @@ import ResearchSuiteResultsProcessor
 import Gloss
 import OMHClient
 
-//
-//  ANCDailySurveyResult.swift
-//  AncileContinuousLocationStudy
-//
-//  Created by Christina Tsangouri on 8/2/17.
-//  Copyright © 2017 Christina Tsangouri. All rights reserved.
-//
-//
-
-import UIKit
-import ResearchKit
-import ResearchSuiteResultsProcessor
-import Gloss
-import OMHClient
-
 open class ANCDailySurveyResult: RSRPIntermediateResult, RSRPFrontEndTransformer {
     
     private static let supportedTypes = [

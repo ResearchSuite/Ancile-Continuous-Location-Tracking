@@ -16,7 +16,7 @@ target 'AncileContinuousLocationStudy' do
   pod "ResearchSuiteResultsProcessor"
   pod "ResearchSuiteAppFramework"
   pod "ResearchSuiteExtensions"
-  pod "AncileStudyServerClient"
+  pod "AncileStudyServerClient", :path => '~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient'
 
 
   target 'AncileContinuousLocationStudyTests' do

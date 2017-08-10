@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol RSOpenURLDelegate {
+public protocol RSOpenURLDelegate: NSObjectProtocol {
     
     func handleURL(app: UIApplication, url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool
     

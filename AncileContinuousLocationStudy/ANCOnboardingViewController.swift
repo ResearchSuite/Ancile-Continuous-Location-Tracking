@@ -169,9 +169,10 @@ open class ANCOnboardingViewController: UIViewController {
                     }
                     
                     if let authToken = appDelegate.ancileClient.authToken,
-                        appDelegate.isConsented {
+                        appDelegate.isConsented,
+                        let consentURL = AppDelegate.appDelegate.store.consentDocURL{
                         
-                        appDelegate.ancileClient.postConsent(token: authToken, completion: { (consented, error) in
+                        appDelegate.ancileClient.postConsent(token: authToken, fileName: "consent.pdf", fileURL: consentURL, completion: { (consented, error) in
                             self?.dismiss(animated: true, completion: {
                                 self?.launchActivity()
                             })

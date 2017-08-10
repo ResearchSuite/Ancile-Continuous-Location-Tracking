@@ -21,7 +21,7 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
     
-    static public let URLScheme: String = "ancile3ec3082ca348453caa716cc0ec41791e"
+    static public let URLScheme: String = "ancile8c30a19624d4467b9b37334ae0ed2796"
     
     var window: UIWindow?
     var ancileClient: ANCClient!
@@ -223,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
         }
         
         self.ancileClient = ANCClient(
-            baseURL: "https://ancile.cornelltech.io",
+            baseURL: "https://ancile-location.cornelltech.io",
             mobileURLScheme: AppDelegate.URLScheme,
             store: self.store
         )

@@ -14,7 +14,7 @@
 		CF02C0AE1F27CF9300271928 /* LogicalLocationSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02C0AD1F27CF9300271928 /* LogicalLocationSample.swift */; };
 		CF02C0B11F27E16900271928 /* homeLocation.json in Resources */ = {isa = PBXBuildFile; fileRef = CF02C0AF1F27E16900271928 /* homeLocation.json */; };
 		CF02C0B21F27E16900271928 /* workLocation.json in Resources */ = {isa = PBXBuildFile; fileRef = CF02C0B01F27E16900271928 /* workLocation.json */; };
-		CF39FE5B1F2F91C50056E010 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF39FE5A1F2F91C50056E010 /* HealthKit.framework */; };
+		CF11F9A41F3BA9EB00ED8759 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF11F9A31F3BA9EB00ED8759 /* HealthKit.framework */; };
 		CF39FE5D1F2F92DD0056E010 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */; };
 		CF39FE5F1F2F92F50056E010 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */; };
 		CFC941B81F3104DB008B5D9F /* ANCNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */; };
@@ -63,8 +63,8 @@
 		CF02C0AD1F27CF9300271928 /* LogicalLocationSample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogicalLocationSample.swift; path = AncileContinuousLocationStudy/LogicalLocationSample.swift; sourceTree = "<group>"; };
 		CF02C0AF1F27E16900271928 /* homeLocation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeLocation.json; sourceTree = "<group>"; };
 		CF02C0B01F27E16900271928 /* workLocation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workLocation.json; sourceTree = "<group>"; };
-		CF39FE591F2F91C50056E010 /* AncileContinuousLocationStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AncileContinuousLocationStudy.entitlements; sourceTree = "<group>"; };
-		CF39FE5A1F2F91C50056E010 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CF11F9A21F3BA9EB00ED8759 /* AncileContinuousLocationStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AncileContinuousLocationStudy.entitlements; sourceTree = "<group>"; };
+		CF11F9A31F3BA9EB00ED8759 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCNotificationManager.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15811D7A6487EE55677C0088 /* Pods_AncileContinuousLocationStudy.framework in Frameworks */,
-				CF39FE5B1F2F91C50056E010 /* HealthKit.framework in Frameworks */,
+				CF11F9A41F3BA9EB00ED8759 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +132,7 @@
 		72B8A41676130098A8D0AE40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF39FE5A1F2F91C50056E010 /* HealthKit.framework */,
+				CF11F9A31F3BA9EB00ED8759 /* HealthKit.framework */,
 				211FBE6F438F4A2E44471DAD /* Pods_AncileContinuousLocationStudy.framework */,
 				F90FFBA1A2E8B33DC8F4412F /* Pods_AncileContinuousLocationStudyTests.framework */,
 			);
@@ -172,7 +172,7 @@
 		CFED4F681F267B7B006D9C22 /* AncileContinuousLocationStudy */ = {
 			isa = PBXGroup;
 			children = (
-				CF39FE591F2F91C50056E010 /* AncileContinuousLocationStudy.entitlements */,
+				CF11F9A21F3BA9EB00ED8759 /* AncileContinuousLocationStudy.entitlements */,
 				CFED4FBD1F268BF1006D9C22 /* config */,
 				CF02C0AA1F27CD1000271928 /* Location */,
 				CFED4FBA1F268623006D9C22 /* Ancile */,
@@ -317,6 +317,9 @@
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
 							};
 						};
 					};

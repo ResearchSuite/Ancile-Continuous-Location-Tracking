@@ -10,7 +10,7 @@ import UIKit
 import Gloss
 import ResearchSuiteResultsProcessor
 
-class ANCActivity: Decodable {
+class ANCActivity: Gloss.Decodable {
 
     
     let identifier: String

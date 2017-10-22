@@ -51,6 +51,14 @@ class ANCActivityManager: NSObject {
         return ORKOrderedTask(identifier: activity.identifier, steps: steps)
     }
     
+//    public func task(for activityJson: JsonElement) -> ORKTask? {
+//        guard let steps = self.taskBuilder.steps(forElement: activityJson as JsonElement) else {
+//                return nil
+//        }
+//        
+//        return ORKOrderedTask(identifier: "ac", steps: steps)
+//    }
+    
     static func getJson(forFilename filename: String, inBundle bundle: Bundle = Bundle.main) -> JSON? {
         
         guard let filePath = bundle.path(forResource: filename, ofType: "json")

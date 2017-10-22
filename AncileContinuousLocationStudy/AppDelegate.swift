@@ -20,9 +20,7 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
-    
-    static public let URLScheme: String = "ancile8c30a19624d4467b9b37334ae0ed2796"
-    
+
     var window: UIWindow?
     var ancileClient: ANCClient!
     
@@ -69,14 +67,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
         
     }
     
-    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+    func initializeAncile(credentialsStore: ANCClientCredentialStore) -> ANCClient {
         
-        self.store.setValueInState(value: true as NSSecureCoding, forKey: "shouldDoDaily")
-        NSLog(String(describing: self.store.valueInState(forKey: "shouldDoDaily")))
-        let storyboard = UIStoryboard(name: "Splash", bundle: Bundle.main)
-        let vc = storyboard.instantiateInitialViewController()
-        self.transition(toRootViewController: vc!, animated: true)
+        //load Ancile client application credentials from AncileClient.plist
+        guard let file = Bundle.main.path(forResource: "AncileClient", ofType: "plist") else {
+            fatalError("Could not initialze AncileClient")
+        }
+        
+        
+        let omhClientDetails = NSDictionary(contentsOfFile: file)
+        
+        guard let baseURL = omhClientDetails?["AncileBaseURL"] as? String,
+            let clientID = omhClientDetails?["AncileStudyID"] as? String,
+            let urlScheme = omhClientDetails?["AncileMobileURLScheme"] as? String else {
+                fatalError("Could not initialze AncileClient")
+        }
+        
+        return ANCClient(
+            baseURL: baseURL,
+            ancileClientID: clientID,
+            mobileURLScheme: urlScheme,
+            store: credentialsStore
+        )
+        
     }
+    
+//    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+//
+//        self.store.setValueInState(value: true as NSSecureCoding, forKey: "shouldDoDaily")
+//        NSLog(String(describing: self.store.valueInState(forKey: "shouldDoDaily")))
+//        let storyboard = UIStoryboard(name: "Splash", bundle: Bundle.main)
+//        let vc = storyboard.instantiateInitialViewController()
+//        self.transition(toRootViewController: vc!, animated: true)
+//    }
     
     static var appDelegate: AppDelegate! {
         return UIApplication.shared.delegate! as! AppDelegate
@@ -209,6 +232,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
         
         self.store = ANCStore()
         
+        //TODO: FIX THIS
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         //self.locationManager.requestAlwaysAuthorization()
@@ -218,12 +242,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
             self.locationManager.startMonitoringSignificantLocationChanges()
         }
         
-        self.ancileClient = ANCClient(
-            baseURL: "https://ancile-location.cornelltech.io",
-            mobileURLScheme: AppDelegate.URLScheme,
-            store: self.store
-        )
-        
+        self.ancileClient = self.initializeAncile(credentialsStore: self.store)
+
         self.ohmageManager = self.initializeOhmage(credentialsStore: self.store)
         
         self.store.setValueInState(value: false as NSSecureCoding, forKey: "shouldDoDaily")
@@ -415,6 +435,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
             RSTBMultipleChoiceStepGenerator(),
             RSTBBooleanStepGenerator(),
             RSTBPasscodeStepGenerator(),
+            RSTBBooleanStepGenerator(),
             RSTBScaleStepGenerator(),
             YADLFullStepGenerator(),
             YADLSpotStepGenerator(),
@@ -422,7 +443,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
             ANCCoreAuthStepGenerator(),
             CTFOhmageRedirectLoginStepGenerator(),
             RSTBVisualConsentStepGenerator(),
-            RSTBConsentReviewStepGenerator()
+            RSTBConsentReviewStepGenerator(),
         ]
     }
     
@@ -468,6 +489,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, CLLo
     
     open class var resultsTransformers: [RSRPFrontEndTransformer.Type] {
         return [
+            ORBEDefaultResult.self,
             CTFBARTSummaryResultsTransformer.self,
             CTFDelayDiscountingRawResultsTransformer.self,
             YADLSpotRaw.self,

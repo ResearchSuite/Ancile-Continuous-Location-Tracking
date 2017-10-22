@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AncileBaseURL</key>
+	<string>https://studies.ancile.cornelltech.io</string>
+	<key>AncileStudyID</key>
+	<string>location</string>
+	<key>AncileMobileURLScheme</key>
+	<string>ancile8c30a19624d4467b9b37334ae0ed2796</string>
+</dict>
+</plist>

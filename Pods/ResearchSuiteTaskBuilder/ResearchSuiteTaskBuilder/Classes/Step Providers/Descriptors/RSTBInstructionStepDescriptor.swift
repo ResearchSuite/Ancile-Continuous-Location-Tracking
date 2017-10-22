@@ -9,7 +9,7 @@
 import Gloss
 
 open class RSTBInstructionStepDescriptor: RSTBStepDescriptor {
-    open let detailText: String?
+    public let detailText: String?
     
     required public init?(json: JSON) {
         

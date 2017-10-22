@@ -20,15 +20,15 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
 //    var initializeStateClosure: (() -> Void)?
 //    var resetStateClosure: (() -> Void)?
     
-    open var reduxManager: RSAFReduxManager?
+    public var reduxManager: RSAFReduxManager?
     
-    open var reduxStore: Store<RSAFCombinedState>? {
+    public var reduxStore: Store<RSAFCombinedState>? {
         return reduxManager?.store
     }
     
     //the following are subscribers
     var persistenceManager: RSAFCombinedPersistentStoreSubscriber?
-    open var extensibleStateManager: RSAFExtensibleStateManager?
+    public var extensibleStateManager: RSAFExtensibleStateManager?
     
 //    open var taskBuilderManager: RSAFTaskBuilderManager?
 //    open var resultsProcessorManager: RSAFResultsProcessorManager?

@@ -12,7 +12,7 @@ open class RSAFBasePersistentStoreSubscriber: RSAFPersistentStorageSubscriber {
     
     public typealias StoreSubscriberStateType = RSAFBaseState
     
-    open let stateManager: RSAFStateManager.Type
+    public let stateManager: RSAFStateManager.Type
     
     public init(stateManager: RSAFStateManager.Type) {
         self.stateManager = stateManager

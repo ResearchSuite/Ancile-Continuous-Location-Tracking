@@ -46,7 +46,7 @@ open class RSAFCoreReducer: RSAFBaseReducer {
 //        return CombinedReducer(self.reducers)
 //    }
     
-    open static let reducer = CombinedReducer([
+    public static let reducer = CombinedReducer([
         AppStateReducer(),
         ActivityQueueReducer(),
 //        ResultsQueueReducer(),

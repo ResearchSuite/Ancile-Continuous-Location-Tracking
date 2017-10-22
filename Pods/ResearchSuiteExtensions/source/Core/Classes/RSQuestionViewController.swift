@@ -13,11 +13,11 @@ open class RSQuestionViewController: ORKStepViewController {
     
     static let footerHeightWithoutContinueButton: CGFloat = 61.0
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var textLabel: UILabel!
     @IBOutlet public weak var contentView: UIView!
-    @IBOutlet weak var continueButton: RSBorderedButton!
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet public weak var continueButton: RSBorderedButton!
+    @IBOutlet public weak var skipButton: UIButton!
     @IBOutlet weak var footerHeight: NSLayoutConstraint!
     
     var _appeared: Bool = false

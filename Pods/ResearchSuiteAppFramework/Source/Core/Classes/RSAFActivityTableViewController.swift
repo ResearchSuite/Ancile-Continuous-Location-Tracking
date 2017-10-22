@@ -29,7 +29,7 @@ open class RSAFActivityTableViewController: UITableViewController {
         
     }
     
-    fileprivate func scheduleItem(forIndexPath indexPath: IndexPath) -> RSAFScheduleItem? {
+    private func scheduleItem(forIndexPath indexPath: IndexPath) -> RSAFScheduleItem? {
         return self.scheduleItems[(indexPath as NSIndexPath).row]
     }
     

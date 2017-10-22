@@ -11,9 +11,9 @@ import ReSwift
 
 open class RSAFCombinedState: NSObject, StateType {
     
-    open let coreState: RSAFBaseState
-    open let middlewareState: RSAFBaseState
-    open let appState: RSAFBaseState
+    public let coreState: RSAFBaseState
+    public let middlewareState: RSAFBaseState
+    public let appState: RSAFBaseState
     
     init(
         coreState: RSAFBaseState,

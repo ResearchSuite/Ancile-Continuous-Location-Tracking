@@ -10,12 +10,40 @@ import UIKit
 import ResearchKit
 
 public struct RSEnahncedMultipleChoiceSelection {
-    let value: NSCoding & NSCopying & NSObjectProtocol
-    let auxiliaryResult: ORKResult?
+    public let value: NSCoding & NSCopying & NSObjectProtocol
+    public let auxiliaryResult: ORKResult?
+    
+    public var description: String {
+        return "\(value)"
+    }
 }
 
 open class RSEnhancedMultipleChoiceResult: ORKResult {
     
-    var choiceAnswers: [RSEnahncedMultipleChoiceSelection]?
+    open var choiceAnswers: [RSEnahncedMultipleChoiceSelection]?
+    
+    override open func copy(with zone: NSZone? = nil) -> Any {
+        let obj = super.copy(with: zone)
+        if let choiceResult = obj as? RSEnhancedMultipleChoiceResult,
+                let choiceAnswers = self.choiceAnswers {
+            choiceResult.choiceAnswers = choiceAnswers
+            return choiceResult
+        }
+        return obj
+    }
+    
+    override open var description: String {
+        //let answers: [String] = choiceAnswers!.map { $0.description }
+        let answers: [String] = choiceAnswers != nil ? choiceAnswers!.map { $0.description } : [String]()
+        
+        if answers.count > 0 {
+            return super.description + "[" + answers.reduce("\n", { (acc, answer) -> String in
+                return acc + answer + "\n"
+            }) + "]"
+        }
+        else {
+            return super.description + "[]"
+        }
+    }
     
 }

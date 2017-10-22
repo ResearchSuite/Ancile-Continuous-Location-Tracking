@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class RSAFPersistedValueMap: NSObject {
+public class RSAFPersistedValueMap: NSObject {
     
     let stateManager: RSAFStateManager.Type
     
@@ -46,7 +46,7 @@ open class RSAFPersistedValueMap: NSObject {
     
     
     
-    fileprivate subscript(key: String) -> NSObject? {
+    private subscript(key: String) -> NSObject? {
         
         get {
             

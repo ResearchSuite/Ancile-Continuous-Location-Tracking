@@ -63,7 +63,7 @@ open class RSAFActionCreators: NSObject {
         _ actionCreatorCallback: @escaping ((ActionCreator) -> Void)
         ) -> Void
     
-    open static func setLoggedIn(loggedIn: Bool, callback:((RSAFCombinedState) -> Void)? = nil) -> Dispatchable<RSAFCombinedState> {
+    public static func setLoggedIn(loggedIn: Bool, callback:((RSAFCombinedState) -> Void)? = nil) -> Dispatchable<RSAFCombinedState> {
         
         let actionCreator:ActionCreator = { (state, store) in
             return SetLoggedInAction(loggedIn: loggedIn)
@@ -72,7 +72,7 @@ open class RSAFActionCreators: NSObject {
         return Dispatchable(object: actionCreator, callback: callback)
     }
     
-    open static func fetch() -> AsyncActionCreator {
+    public static func fetch() -> AsyncActionCreator {
         return { (state, store, actionCreatorCallback) in
             store.dispatch(Request())
             DispatchQueue.main.async {
@@ -85,16 +85,16 @@ open class RSAFActionCreators: NSObject {
         }
     }
     
-    open static func queueActivity(uuid: UUID, activityRun: RSAFActivityRun, taskBuilder: RSTBTaskBuilder) -> Dispatchable<RSAFCombinedState> {
+    public static func queueActivity(uuid: UUID, activityRun: RSAFActivityRun, taskBuilder: RSTBTaskBuilder) -> Dispatchable<RSAFCombinedState> {
         return Dispatchable(object: QueueActivityAction(uuid: uuid, activityRun: activityRun, taskBuilder: taskBuilder))
     }
     
-    open static func queueActivity(fromScheduleItem scheduleItem: RSAFScheduleItem, taskBuilder: RSTBTaskBuilder) -> Dispatchable<RSAFCombinedState> {
+    public static func queueActivity(fromScheduleItem scheduleItem: RSAFScheduleItem, taskBuilder: RSTBTaskBuilder) -> Dispatchable<RSAFCombinedState> {
         let activityRun = RSAFActivityRun.create(from: scheduleItem)
         return queueActivity(uuid: UUID(), activityRun: activityRun, taskBuilder: taskBuilder)
     }
     
-    open static func queueActivity(
+    public static func queueActivity(
         fromScheduleItem scheduleItem: RSAFScheduleItem,
         taskBuilderSelector: @escaping (RSAFCombinedState)->RSTBTaskBuilder?,
         callback:((RSAFCombinedState) -> Void)? = nil
@@ -114,7 +114,7 @@ open class RSAFActionCreators: NSObject {
         return Dispatchable(object: actionCreator, callback: callback)
     }
     
-    open static func completeActivity(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult?, callback:((RSAFCombinedState) -> Void)? = nil) -> Dispatchable<RSAFCombinedState> {
+    public static func completeActivity(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult?, callback:((RSAFCombinedState) -> Void)? = nil) -> Dispatchable<RSAFCombinedState> {
         
         let asyncActionCreator: AsyncActionCreator = { (state, store, actionCreatorCallback) in
             
@@ -138,7 +138,7 @@ open class RSAFActionCreators: NSObject {
         return Dispatchable(object: asyncActionCreator, callback: callback)
     }
     
-    open static func processResults(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult, resultsProcessorSelector: @escaping (RSAFCombinedState)->RSRPResultsProcessor?, callback:((RSAFCombinedState) -> Void)? = nil) -> Dispatchable<RSAFCombinedState> {
+    public static func processResults(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult, resultsProcessorSelector: @escaping (RSAFCombinedState)->RSRPResultsProcessor?, callback:((RSAFCombinedState) -> Void)? = nil) -> Dispatchable<RSAFCombinedState> {
         
         let actionCreator: ActionCreator = { (state, store) in
             
@@ -154,7 +154,7 @@ open class RSAFActionCreators: NSObject {
         return Dispatchable(object: actionCreator, callback: callback)
     }
     
-    open static func setValueInExtensibleStorage(key: String, value: NSObject?) -> (RSAFCombinedState, Store<RSAFCombinedState>) -> Action? {
+    public static func setValueInExtensibleStorage(key: String, value: NSObject?) -> (RSAFCombinedState, Store<RSAFCombinedState>) -> Action? {
         
         return { (state, store) in
             return SetValueInExtensibleStorage(key: key, value: value)
@@ -162,13 +162,13 @@ open class RSAFActionCreators: NSObject {
         
     }
     
-    open static func clearStore() -> (RSAFCombinedState, Store<RSAFCombinedState>) -> Action? {
+    public static func clearStore() -> (RSAFCombinedState, Store<RSAFCombinedState>) -> Action? {
         return { (state, store) in
             return ClearStore()
         }
     }
     
-    open static func createTaskBuilder(stateHelper: RSTBStateHelper?,
+    public static func createTaskBuilder(stateHelper: RSTBStateHelper?,
                                          elementGeneratorServices: [RSTBElementGenerator]?,
                                          stepGeneratorServices: [RSTBStepGenerator]?,
                                          answerFormatGeneratorServices: [RSTBAnswerFormatGenerator]?
@@ -184,14 +184,14 @@ open class RSAFActionCreators: NSObject {
         }
     }
     
-    open static func createResultsProcessor(frontEndTransformers: [RSRPFrontEndTransformer.Type], backEnds: [RSRPBackEnd]) -> (RSAFCombinedState, Store<RSAFCombinedState>) -> Action? {
+    public static func createResultsProcessor(frontEndTransformers: [RSRPFrontEndTransformer.Type], backEnds: [RSRPBackEnd]) -> (RSAFCombinedState, Store<RSAFCombinedState>) -> Action? {
         return { (state, store) in
             let resultsProcessor = RSRPResultsProcessor(frontEndTransformers: frontEndTransformers, backEnds: backEnds)
             return SetResultsProcessor(resultsProcessor: resultsProcessor)
         }
     }
     
-    open static func setTitleInfo(titleLabelText: String?, titleImage: UIImage?) -> Action {
+    public static func setTitleInfo(titleLabelText: String?, titleImage: UIImage?) -> Action {
         return SetTitle(titleLabelText: titleLabelText, titleImage: titleImage)
     }
 

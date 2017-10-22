@@ -6,16 +6,17 @@ target 'AncileContinuousLocationStudy' do
   use_frameworks!
 
   # Pods for AncileContinuousLocationStudy
-  pod "OhmageOMHSDK", '~> 0.4'
-  pod "OhmageOMHSDK/RKSupport", '~> 0.4'
-  pod "OhmageOMHSDK/RSRPSupport", '~> 0.4'
-  pod "OhmageOMHSDK/RSTBSupport", '~> 0.4'
+  pod "OhmageOMHSDK", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
+  pod "OhmageOMHSDK/RKSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
+  pod "OhmageOMHSDK/RSRPSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
+  pod "OhmageOMHSDK/RSTBSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
+
   pod "sdlrkx"
-  pod "ResearchKit", '~> 1.4.1'
+  pod "ResearchKit", '~> 1.4'
   pod "ResearchSuiteTaskBuilder", '~> 0.7'
-  pod "ResearchSuiteResultsProcessor"
-  pod "ResearchSuiteAppFramework"
-  pod "ResearchSuiteExtensions"
+  pod "ResearchSuiteResultsProcessor", '~> 0.6'
+  pod "ResearchSuiteAppFramework", :git => 'https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git', :tag => '0.0.3'
+  pod "ResearchSuiteExtensions", :git => 'https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git', :tag => '0.6.0'
   pod "AncileStudyServerClient", :path => '~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient'
 
 

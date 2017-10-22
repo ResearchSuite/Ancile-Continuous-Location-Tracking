@@ -16,7 +16,7 @@ open class RSTBInstructionStepGenerator: RSTBBaseStepGenerator {
         "instruction"
     ]
     
-    open var supportedTypes: [String]! {
+    public var supportedTypes: [String]! {
         return self._supportedTypes
     }
     

@@ -32,7 +32,7 @@ open class RSAFCombinedPersistentStoreSubscriber: NSObject, StoreSubscriber {
             appState: self.appSubscriber.loadState())
     }
     
-    open func newState(state: RSAFCombinedState) {
+    public func newState(state: RSAFCombinedState) {
         
         coreSubscriber.newState(state: state.coreState)
         middlewareSubscriber.newState(state: state.middlewareState)

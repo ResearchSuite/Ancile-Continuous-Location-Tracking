@@ -35,7 +35,7 @@ open class RSAFResultsProcessorManager: NSObject {
         
     }
     
-    open func processResult(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult) {
+    public func processResult(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult) {
         
         //process result
         if let resultTransforms = activityRun.resultTransforms {

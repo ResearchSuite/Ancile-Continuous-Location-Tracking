@@ -57,7 +57,7 @@ public extension RSTBBaseStepGenerator {
         md.h1.fontName = UIFont.preferredFont(forTextStyle: .title1).fontName
         let attributedString = md.attributedString()
         
-        debugPrint(attributedString)
+//        debugPrint(attributedString)
         return attributedString
     }
 

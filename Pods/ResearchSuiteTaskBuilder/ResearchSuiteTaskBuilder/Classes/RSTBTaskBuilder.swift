@@ -20,17 +20,17 @@ public protocol RSTBStateHelper: class {
 
 open class RSTBTaskBuilder {
     
-    fileprivate var _helper:RSTBTaskBuilderHelper!
-    open var helper:RSTBTaskBuilderHelper {
+    private var _helper:RSTBTaskBuilderHelper!
+    public var helper:RSTBTaskBuilderHelper {
         return self._helper
     }
-    fileprivate var stepGeneratorService: RSTBStepGeneratorService!
-    fileprivate var answerFormatGeneratorService: RSTBAnswerFormatGeneratorService!
-    fileprivate var elementGeneratorService: RSTBElementGeneratorService!
-    fileprivate var taskGeneratorService: RSTBTaskGeneratorService!
-    fileprivate var consentDocumentGeneratorService: RSTBConsentDocumentGeneratorService!
-    fileprivate var consentSectionGeneratorService: RSTBConsentSectionGeneratorService!
-    fileprivate var consentSignatureGeneratorService: RSTBConsentSignatureGeneratorService!
+    private var stepGeneratorService: RSTBStepGeneratorService!
+    private var answerFormatGeneratorService: RSTBAnswerFormatGeneratorService!
+    private var elementGeneratorService: RSTBElementGeneratorService!
+    private var taskGeneratorService: RSTBTaskGeneratorService!
+    private var consentDocumentGeneratorService: RSTBConsentDocumentGeneratorService!
+    private var consentSectionGeneratorService: RSTBConsentSectionGeneratorService!
+    private var consentSignatureGeneratorService: RSTBConsentSignatureGeneratorService!
     
     public init(
         stateHelper:RSTBStateHelper?,
@@ -100,7 +100,7 @@ open class RSTBTaskBuilder {
 //        self.stepGeneratorService = RSTBStepGeneratorService()
 //    }
     
-    open func steps(forElement jsonElement: JsonElement) -> [ORKStep]? {
+    public func steps(forElement jsonElement: JsonElement) -> [ORKStep]? {
         if let jsonObject = jsonElement as? JsonObject {
             return self.generateSteps(forElement: jsonObject)
         }
@@ -112,7 +112,7 @@ open class RSTBTaskBuilder {
         }
     }
     
-    open func task(forElement jsonElement: JsonObject) -> ORKTask? {
+    public func task(forElement jsonElement: JsonObject) -> ORKTask? {
         
         guard let descriptor = RSTBElementDescriptor(json: jsonElement) else {
             return nil
@@ -122,7 +122,7 @@ open class RSTBTaskBuilder {
         
     }
     
-    open func task(forElementFilename elementFilename: String) -> ORKTask? {
+    public func task(forElementFilename elementFilename: String) -> ORKTask? {
         
         guard let element = self.helper.getJson(forFilename: elementFilename) as? JsonObject else {
             return nil
@@ -132,7 +132,7 @@ open class RSTBTaskBuilder {
         
     }
     
-    fileprivate func generateSteps(forElement element: JsonObject) -> [ORKStep]? {
+    private func generateSteps(forElement element: JsonObject) -> [ORKStep]? {
         
         guard let descriptor = RSTBElementDescriptor(json: element) else {
             return nil
@@ -154,7 +154,7 @@ open class RSTBTaskBuilder {
         
     }
     
-    fileprivate func generateSteps(forElements elements: JsonArray) -> [ORKStep]? {
+    private func generateSteps(forElements elements: JsonArray) -> [ORKStep]? {
         let stepArrays: [[ORKStep]] = elements.flatMap { (element) -> [ORKStep]? in
             return self.generateSteps(forElement: element)
         }
@@ -162,11 +162,11 @@ open class RSTBTaskBuilder {
         return Array(stepArrays.joined())
     }
     
-    open func createSteps(forType type: String, withJsonObject jsonObject: JsonObject, identifierPrefix: String = "") -> [ORKStep]? {
+    public func createSteps(forType type: String, withJsonObject jsonObject: JsonObject, identifierPrefix: String = "") -> [ORKStep]? {
         return self.stepGeneratorService.generateSteps(type: type, jsonObject: jsonObject, helper: self.helper, identifierPrefix: identifierPrefix)
     }
     
-    open func steps(forElementFilename elementFilename: String) -> [ORKStep]? {
+    public func steps(forElementFilename elementFilename: String) -> [ORKStep]? {
         
         guard let element = self.helper.getJson(forFilename: elementFilename) else {
             return nil
@@ -178,7 +178,7 @@ open class RSTBTaskBuilder {
     
     
     @available(*, deprecated)
-    open func processResult(result: ORKTaskResult, forElement jsonElement: JsonElement) -> [JSON]? {
+    public func processResult(result: ORKTaskResult, forElement jsonElement: JsonElement) -> [JSON]? {
         if let jsonObject = jsonElement as? JsonObject {
             return self.processResult(result: result, forObject: jsonObject)
         }
@@ -191,7 +191,7 @@ open class RSTBTaskBuilder {
     }
     
     @available(*, deprecated)
-    open func processResult(result: ORKTaskResult, forElementFilename elementFilename: String) -> [JSON]? {
+    public func processResult(result: ORKTaskResult, forElementFilename elementFilename: String) -> [JSON]? {
         
         guard let element = self.helper.getJson(forFilename: elementFilename) else {
             return nil
@@ -201,7 +201,7 @@ open class RSTBTaskBuilder {
         
     }
     
-    fileprivate func processResult(result: ORKTaskResult, forObject jsonObject: JsonObject) -> [JSON]? {
+    private func processResult(result: ORKTaskResult, forObject jsonObject: JsonObject) -> [JSON]? {
         
         guard let descriptor = RSTBElementDescriptor(json: jsonObject) else {
             return nil
@@ -233,7 +233,7 @@ open class RSTBTaskBuilder {
         }
     }
     
-    fileprivate func processResult(result: ORKTaskResult, forArray jsonArray: JsonArray) -> [JSON]? {
+    private func processResult(result: ORKTaskResult, forArray jsonArray: JsonArray) -> [JSON]? {
         let jsonArrays: [[JSON]] = jsonArray.flatMap { (element: JsonObject) -> [JSON]? in
             return self.processResult(result: result, forObject: element)
         }
@@ -241,7 +241,7 @@ open class RSTBTaskBuilder {
         return Array(jsonArrays.joined())
     }
     
-    fileprivate func processStepResult(result: ORKStepResult, forType type: String, jsonObject: JsonObject) -> JSON? {
+    private func processStepResult(result: ORKStepResult, forType type: String, jsonObject: JsonObject) -> JSON? {
         
         return self.stepGeneratorService.processStepResult(type: type, jsonObject: jsonObject, result: result, helper: self.helper)
     }
@@ -249,26 +249,26 @@ open class RSTBTaskBuilder {
     
     
     
-    open func generateAnswerFormat(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKAnswerFormat? {
+    public func generateAnswerFormat(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKAnswerFormat? {
         return self.answerFormatGeneratorService.generateAnswerFormat(type: type, jsonObject: jsonObject, helper: helper)
     }
     
     @available(*, deprecated)
-    open func processQuestionResult(type: String, result: ORKQuestionResult, helper: RSTBTaskBuilderHelper) -> JSON? {
+    public func processQuestionResult(type: String, result: ORKQuestionResult, helper: RSTBTaskBuilderHelper) -> JSON? {
         
         return self.answerFormatGeneratorService.processQuestionResult(type: type, result: result, helper: helper)
         
     }
     
-    open func generateConsentDocument(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKConsentDocument? {
+    public func generateConsentDocument(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKConsentDocument? {
         return self.consentDocumentGeneratorService.generate(type: type, jsonObject: jsonObject, helper: helper)
     }
     
-    open func generateConsentSection(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKConsentSection? {
+    public func generateConsentSection(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKConsentSection? {
         return self.consentSectionGeneratorService.generate(type: type, jsonObject: jsonObject, helper: helper)
     }
     
-    open func generateConsentSignature(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKConsentSignature? {
+    public func generateConsentSignature(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKConsentSignature? {
         return self.consentSignatureGeneratorService.generate(type: type, jsonObject: jsonObject, helper: helper)
     }
     

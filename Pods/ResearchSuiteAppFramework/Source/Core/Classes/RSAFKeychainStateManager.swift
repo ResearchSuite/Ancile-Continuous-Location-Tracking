@@ -11,7 +11,7 @@ import ResearchKit
 
 open class RSAFKeychainStateManager: RSAFStateManager {
     
-    static fileprivate let keychainQueue = DispatchQueue(label: "keychainQueue")
+    static private let keychainQueue = DispatchQueue(label: "keychainQueue")
     
     static func setKeychainObject(_ object: NSSecureCoding, forKey key: String) {
         do {
@@ -33,7 +33,7 @@ open class RSAFKeychainStateManager: RSAFStateManager {
         }
     }
     
-    static open func clearKeychain() {
+    static public func clearKeychain() {
         do {
             try keychainQueue.sync {
                 try ORKKeychainWrapper.resetKeychain()
@@ -59,7 +59,7 @@ open class RSAFKeychainStateManager: RSAFStateManager {
         
     }
     
-    static open func setValueInState(value: NSSecureCoding?, forKey: String) {
+    static public func setValueInState(value: NSSecureCoding?, forKey: String) {
         if let val = value {
             RSAFKeychainStateManager.setKeychainObject(val, forKey: forKey)
         }
@@ -68,7 +68,7 @@ open class RSAFKeychainStateManager: RSAFStateManager {
         }
     }
     
-    static open func valueInState(forKey: String) -> NSSecureCoding? {
+    static public func valueInState(forKey: String) -> NSSecureCoding? {
         return RSAFKeychainStateManager.getKeychainObject(forKey)
     }
 

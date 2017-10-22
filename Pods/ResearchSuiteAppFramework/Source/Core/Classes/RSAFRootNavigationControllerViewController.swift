@@ -12,14 +12,14 @@ import ResearchSuiteTaskBuilder
 
 open class RSAFRootNavigationControllerViewController: UINavigationController, RSAFRootViewControllerProtocol, StoreSubscriber {
     
-    open weak var RSAFDelegate: RSAFRootViewControllerProtocolDelegate?
+    public weak var RSAFDelegate: RSAFRootViewControllerProtocolDelegate?
 
-    open var taskBuilder: RSTBTaskBuilder?
+    public var taskBuilder: RSTBTaskBuilder?
 
-    open var presentedActivity: UUID?
-    fileprivate var state: RSAFCombinedState?
+    public var presentedActivity: UUID?
+    private var state: RSAFCombinedState?
     
-    open var contentHidden = false {
+    public var contentHidden = false {
         didSet {
             guard contentHidden != oldValue && isViewLoaded else { return }
             

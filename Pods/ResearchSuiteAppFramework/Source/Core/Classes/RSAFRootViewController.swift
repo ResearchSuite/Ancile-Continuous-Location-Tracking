@@ -13,15 +13,15 @@ import ResearchKit
 
 open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProtocol, StoreSubscriber {
 
-    open var presentedActivity: UUID?
+    public var presentedActivity: UUID?
     
-    fileprivate var state: RSAFCombinedState?
+    private var state: RSAFCombinedState?
     
-    open var taskBuilder: RSTBTaskBuilder?
+    public var taskBuilder: RSTBTaskBuilder?
     
-    weak open var RSAFDelegate: RSAFRootViewControllerProtocolDelegate?
+    weak public var RSAFDelegate: RSAFRootViewControllerProtocolDelegate?
     
-    open var contentHidden = false {
+    public var contentHidden = false {
         didSet {
             guard contentHidden != oldValue && isViewLoaded else { return }
             

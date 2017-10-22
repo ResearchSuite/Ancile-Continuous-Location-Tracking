@@ -10,12 +10,12 @@ import Gloss
 
 open class RSTBTaskBuilderHelper: NSObject {
     weak var _stateHelper: RSTBStateHelper?
-    open var stateHelper: RSTBStateHelper? {
+    public var stateHelper: RSTBStateHelper? {
         return _stateHelper
     }
     
     weak var _builder: RSTBTaskBuilder?
-    open var builder: RSTBTaskBuilder? {
+    public var builder: RSTBTaskBuilder? {
         return self._builder
     }
     

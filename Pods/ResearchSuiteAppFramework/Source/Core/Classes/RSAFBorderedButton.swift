@@ -30,7 +30,7 @@ class RSAFBorderedButton: UIButton {
         self.layer.cornerRadius = 5.0
     }
     
-    fileprivate func setTitleColor(_ color: UIColor?) {
+    private func setTitleColor(_ color: UIColor?) {
         self.setTitleColor(color, for: UIControlState.normal)
         self.setTitleColor(UIColor.white, for: UIControlState.highlighted)
         self.setTitleColor(UIColor.white, for: UIControlState.selected)

@@ -27,7 +27,7 @@ open class RSAFTaskViewController: ORKTaskViewController, ORKTaskViewControllerD
         fatalError("init(coder:) has not been implemented")
     }
     
-    open func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+    public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         
         self.taskFinishedHandler(taskViewController, reason, error)
         

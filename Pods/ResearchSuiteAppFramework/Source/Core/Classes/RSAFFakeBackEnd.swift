@@ -9,11 +9,11 @@
 import UIKit
 import ResearchSuiteResultsProcessor
 
-open class RSAFFakeBackEnd: RSRPBackEnd {
+public class RSAFFakeBackEnd: RSRPBackEnd {
     
     public init(){}
     
-    open func add(intermediateResult: RSRPIntermediateResult) {
+    public func add(intermediateResult: RSRPIntermediateResult) {
         
     }
 

@@ -18,7 +18,7 @@ md.attributedString()
 
 URL 
 ```swift
-if let url = NSBundle.mainBundle().URLForResource("file", withExtension: "md"), md = SwiftyMarkdown(url: url ) {
+if let url = Bundle.main.url(forResource: "file", withExtension: "md"), md = SwiftyMarkdown(url: url ) {
 	md.attributedString()
 }
 ```
@@ -44,6 +44,7 @@ md.body.fontName = "AvenirNextCondensed-Medium"
 
 md.h1.color = UIColor.redColor()
 md.h1.fontName = "AvenirNextCondensed-Bold"
+md.h1.fontSize = 16
 ```
 	md.italic.color = UIColor.blueColor()
 

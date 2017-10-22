@@ -8,18 +8,18 @@
 
 import UIKit
 
-open class RSAFObservableValue<T: Equatable>: NSObject {
+public class RSAFObservableValue<T: Equatable>: NSObject {
     
     public typealias ObservationClosure = (T?) -> ()
     
     let _closure: ObservationClosure?
     var _value: T?
     
-    open func get() -> T? {
+    public func get() -> T? {
         return _value
     }
     
-    open func set(value: T?) {
+    public func set(value: T?) {
         if value != _value {
             self._value = value
             self._closure?(value)

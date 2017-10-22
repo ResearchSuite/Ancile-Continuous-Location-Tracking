@@ -43,7 +43,7 @@ open class RSAFTaskBuilderManager: NSObject {
         ]
     }
     
-    open let rstb: RSTBTaskBuilder
+    public let rstb: RSTBTaskBuilder
     
 //    public init(
 //        stateHelper: RSTBStateHelper

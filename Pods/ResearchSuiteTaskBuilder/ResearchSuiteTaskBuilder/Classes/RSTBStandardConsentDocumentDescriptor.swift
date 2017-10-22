@@ -11,9 +11,9 @@ import Gloss
 
 open class RSTBStandardConsentDocumentDescriptor: RSTBElementDescriptor {
     
-    open let sections: [JSON]
-    open let signatures: [JSON]
-    open let title: String
+    public let sections: [JSON]
+    public let signatures: [JSON]
+    public let title: String
     
     // MARK: - Deserialization
     

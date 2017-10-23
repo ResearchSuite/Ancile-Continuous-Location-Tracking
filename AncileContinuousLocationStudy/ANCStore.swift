@@ -22,6 +22,7 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
     static public let kEligible = "ancile_study_eligible"
     static public let kPartcipantSince = "ancile_participant_since"
     static public let kNotificationTime = "ancile_notification_time"
+    static public let kLocationsSet = "ancile_locations_set"
 
     public func valueInState(forKey: String) -> NSSecureCoding? {
         return self.get(key: forKey)
@@ -132,6 +133,44 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
                 self.set(value: nil, key: "home_coordinate_lng")
             }
             
+        }
+    }
+    
+    open var workLocation: CLLocationCoordinate2D? {
+        get {
+            if let lat = self.get(key: "work_coordinate_lat") as? CLLocationDegrees,
+                let lng = self.get(key: "work_coordinate_lng") as? CLLocationDegrees {
+                return CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            }
+            else {
+                return nil
+            }
+        }
+        set {
+            if let location = workLocation {
+                self.set(value: NSNumber(value: location.latitude), key: "work_coordinate_lat")
+                self.set(value: NSNumber(value: location.longitude), key: "work_coordinate_lng")
+            }
+            else {
+                self.set(value: nil, key: "work_coordinate_lat")
+                self.set(value: nil, key: "work_coordinate_lng")
+            }
+            
+        }
+    }
+    
+    open var locationsSet: Bool {
+        get {
+            if let number = self.get(key: ANCStore.kLocationsSet) as? NSNumber {
+                return number.boolValue
+            }
+            else {
+                return false
+            }
+        }
+        set {
+            let number = NSNumber(booleanLiteral: newValue)
+            self.set(value: number, key: ANCStore.kLocationsSet)
         }
     }
     

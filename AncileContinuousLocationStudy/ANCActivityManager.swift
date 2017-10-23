@@ -77,5 +77,112 @@ class ANCActivityManager: NSObject {
         
         return json as? JSON
     }
+    
+    public static func handleActivityResult(viewController: UIViewController, taskResult: ORKTaskResult, completion: @escaping (Bool) ->()) {
+        
+        guard let appDelegate = AppDelegate.appDelegate else {
+            return
+        }
+        
+        switch taskResult.identifier {
+        case "eligibility":
+            guard let stepResult = taskResult.result(forIdentifier: "eligibility") as? ORKStepResult,
+                let ageResult = stepResult.result(forIdentifier: "age") as? ORKBooleanQuestionResult,
+                let eligible = ageResult.booleanAnswer?.boolValue else {
+                    completion(false)
+                    return
+            }
+            
+            appDelegate.store.isEligible = eligible
+            completion(eligible)
+            
+        case "consent":
+            guard let consentDocumentJSON = AppDelegate.appDelegate.taskBuilder.helper.getJson(forFilename: "consentDocument") as? JSON,
+                let consentDocType: String = "type" <~~ consentDocumentJSON,
+                let consentDocument = AppDelegate.appDelegate.taskBuilder.generateConsentDocument(
+                    type: consentDocType, jsonObject: consentDocumentJSON, helper: AppDelegate.appDelegate.taskBuilder.helper) else {
+                        completion(false)
+                        return
+            }
+            
+            guard let stepResult = taskResult.result(forIdentifier: "consentReviewStep") as? ORKStepResult,
+                let consentSignature = stepResult.firstResult as? ORKConsentSignatureResult else {
+                    completion(false)
+                    return
+            }
+            
+            consentSignature.apply(to: consentDocument)
+            
+            //possibly check to see if we can offload this to another thread
+            consentDocument.makePDF(completionHandler: { (data, error) in
+                
+                if error == nil {
+                    guard let pdfData = data,
+                        let documentsPathString = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first else {
+                            completion(false)
+                            return
+                    }
+                    
+                    let documentsPath: URL = URL(fileURLWithPath: documentsPathString)
+                    let pathComponent: String = "\(taskResult.taskRunUUID.uuidString).pdf"
+                    let fileURL: URL = documentsPath.appendingPathComponent(pathComponent)
+                    
+                    do {
+                        try pdfData.write(to: fileURL, options: [Data.WritingOptions.completeFileProtection , Data.WritingOptions.atomic])
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                        completion(false)
+                        return
+                    }
+                    
+                    debugPrint("Wrote PDF to \(fileURL.absoluteString)")
+                    
+                    //save file URL in state
+                    AppDelegate.appDelegate.store.consentDocURL = fileURL
+                }
+                
+                completion(consentSignature.consented)
+                return
+                
+            })
+            
+        case "authFlow":
+            if let authToken = appDelegate.ancileClient.authToken,
+                appDelegate.isConsented,
+                let consentDocURL = AppDelegate.appDelegate.store.consentDocURL {
+                
+                appDelegate.ancileClient.postConsent(token: authToken, fileName: "dont_care", fileURL: consentDocURL, completion: { (consented, error) in
+                    completion(true)
+                    return
+                })
+                
+            }
+            else {
+                completion(true)
+                return
+            }
+            
+        case "notificationTime":
+            guard let stepResult = taskResult.result(forIdentifier: "notificationTime") as? ORKStepResult,
+                let timeResult = stepResult.result(forIdentifier: "notificationTime") as? ORKTimeOfDayQuestionResult,
+                let timeComponents = timeResult.dateComponentsAnswer else {
+                    completion(false)
+                    return
+            }
+            
+            AppDelegate.appDelegate.store.notificationTime = timeComponents
+            ANCNotificationManager.setNotifications()
+            ANCNotificationManager.printPendingNotifications()
+            
+            completion(true)
+            return
+            
+            
+        default:
+            completion(false)
+        }
+        
+        completion(true)
+    }
 
 }

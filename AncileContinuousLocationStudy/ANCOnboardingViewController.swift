@@ -41,7 +41,60 @@ open class ANCOnboardingViewController: UIViewController {
         
     }
     
+    private func getNextActivityID() -> String? {
+        
+        guard let appDelegate = AppDelegate.appDelegate else {
+            return nil
+        }
+        
+        if !appDelegate.isEligible {
+            return "eligibility"
+        }
+        else if !appDelegate.isConsented {
+            return "consent"
+        }
+        else if !appDelegate.isSignedIn || !appDelegate.isPasscodeSet {
+            return "authFlow"
+        }
+        else if !appDelegate.notificationTimeSet {
+            return "notificationTime"
+        }
+        else {
+            return nil
+        }
+    
+    }
+    
     func launchActivity() {
+        
+        if let nextActivityID = self.getNextActivityID() {
+            
+            guard let task = AppDelegate.appDelegate.activityManager.task(for: nextActivityID) else {
+                return
+            }
+            
+            let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
+                
+                guard reason == ORKTaskViewControllerFinishReason.completed,
+                    let vc = self else {
+                    self?.dismiss(animated: true, completion: nil)
+                    return
+                }
+                
+                let taskResult = taskViewController.result
+                //view controller, taskResult, handle activity completion
+                ANCActivityManager.handleActivityResult(viewController: vc, taskResult: taskResult, completion: { success in
+                    self?.dismiss(animated: true, completion: {
+                        if success {
+                            self?.launchActivity()
+                        }
+                    })
+                })
+                
+            })
+            
+            self.present(tvc, animated: true, completion: nil)
+        }
         
         guard let appDelegate = AppDelegate.appDelegate else {
             return

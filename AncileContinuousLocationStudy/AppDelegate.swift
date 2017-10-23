@@ -146,6 +146,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     var notificationTimeSet: Bool {
         return self.store.notificationTime != nil
     }
+    
+    var locationsSet: Bool {
+        return false
+    }
   
     func getQueryStringParameter(url: String, param: String) -> String? {
         guard let url = URLComponents(string: url) else { return nil }
@@ -193,11 +197,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
         if self.isEligible &&
             self.isConsented &&
             self.isSignedIn &&
-            self.isPasscodeSet {
-            return "Splash"
+            self.isPasscodeSet &&
+            self.notificationTimeSet &&
+            self.locationsSet {
+            return "home"
         }
         else {
-            return "Main"
+            return "onboarding"
         }
     }
     
@@ -207,9 +213,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             return
         }
         
-        let storyboard = UIStoryboard(name: self.storyboardIDForCurrentState(), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController()
-        self.transition(toRootViewController: vc!, animated: animated)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: self.storyboardIDForCurrentState())
+        self.transition(toRootViewController: vc, animated: animated)
         
     }
     

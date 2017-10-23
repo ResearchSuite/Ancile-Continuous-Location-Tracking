@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		15811D7A6487EE55677C0088 /* Pods_AncileContinuousLocationStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211FBE6F438F4A2E44471DAD /* Pods_AncileContinuousLocationStudy.framework */; };
 		BBD6753E886B24DAF1543F9A /* Pods_AncileContinuousLocationStudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90FFBA1A2E8B33DC8F4412F /* Pods_AncileContinuousLocationStudyTests.framework */; };
-		CF02C0A91F27C33B00271928 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF02C0A81F27C33B00271928 /* Splash.storyboard */; };
 		CF02C0B11F27E16900271928 /* homeLocation.json in Resources */ = {isa = PBXBuildFile; fileRef = CF02C0AF1F27E16900271928 /* homeLocation.json */; };
 		CF02C0B21F27E16900271928 /* workLocation.json in Resources */ = {isa = PBXBuildFile; fileRef = CF02C0B01F27E16900271928 /* workLocation.json */; };
 		CF11F9A41F3BA9EB00ED8759 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF11F9A31F3BA9EB00ED8759 /* HealthKit.framework */; };
@@ -21,7 +20,6 @@
 		CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */; };
 		CFC941C61F3113E6008B5D9F /* consentDocument.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C51F3113E6008B5D9F /* consentDocument.json */; };
 		CFC941C81F31140E008B5D9F /* weeklySurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C71F31140E008B5D9F /* weeklySurvey.json */; };
-		CFC941CA1F321BD7008B5D9F /* SurveyOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */; };
 		CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */; };
 		CFED4F741F267B7B006D9C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F731F267B7B006D9C22 /* Assets.xcassets */; };
 		CFED4F771F267B7B006D9C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F751F267B7B006D9C22 /* LaunchScreen.storyboard */; };
@@ -55,7 +53,6 @@
 		7680DD60C8DBC67ABE7E3462 /* Pods-AncileContinuousLocationStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AncileContinuousLocationStudyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AncileContinuousLocationStudyTests/Pods-AncileContinuousLocationStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7B58343BD429343C7BD1AD6 /* Pods-AncileContinuousLocationStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AncileContinuousLocationStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-AncileContinuousLocationStudy/Pods-AncileContinuousLocationStudy.release.xcconfig"; sourceTree = "<group>"; };
 		C98F9C652BEF0774A2DD9E8A /* Pods-AncileContinuousLocationStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AncileContinuousLocationStudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AncileContinuousLocationStudy/Pods-AncileContinuousLocationStudy.debug.xcconfig"; sourceTree = "<group>"; };
-		CF02C0A81F27C33B00271928 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		CF02C0AF1F27E16900271928 /* homeLocation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeLocation.json; sourceTree = "<group>"; };
 		CF02C0B01F27E16900271928 /* workLocation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workLocation.json; sourceTree = "<group>"; };
 		CF11F9A21F3BA9EB00ED8759 /* AncileContinuousLocationStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AncileContinuousLocationStudy.entitlements; sourceTree = "<group>"; };
@@ -68,7 +65,6 @@
 		CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOpenURLManager.swift; sourceTree = "<group>"; };
 		CFC941C51F3113E6008B5D9F /* consentDocument.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = consentDocument.json; sourceTree = "<group>"; };
 		CFC941C71F31140E008B5D9F /* weeklySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weeklySurvey.json; sourceTree = "<group>"; };
-		CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SurveyOnboarding.storyboard; sourceTree = "<group>"; };
 		CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyOnboardingViewController.swift; sourceTree = "<group>"; };
 		CFED4F661F267B7B006D9C22 /* AncileContinuousLocationStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AncileContinuousLocationStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFED4F731F267B7B006D9C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -194,8 +190,6 @@
 			children = (
 				CFED4FB51F26847A006D9C22 /* Main.storyboard */,
 				CFED4F751F267B7B006D9C22 /* LaunchScreen.storyboard */,
-				CF02C0A81F27C33B00271928 /* Splash.storyboard */,
-				CFC941C91F321BD7008B5D9F /* SurveyOnboarding.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -349,10 +343,8 @@
 				CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */,
 				CFED4FC41F268C5D006D9C22 /* dailySurvey.json in Resources */,
 				CFED4FC21F268C5D006D9C22 /* activities.json in Resources */,
-				CFC941CA1F321BD7008B5D9F /* SurveyOnboarding.storyboard in Resources */,
 				CFC941C81F31140E008B5D9F /* weeklySurvey.json in Resources */,
 				CFC941C61F3113E6008B5D9F /* consentDocument.json in Resources */,
-				CF02C0A91F27C33B00271928 /* Splash.storyboard in Resources */,
 				CF02C0B11F27E16900271928 /* homeLocation.json in Resources */,
 				CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */,
 				CFED4F771F267B7B006D9C22 /* LaunchScreen.storyboard in Resources */,

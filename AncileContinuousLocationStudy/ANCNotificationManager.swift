@@ -62,23 +62,19 @@ open class ANCNotificationManager: NSObject {
         
     }
     
-    static public func setNotifications(fireDate: DateComponents) {
+    static public func setNotifications() {
         
         //always clear notification before setting
         cancelNotifications()
         
-        let setNotificationsClosure = {
-            
-            let now = Date()
-            var components = DateComponents()
-            ///matches next monday morning at 9am
-            //        components.weekday = 2
-            components.hour = 9
-            
-            setNotification(identifier: kDailyNotificationIdentifer, components: fireDate)
-
+        guard let components = AppDelegate.appDelegate.store.notificationTime else {
+            return
         }
-
+        
+        let setNotificationsClosure = {
+            setNotification(identifier: kDailyNotificationIdentifer, components: components)
+        }
+        
         if #available(iOS 10, *) {
             
             let center = UNUserNotificationCenter.current()

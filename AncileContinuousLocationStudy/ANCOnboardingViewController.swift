@@ -170,9 +170,9 @@ open class ANCOnboardingViewController: UIViewController {
                     
                     if let authToken = appDelegate.ancileClient.authToken,
                         appDelegate.isConsented,
-                        let consentURL = AppDelegate.appDelegate.store.consentDocURL{
+                        let consentDocURL = AppDelegate.appDelegate.store.consentDocURL {
                         
-                        appDelegate.ancileClient.postConsent(token: authToken, fileName: "consent.pdf", fileURL: consentURL, completion: { (consented, error) in
+                        appDelegate.ancileClient.postConsent(token: authToken, fileName: "dont_care", fileURL: consentDocURL, completion: { (consented, error) in
                             self?.dismiss(animated: true, completion: {
                                 self?.launchActivity()
                             })
@@ -182,9 +182,6 @@ open class ANCOnboardingViewController: UIViewController {
                     else {
                         self?.dismiss(animated: true, completion: {
                             self?.launchActivity()
-//                            let storyboard = UIStoryboard(name: "SurveyOnboarding", bundle: nil)
-//                            let vc = storyboard.instantiateInitialViewController()
-//                            AppDelegate.appDelegate.transition(toRootViewController: vc!, animated: true)
                         })
                     }
                     
@@ -197,12 +194,48 @@ open class ANCOnboardingViewController: UIViewController {
             })
             
         }
-    
+            
+        else if !appDelegate.notificationTimeSet {
+            guard let task = AppDelegate.appDelegate.activityManager.task(for: "notificationTime") else {
+                return
+            }
+            
+            let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
+                
+                guard reason == ORKTaskViewControllerFinishReason.completed else {
+                    self?.dismiss(animated: true, completion: nil)
+                    return
+                }
+                
+                let taskResult = taskViewController.result
+                
+                print(taskResult)
+                
+                guard let stepResult = taskResult.result(forIdentifier: "notificationTime") as? ORKStepResult,
+                    let timeResult = stepResult.result(forIdentifier: "notificationTime") as? ORKTimeOfDayQuestionResult,
+                    let timeComponents = timeResult.dateComponentsAnswer else {
+                        self?.dismiss(animated: true, completion: nil)
+                        return
+                }
+                
+                AppDelegate.appDelegate.store.notificationTime = timeComponents
+                ANCNotificationManager.setNotifications()
+                ANCNotificationManager.printPendingNotifications()
+                
+                self?.dismiss(animated: true, completion: {
+                    self?.launchActivity()
+                })
+                
+                
+                
+            })
+            
+            self.present(tvc, animated: true, completion: nil)
+        }
+            
         else {
-            let storyboard = UIStoryboard(name: "SurveyOnboarding", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController()
-            AppDelegate.appDelegate.transition(toRootViewController: vc!, animated: true)
-
+            AppDelegate.appDelegate.store.participantSince = Date()
+            appDelegate.showViewController(animated: true)
         }
         
         

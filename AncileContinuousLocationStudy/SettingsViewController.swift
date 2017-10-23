@@ -108,13 +108,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
         
         
-        if indexPath.row == 1 {
-            self.launchHomeLocationSurvey()
-        }
-        
-        if indexPath.row == 3 {
-            self.launchWorkLocationSurvey()
-        }
+//        if indexPath.row == 1 {
+//            self.launchHomeLocationSurvey()
+//        }
+//        
+//        if indexPath.row == 3 {
+//            self.launchWorkLocationSurvey()
+//        }
         
         if indexPath.row == 5 {
             self.setDailyNotification()
@@ -139,153 +139,153 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
          self.dismiss(animated: true, completion: nil)
     }
     
-    func launchHomeLocationSurvey() {
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "homeLocation"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "homeLocation") else {
-                return
-        }
-        
-        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-            
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: nil)
-                return
-            }
-            
-            let taskResult = taskViewController.result
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            let resultHome = taskResult.stepResult(forStepIdentifier: "homeLocation")
-            let locationAnswerHome = resultHome?.firstResult as? ORKLocationQuestionResult
-            let resultCoordHome = locationAnswerHome?.locationAnswer?.coordinate
-            let resultRegionHome = locationAnswerHome?.locationAnswer?.region
-            var resultDictionaryHome = locationAnswerHome?.locationAnswer?.addressDictionary
-            
-            self?.resultAddressHome = ""
-            var resultAddressPartsHome : [String] = []
-            
-            if resultDictionaryHome?.index(forKey: "Name") != nil {
-                let name = resultDictionaryHome?["Name"] as! String
-                resultAddressPartsHome.append(name)
-            }
-            if resultDictionaryHome?.index(forKey: "City") != nil {
-                let city = resultDictionaryHome?["City"] as! String
-                resultAddressPartsHome.append(",")
-                resultAddressPartsHome.append(" ")
-                resultAddressPartsHome.append(city)
-            }
-            if resultDictionaryHome?.index(forKey: "State") != nil {
-                let state = resultDictionaryHome?["State"] as! String
-                resultAddressPartsHome.append(",")
-                resultAddressPartsHome.append(" ")
-                resultAddressPartsHome.append(state)
-            }
-            if resultDictionaryHome?.index(forKey: "ZIP") != nil {
-                let zip = resultDictionaryHome?["ZIP"] as! String
-                resultAddressPartsHome.append(",")
-                resultAddressPartsHome.append(" ")
-                resultAddressPartsHome.append(zip)
-                
-            }
-            
-            
-            for i in resultAddressPartsHome {
-                self?.resultAddressHome = (self?.resultAddressHome)! + i
-            }
-            
-            
-            self?.store.setValueInState(value: self!.resultAddressHome as NSSecureCoding , forKey: "home_location")
-            
-            self?.store.setValueInState(value: resultCoordHome!.latitude as NSSecureCoding, forKey: "home_coordinate_lat")
-            self?.store.setValueInState(value: resultCoordHome!.longitude as NSSecureCoding, forKey: "home_coordinate_long")
-            
-            DispatchQueue.main.async{
-                self?.tableView.reloadData()
-            }
-            
-            self?.appDelegate?.updateMonitoredRegions(regionChanged: "home")
-            
-            self?.dismiss(animated: true, completion: {
-            })
-            
-        })
-        
-        self.present(tvc, animated: true, completion: nil)
-    }
-    
-    func launchWorkLocationSurvey() {
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "workLocation"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "workLocation") else {
-                return
-        }
-        
-        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-            
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: nil)
-                return
-            }
-            
-            let taskResult = taskViewController.result
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            let resultWork = taskResult.stepResult(forStepIdentifier: "workLocation")
-            let locationAnswerWork = resultWork?.firstResult as? ORKLocationQuestionResult
-            let resultCoordWork = locationAnswerWork?.locationAnswer?.coordinate
-            let resultRegionWork = locationAnswerWork?.locationAnswer?.region
-            var resultDictionaryWork = locationAnswerWork?.locationAnswer?.addressDictionary
-            
-            self?.resultAddressWork = ""
-            var resultAddressPartsWork : [String] = []
-            
-            if resultDictionaryWork?.index(forKey: "Name") != nil {
-                let name = resultDictionaryWork?["Name"] as! String
-                resultAddressPartsWork.append(name)
-            }
-            if resultDictionaryWork?.index(forKey: "City") != nil {
-                let city = resultDictionaryWork?["City"] as! String
-                resultAddressPartsWork.append(",")
-                resultAddressPartsWork.append(" ")
-                resultAddressPartsWork.append(city)
-            }
-            if resultDictionaryWork?.index(forKey: "State") != nil {
-                let state = resultDictionaryWork?["State"] as! String
-                resultAddressPartsWork.append(",")
-                resultAddressPartsWork.append(" ")
-                resultAddressPartsWork.append(state)
-            }
-            if resultDictionaryWork?.index(forKey: "ZIP") != nil {
-                let zip = resultDictionaryWork?["ZIP"] as! String
-                resultAddressPartsWork.append(",")
-                resultAddressPartsWork.append(" ")
-                resultAddressPartsWork.append(zip)
-                
-            }
-            
-            
-            for i in resultAddressPartsWork {
-                self?.resultAddressWork = (self?.resultAddressWork)! + i
-            }
-            
-            self?.store.setValueInState(value: self!.resultAddressWork as NSSecureCoding , forKey: "work_location")
-            
-            self?.store.setValueInState(value: resultCoordWork!.latitude as NSSecureCoding, forKey: "work_coordinate_lat")
-            self?.store.setValueInState(value: resultCoordWork!.longitude as NSSecureCoding, forKey: "work_coordinate_long")
-            
-            DispatchQueue.main.async{
-                self?.tableView.reloadData()
-            }
-            
-            self?.appDelegate?.updateMonitoredRegions(regionChanged: "work")
-
-            
-            self?.dismiss(animated: true, completion: {
-            })
-            
-        })
-        
-        self.present(tvc, animated: true, completion: nil)
-    }
+//    func launchHomeLocationSurvey() {
+//        guard let task = AppDelegate.appDelegate.activityManager.task(for: "homeLocation"),
+//            let activity = AppDelegate.appDelegate.activityManager.activity(for: "homeLocation") else {
+//                return
+//        }
+//
+//        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
+//
+//            guard reason == ORKTaskViewControllerFinishReason.completed else {
+//                self?.dismiss(animated: true, completion: nil)
+//                return
+//            }
+//
+//            let taskResult = taskViewController.result
+//            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+//
+//            let resultHome = taskResult.stepResult(forStepIdentifier: "homeLocation")
+//            let locationAnswerHome = resultHome?.firstResult as? ORKLocationQuestionResult
+//            let resultCoordHome = locationAnswerHome?.locationAnswer?.coordinate
+//            let resultRegionHome = locationAnswerHome?.locationAnswer?.region
+//            var resultDictionaryHome = locationAnswerHome?.locationAnswer?.addressDictionary
+//
+//            self?.resultAddressHome = ""
+//            var resultAddressPartsHome : [String] = []
+//
+//            if resultDictionaryHome?.index(forKey: "Name") != nil {
+//                let name = resultDictionaryHome?["Name"] as! String
+//                resultAddressPartsHome.append(name)
+//            }
+//            if resultDictionaryHome?.index(forKey: "City") != nil {
+//                let city = resultDictionaryHome?["City"] as! String
+//                resultAddressPartsHome.append(",")
+//                resultAddressPartsHome.append(" ")
+//                resultAddressPartsHome.append(city)
+//            }
+//            if resultDictionaryHome?.index(forKey: "State") != nil {
+//                let state = resultDictionaryHome?["State"] as! String
+//                resultAddressPartsHome.append(",")
+//                resultAddressPartsHome.append(" ")
+//                resultAddressPartsHome.append(state)
+//            }
+//            if resultDictionaryHome?.index(forKey: "ZIP") != nil {
+//                let zip = resultDictionaryHome?["ZIP"] as! String
+//                resultAddressPartsHome.append(",")
+//                resultAddressPartsHome.append(" ")
+//                resultAddressPartsHome.append(zip)
+//
+//            }
+//
+//
+//            for i in resultAddressPartsHome {
+//                self?.resultAddressHome = (self?.resultAddressHome)! + i
+//            }
+//
+//
+//            self?.store.setValueInState(value: self!.resultAddressHome as NSSecureCoding , forKey: "home_location")
+//
+//            self?.store.setValueInState(value: resultCoordHome!.latitude as NSSecureCoding, forKey: "home_coordinate_lat")
+//            self?.store.setValueInState(value: resultCoordHome!.longitude as NSSecureCoding, forKey: "home_coordinate_long")
+//
+//            DispatchQueue.main.async{
+//                self?.tableView.reloadData()
+//            }
+//
+////            self?.appDelegate?.updateMonitoredRegions(regionChanged: "home")
+//
+//            self?.dismiss(animated: true, completion: {
+//            })
+//
+//        })
+//
+//        self.present(tvc, animated: true, completion: nil)
+//    }
+//
+//    func launchWorkLocationSurvey() {
+//        guard let task = AppDelegate.appDelegate.activityManager.task(for: "workLocation"),
+//            let activity = AppDelegate.appDelegate.activityManager.activity(for: "workLocation") else {
+//                return
+//        }
+//
+//        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
+//
+//            guard reason == ORKTaskViewControllerFinishReason.completed else {
+//                self?.dismiss(animated: true, completion: nil)
+//                return
+//            }
+//
+//            let taskResult = taskViewController.result
+//            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+//
+//            let resultWork = taskResult.stepResult(forStepIdentifier: "workLocation")
+//            let locationAnswerWork = resultWork?.firstResult as? ORKLocationQuestionResult
+//            let resultCoordWork = locationAnswerWork?.locationAnswer?.coordinate
+//            let resultRegionWork = locationAnswerWork?.locationAnswer?.region
+//            var resultDictionaryWork = locationAnswerWork?.locationAnswer?.addressDictionary
+//
+//            self?.resultAddressWork = ""
+//            var resultAddressPartsWork : [String] = []
+//
+//            if resultDictionaryWork?.index(forKey: "Name") != nil {
+//                let name = resultDictionaryWork?["Name"] as! String
+//                resultAddressPartsWork.append(name)
+//            }
+//            if resultDictionaryWork?.index(forKey: "City") != nil {
+//                let city = resultDictionaryWork?["City"] as! String
+//                resultAddressPartsWork.append(",")
+//                resultAddressPartsWork.append(" ")
+//                resultAddressPartsWork.append(city)
+//            }
+//            if resultDictionaryWork?.index(forKey: "State") != nil {
+//                let state = resultDictionaryWork?["State"] as! String
+//                resultAddressPartsWork.append(",")
+//                resultAddressPartsWork.append(" ")
+//                resultAddressPartsWork.append(state)
+//            }
+//            if resultDictionaryWork?.index(forKey: "ZIP") != nil {
+//                let zip = resultDictionaryWork?["ZIP"] as! String
+//                resultAddressPartsWork.append(",")
+//                resultAddressPartsWork.append(" ")
+//                resultAddressPartsWork.append(zip)
+//
+//            }
+//
+//
+//            for i in resultAddressPartsWork {
+//                self?.resultAddressWork = (self?.resultAddressWork)! + i
+//            }
+//
+//            self?.store.setValueInState(value: self!.resultAddressWork as NSSecureCoding , forKey: "work_location")
+//
+//            self?.store.setValueInState(value: resultCoordWork!.latitude as NSSecureCoding, forKey: "work_coordinate_lat")
+//            self?.store.setValueInState(value: resultCoordWork!.longitude as NSSecureCoding, forKey: "work_coordinate_long")
+//
+//            DispatchQueue.main.async{
+//                self?.tableView.reloadData()
+//            }
+//
+////            self?.appDelegate?.updateMonitoredRegions(regionChanged: "work")
+//
+//
+//            self?.dismiss(animated: true, completion: {
+//            })
+//
+//        })
+//
+//        self.present(tvc, animated: true, completion: nil)
+//    }
     
     
     func setDailyNotification () {
@@ -304,17 +304,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             let taskResult = taskViewController.result
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            let result = taskResult.stepResult(forStepIdentifier: "dailyNotificationTime")
-            let timeAnswer = result?.firstResult as? ORKTimeOfDayQuestionResult
-            let resultAnswer = timeAnswer?.dateComponentsAnswer            
-            self?.setNotification(resultAnswer: resultAnswer!)
+            guard let stepResult = taskResult.result(forIdentifier: "dailyNotificationTime") as? ORKStepResult,
+                let timeResult = stepResult.firstResult as? ORKTimeOfDayQuestionResult,
+                let timeComponents = timeResult.dateComponentsAnswer else {
+                    self?.dismiss(animated: true, completion: nil)
+                    return
+            }
             
-            
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+            AppDelegate.appDelegate.store.notificationTime = timeComponents
             
             self?.dismiss(animated: true, completion: {
-                
+                ANCNotificationManager.setNotifications()
+                ANCNotificationManager.printPendingNotifications()
             })
             
         })
@@ -361,26 +362,26 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func setNotification(resultAnswer: DateComponents) {
-        
-        var userCalendar = Calendar.current
-        userCalendar.timeZone = TimeZone(abbreviation: "EDT")!
-        
-        var fireDate = NSDateComponents()
-        
-        let hour = resultAnswer.hour
-        let minutes = resultAnswer.minute
-        
-        fireDate.hour = hour!
-        fireDate.minute = minutes!
-        
-        self.store.setValueInState(value: String(describing:hour!) as NSSecureCoding, forKey: "notificationHour")
-        self.store.setValueInState(value: String(describing:minutes!) as NSSecureCoding, forKey: "notificationMinutes")
-        
-        ANCNotificationManager.setNotifications(fireDate: fireDate as DateComponents)
-        
-        
-    }
+//    func setNotification(resultAnswer: DateComponents) {
+//
+//        var userCalendar = Calendar.current
+//        userCalendar.timeZone = TimeZone(abbreviation: "EDT")!
+//
+//        var fireDate = NSDateComponents()
+//
+//        let hour = resultAnswer.hour
+//        let minutes = resultAnswer.minute
+//
+//        fireDate.hour = hour!
+//        fireDate.minute = minutes!
+//
+//        self.store.setValueInState(value: String(describing:hour!) as NSSecureCoding, forKey: "notificationHour")
+//        self.store.setValueInState(value: String(describing:minutes!) as NSSecureCoding, forKey: "notificationMinutes")
+//
+//        ANCNotificationManager.setNotifications(fireDate: fireDate as DateComponents)
+//
+//
+//    }
 
 
 

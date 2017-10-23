@@ -14,8 +14,8 @@ target 'AncileContinuousLocationStudy' do
   pod "sdlrkx"
   pod "ResearchKit", '~> 1.4'
   pod "ResearchSuiteTaskBuilder", '~> 0.7'
-  pod "ResearchSuiteResultsProcessor", '~> 0.6'
-  # pod "ResearchSuiteResultsProcessor", :path => '~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios'
+  # pod "ResearchSuiteResultsProcessor", '~> 0.6'
+  pod "ResearchSuiteResultsProcessor", :path => '~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios'
   pod "ResearchSuiteAppFramework", :git => 'https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git', :tag => '0.0.3'
   pod "ResearchSuiteExtensions", :git => 'https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git', :tag => '0.6.0'
   pod "AncileStudyServerClient", :path => '~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient'

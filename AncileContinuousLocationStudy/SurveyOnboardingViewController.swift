@@ -86,25 +86,25 @@ class SurveyOnboardingViewController: UIViewController {
         }
     }
     
-    func setNotification(resultAnswer: DateComponents) {
-        
-        var userCalendar = Calendar.current
-        userCalendar.timeZone = TimeZone(abbreviation: "EDT")!
-        
-        var fireDate = NSDateComponents()
-        
-        let hour = resultAnswer.hour
-        let minutes = resultAnswer.minute
-        
-        fireDate.hour = hour!
-        fireDate.minute = minutes!
-        
-        ANCNotificationManager.setNotifications(fireDate: fireDate as DateComponents)
-        
-        self.store.setValueInState(value: String(describing:hour!) as NSSecureCoding, forKey: "notificationHour")
-        self.store.setValueInState(value: String(describing:minutes!) as NSSecureCoding, forKey: "notificationMinutes")
-        
-    }
+//    func setNotification(resultAnswer: DateComponents) {
+//        
+//        var userCalendar = Calendar.current
+//        userCalendar.timeZone = TimeZone(abbreviation: "EDT")!
+//        
+//        var fireDate = NSDateComponents()
+//        
+//        let hour = resultAnswer.hour
+//        let minutes = resultAnswer.minute
+//        
+//        fireDate.hour = hour!
+//        fireDate.minute = minutes!
+//        
+//        ANCNotificationManager.setNotifications(fireDate: fireDate as DateComponents)
+//        
+//        self.store.setValueInState(value: String(describing:hour!) as NSSecureCoding, forKey: "notificationHour")
+//        self.store.setValueInState(value: String(describing:minutes!) as NSSecureCoding, forKey: "notificationMinutes")
+//        
+//    }
     
     
 
@@ -117,6 +117,31 @@ class SurveyOnboardingViewController: UIViewController {
         
         let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
             
+//            guard reason == ORKTaskViewControllerFinishReason.completed else {
+//                self?.dismiss(animated: true, completion: {
+//                    self?.startSurveys()
+//                })
+//                return
+//            }
+//
+//            let taskResult = taskViewController.result
+//            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+//            let result = taskResult.stepResult(forStepIdentifier: "dailyNotificationTime")
+//            let timeAnswer = result?.firstResult as? ORKTimeOfDayQuestionResult
+//            let resultAnswer = timeAnswer?.dateComponentsAnswer
+//            // ANCNotificationManager.setNotification(identifier: "WeeklyNotification", components: resultAnswer!)
+//
+//            self?.setNotification(resultAnswer: resultAnswer!)
+//
+//            self?.dailyNotifSet = true
+//
+//            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+//
+//            self?.dismiss(animated: true, completion: {
+//                self?.startSurveys()
+//
+//            })
+            
             guard reason == ORKTaskViewControllerFinishReason.completed else {
                 self?.dismiss(animated: true, completion: {
                     self?.startSurveys()
@@ -125,21 +150,21 @@ class SurveyOnboardingViewController: UIViewController {
             }
             
             let taskResult = taskViewController.result
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            let result = taskResult.stepResult(forStepIdentifier: "dailyNotificationTime")
-            let timeAnswer = result?.firstResult as? ORKTimeOfDayQuestionResult
-            let resultAnswer = timeAnswer?.dateComponentsAnswer
-            // ANCNotificationManager.setNotification(identifier: "WeeklyNotification", components: resultAnswer!)
+            guard let stepResult = taskResult.result(forIdentifier: "dailyNotificationTime") as? ORKStepResult,
+                let timeResult = stepResult.firstResult as? ORKTimeOfDayQuestionResult,
+                let timeComponents = timeResult.dateComponentsAnswer else {
+                    self?.dismiss(animated: true, completion: {
+                        self?.startSurveys()
+                    })
+                    return
+            }
             
-            self?.setNotification(resultAnswer: resultAnswer!)
-            
-            self?.dailyNotifSet = true
-            
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+            AppDelegate.appDelegate.store.notificationTime = timeComponents
             
             self?.dismiss(animated: true, completion: {
+                ANCNotificationManager.setNotifications()
+                ANCNotificationManager.printPendingNotifications()
                 self?.startSurveys()
-                
             })
             
         })
@@ -151,167 +176,175 @@ class SurveyOnboardingViewController: UIViewController {
     
     func launchHomeLocation() {
         
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "homeLocation"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "homeLocation") else {
-                return
-        }
-        
-        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-            
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: {
-                    self?.startSurveys()
-                })
-                
-                return
-            }
-            
-            let taskResult = taskViewController.result
-            
-            self?.homeSet = true
-            
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            let resultHome = taskResult.stepResult(forStepIdentifier: "homeLocation")
-            let locationAnswerHome = resultHome?.firstResult as? ORKLocationQuestionResult
-            let resultCoordHome = locationAnswerHome?.locationAnswer?.coordinate
-            let resultRegionHome = locationAnswerHome?.locationAnswer?.region
-            var resultDictionaryHome = locationAnswerHome?.locationAnswer?.addressDictionary
-            
-            self?.resultAddressHome = ""
-            var resultAddressPartsHome : [String] = []
-            
-            if resultDictionaryHome?.index(forKey: "Name") != nil {
-                let name = resultDictionaryHome?["Name"] as! String
-                resultAddressPartsHome.append(name)
-            }
-            if resultDictionaryHome?.index(forKey: "City") != nil {
-                let city = resultDictionaryHome?["City"] as! String
-                resultAddressPartsHome.append(",")
-                resultAddressPartsHome.append(" ")
-                resultAddressPartsHome.append(city)
-            }
-            if resultDictionaryHome?.index(forKey: "State") != nil {
-                let state = resultDictionaryHome?["State"] as! String
-                resultAddressPartsHome.append(",")
-                resultAddressPartsHome.append(" ")
-                resultAddressPartsHome.append(state)
-            }
-            if resultDictionaryHome?.index(forKey: "ZIP") != nil {
-                let zip = resultDictionaryHome?["ZIP"] as! String
-                resultAddressPartsHome.append(",")
-                resultAddressPartsHome.append(" ")
-                resultAddressPartsHome.append(zip)
-                
-            }
-            
-            
-            for i in resultAddressPartsHome {
-                self?.resultAddressHome = (self?.resultAddressHome)! + i
-            }
-            
-            
-            self?.store.setValueInState(value: self!.resultAddressHome as NSSecureCoding , forKey: "home_location")
-            
-            self?.store.setValueInState(value: resultCoordHome!.latitude as NSSecureCoding, forKey: "home_coordinate_lat")
-            self?.store.setValueInState(value: resultCoordHome!.longitude as NSSecureCoding, forKey: "home_coordinate_long")
-            
-            
-            self?.dismiss(animated: true, completion: {
-                AppDelegate.appDelegate.updateMonitoredRegions(regionChanged: "onboarding_home")
-                self?.startSurveys()
-                
-            })
-            
-        })
-        
-        AppDelegate.appDelegate.locationManager.requestAlwaysAuthorization()
-        
-        
-        self.present(tvc, animated: true, completion: nil)
-        
     }
-    
     
     func launchWorkLocation() {
         
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "workLocation"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "workLocation") else {
-                return
-        }
-        
-        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
-            
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: {
-                    self?.startSurveys()
-                })
-                
-                return
-            }
-            
-            let taskResult = taskViewController.result
-            
-            self?.workSet = true
-            
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            
-            let resultWork = taskResult.stepResult(forStepIdentifier: "workLocation")
-            let locationAnswerWork = resultWork?.firstResult as? ORKLocationQuestionResult
-            let resultCoordWork = locationAnswerWork?.locationAnswer?.coordinate
-            let resultRegionWork = locationAnswerWork?.locationAnswer?.region
-            var resultDictionaryWork = locationAnswerWork?.locationAnswer?.addressDictionary
-            
-            self?.resultAddressWork = ""
-            var resultAddressPartsWork : [String] = []
-            
-            if resultDictionaryWork?.index(forKey: "Name") != nil {
-                let name = resultDictionaryWork?["Name"] as! String
-                resultAddressPartsWork.append(name)
-            }
-            if resultDictionaryWork?.index(forKey: "City") != nil {
-                let city = resultDictionaryWork?["City"] as! String
-                resultAddressPartsWork.append(",")
-                resultAddressPartsWork.append(" ")
-                resultAddressPartsWork.append(city)
-            }
-            if resultDictionaryWork?.index(forKey: "State") != nil {
-                let state = resultDictionaryWork?["State"] as! String
-                resultAddressPartsWork.append(",")
-                resultAddressPartsWork.append(" ")
-                resultAddressPartsWork.append(state)
-            }
-            if resultDictionaryWork?.index(forKey: "ZIP") != nil {
-                let zip = resultDictionaryWork?["ZIP"] as! String
-                resultAddressPartsWork.append(",")
-                resultAddressPartsWork.append(" ")
-                resultAddressPartsWork.append(zip)
-                
-            }
-            
-            
-            for i in resultAddressPartsWork {
-                self?.resultAddressWork = (self?.resultAddressWork)! + i
-            }
-            
-            self?.store.setValueInState(value: self!.resultAddressWork as NSSecureCoding , forKey: "work_location")
-            
-            self?.store.setValueInState(value: resultCoordWork!.latitude as NSSecureCoding, forKey: "work_coordinate_lat")
-            self?.store.setValueInState(value: resultCoordWork!.longitude as NSSecureCoding, forKey: "work_coordinate_long")
-            
-            
-            self?.dismiss(animated: true, completion: {
-                AppDelegate.appDelegate.updateMonitoredRegions(regionChanged: "onboarding_work")
-                self?.startSurveys()
-                
-            })
-            
-        })
-        
-        self.present(tvc, animated: true, completion: nil)
-        
     }
+    
+//    func launchHomeLocation() {
+//
+//        guard let task = AppDelegate.appDelegate.activityManager.task(for: "homeLocation"),
+//            let activity = AppDelegate.appDelegate.activityManager.activity(for: "homeLocation") else {
+//                return
+//        }
+//
+//        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
+//
+//            guard reason == ORKTaskViewControllerFinishReason.completed else {
+//                self?.dismiss(animated: true, completion: {
+//                    self?.startSurveys()
+//                })
+//
+//                return
+//            }
+//
+//            let taskResult = taskViewController.result
+//
+//            self?.homeSet = true
+//
+//            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+//
+//            let resultHome = taskResult.stepResult(forStepIdentifier: "homeLocation")
+//            let locationAnswerHome = resultHome?.firstResult as? ORKLocationQuestionResult
+//            let resultCoordHome = locationAnswerHome?.locationAnswer?.coordinate
+//            let resultRegionHome = locationAnswerHome?.locationAnswer?.region
+//            var resultDictionaryHome = locationAnswerHome?.locationAnswer?.addressDictionary
+//
+//            self?.resultAddressHome = ""
+//            var resultAddressPartsHome : [String] = []
+//
+//            if resultDictionaryHome?.index(forKey: "Name") != nil {
+//                let name = resultDictionaryHome?["Name"] as! String
+//                resultAddressPartsHome.append(name)
+//            }
+//            if resultDictionaryHome?.index(forKey: "City") != nil {
+//                let city = resultDictionaryHome?["City"] as! String
+//                resultAddressPartsHome.append(",")
+//                resultAddressPartsHome.append(" ")
+//                resultAddressPartsHome.append(city)
+//            }
+//            if resultDictionaryHome?.index(forKey: "State") != nil {
+//                let state = resultDictionaryHome?["State"] as! String
+//                resultAddressPartsHome.append(",")
+//                resultAddressPartsHome.append(" ")
+//                resultAddressPartsHome.append(state)
+//            }
+//            if resultDictionaryHome?.index(forKey: "ZIP") != nil {
+//                let zip = resultDictionaryHome?["ZIP"] as! String
+//                resultAddressPartsHome.append(",")
+//                resultAddressPartsHome.append(" ")
+//                resultAddressPartsHome.append(zip)
+//
+//            }
+//
+//
+//            for i in resultAddressPartsHome {
+//                self?.resultAddressHome = (self?.resultAddressHome)! + i
+//            }
+//
+//
+//            self?.store.setValueInState(value: self!.resultAddressHome as NSSecureCoding , forKey: "home_location")
+//
+//            self?.store.setValueInState(value: resultCoordHome!.latitude as NSSecureCoding, forKey: "home_coordinate_lat")
+//            self?.store.setValueInState(value: resultCoordHome!.longitude as NSSecureCoding, forKey: "home_coordinate_long")
+//
+//
+//            self?.dismiss(animated: true, completion: {
+//                AppDelegate.appDelegate.updateMonitoredRegions(regionChanged: "onboarding_home")
+//                self?.startSurveys()
+//
+//            })
+//
+//        })
+//
+//        AppDelegate.appDelegate.locationManager.requestAlwaysAuthorization()
+//
+//
+//        self.present(tvc, animated: true, completion: nil)
+//
+//    }
+//
+//
+//    func launchWorkLocation() {
+//
+//        guard let task = AppDelegate.appDelegate.activityManager.task(for: "workLocation"),
+//            let activity = AppDelegate.appDelegate.activityManager.activity(for: "workLocation") else {
+//                return
+//        }
+//
+//        let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
+//
+//            guard reason == ORKTaskViewControllerFinishReason.completed else {
+//                self?.dismiss(animated: true, completion: {
+//                    self?.startSurveys()
+//                })
+//
+//                return
+//            }
+//
+//            let taskResult = taskViewController.result
+//
+//            self?.workSet = true
+//
+//            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+//
+//
+//            let resultWork = taskResult.stepResult(forStepIdentifier: "workLocation")
+//            let locationAnswerWork = resultWork?.firstResult as? ORKLocationQuestionResult
+//            let resultCoordWork = locationAnswerWork?.locationAnswer?.coordinate
+//            let resultRegionWork = locationAnswerWork?.locationAnswer?.region
+//            var resultDictionaryWork = locationAnswerWork?.locationAnswer?.addressDictionary
+//
+//            self?.resultAddressWork = ""
+//            var resultAddressPartsWork : [String] = []
+//
+//            if resultDictionaryWork?.index(forKey: "Name") != nil {
+//                let name = resultDictionaryWork?["Name"] as! String
+//                resultAddressPartsWork.append(name)
+//            }
+//            if resultDictionaryWork?.index(forKey: "City") != nil {
+//                let city = resultDictionaryWork?["City"] as! String
+//                resultAddressPartsWork.append(",")
+//                resultAddressPartsWork.append(" ")
+//                resultAddressPartsWork.append(city)
+//            }
+//            if resultDictionaryWork?.index(forKey: "State") != nil {
+//                let state = resultDictionaryWork?["State"] as! String
+//                resultAddressPartsWork.append(",")
+//                resultAddressPartsWork.append(" ")
+//                resultAddressPartsWork.append(state)
+//            }
+//            if resultDictionaryWork?.index(forKey: "ZIP") != nil {
+//                let zip = resultDictionaryWork?["ZIP"] as! String
+//                resultAddressPartsWork.append(",")
+//                resultAddressPartsWork.append(" ")
+//                resultAddressPartsWork.append(zip)
+//
+//            }
+//
+//
+//            for i in resultAddressPartsWork {
+//                self?.resultAddressWork = (self?.resultAddressWork)! + i
+//            }
+//
+//            self?.store.setValueInState(value: self!.resultAddressWork as NSSecureCoding , forKey: "work_location")
+//
+//            self?.store.setValueInState(value: resultCoordWork!.latitude as NSSecureCoding, forKey: "work_coordinate_lat")
+//            self?.store.setValueInState(value: resultCoordWork!.longitude as NSSecureCoding, forKey: "work_coordinate_long")
+//
+//
+//            self?.dismiss(animated: true, completion: {
+////                AppDelegate.appDelegate.updateMonitoredRegions(regionChanged: "onboarding_work")
+//                self?.startSurveys()
+//
+//            })
+//
+//        })
+//
+//        self.present(tvc, animated: true, completion: nil)
+//
+//    }
     
     
     func launchDailySurvey() {

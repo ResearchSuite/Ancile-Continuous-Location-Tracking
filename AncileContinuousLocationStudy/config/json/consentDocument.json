@@ -2,6 +2,8 @@
     "identifier":"ancilePhoneStudyConsentDocument",
     "type":"standardConsentDocument",
     "title":"Ancile: A Framework for Managing Microscale Data",
+    "mobileStyleSheet": "mobileConsentDocument",
+    "PDFStyleSheet": "pdfConsentDocument",
     "sections":[
                 {
                 "identifier":"onlyInDocument",
@@ -81,7 +83,7 @@
                   "title":"Investigator",
                   "givenName":"Nate",
                   "familyName":"Foster",
-                  "signatureImageTitle":"signature",
+                  "signatureImageTitle":"images/signature.png",
                   "signatureDateString":"3/10/15"
                   }
                   ]

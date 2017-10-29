@@ -1,0 +1,222 @@
+{
+   "activities":[
+      {
+         "identifier":"eligibility",
+         "type":"activity",
+         "element":{
+            "identifier":"eligibility",
+            "type":"form",
+            "items":[
+               {
+                  "identifier":"header",
+                  "type":"sectionTitle",
+                  "title":"Are you 18 or older?"
+               },
+               {
+                  "identifier":"age",
+                  "type":"boolean"
+               }
+            ]
+         }
+      },
+      {
+         "identifier":"consent",
+         "type":"activity",
+         "element":{
+            "type":"elementList",
+            "identifier":"consentTask",
+            "elements":[
+               {
+                  "identifier":"visualConsentStep",
+                  "type":"visualConsent",
+                  "consentDocumentFilename":"consentDocument"
+               },
+               {
+                  "identifier":"consentReviewStep",
+                  "type":"consentReview",
+                  "consentDocumentFilename":"consentDocument",
+                  "reasonForConsent":"You need to consent!"
+               }
+            ]
+         }
+      },
+      {
+         "identifier":"authFlow",
+         "type":"activity",
+         "element":{
+            "identifier":"authFlow",
+            "type":"elementList",
+            "elements":[
+               {
+                  "identifier":"ancileAuth",
+                  "type":"AncileAuth",
+                  "title":"Authenticate with Ancile",
+                  "buttonText":"Authenticate",
+                  "optional": false
+               },
+               {
+                  "identifier":"coreAuth",
+                  "type":"CoreAuth",
+                  "title":"Authenticate with Core",
+                  "buttonText":"Authenticate",
+                  "optional": false
+               },
+               {
+                  "identifier":"ohmageLogin",
+                  "type":"OhmageOMHRedirectLogin",
+                  "title":"Authenticate with Ohmage",
+                  "buttonText":"Authenticate",
+                  "optional": false
+               },
+               {
+                  "identifier":"securing_data_instructions",
+                  "type":"instruction",
+                  "title":"Secure That Data!",
+                  "text":"You'll be prompted to create a 4 digit passcode.\n\nPasscodes help keep participant data secure."
+               },
+               {
+                  "identifier":"passcode",
+                  "type":"passcode"
+               }
+            ]
+         }
+      },
+      {
+        "identifier":"locationOnboarding",
+        "type":"activity",
+        "element": {
+          "identifier": "locationList",
+          "type": "elementList",
+          "elements": [
+            {
+              "identifier": "location_instructions",
+              "type": "instruction",
+              "title": "Locations",
+              "text": "As part of the study, we monitor how much time you spend at home and at work.\n\nIn order to do so, we need to ask for your home and work locations.\n\nWe protect your privacy by not transmitting your actual home and work location our server."
+            },
+            {
+              "identifier"   : "permissionRequest",
+              "type"         : "locationPermissionRequest",
+              "title"        : "We Need Permissions",
+              "text"         : "We need permission to access your location in the background.\nPlease select \"Allow Always\"",
+              "buttonText"         : "Grant Permission"
+            },
+            {
+              "identifier":"homeLocation",
+              "type":"location",
+              "title":"Home Location",
+              "text":"Please enter your home location"
+            },
+            {
+              "identifier":"workLocation",
+              "type":"location",
+              "title":"Work Location",
+              "text":"Please enter your work location"
+            },
+            {
+              "identifier": "onboarding_completed_instructions",
+              "type": "instruction",
+              "title": "Onboarding Done!\n👏👏👏"
+            }
+          ]
+        }
+      },
+      {
+         "identifier":"dailySurvey",
+         "type":"activity",
+         "element":{
+            "type":"elementFile",
+            "identifier":"dailySurvey",
+            "elementFileName":"dailySurvey"
+         },
+         "resultTransforms":[
+           {
+             "transform":"DailySurvey",
+             "inputMapping":[
+               {
+                 "stepIdentifier":"sleep_1",
+                 "parameter":"sleep_1"
+               },
+               {
+                 "stepIdentifier":"sleep_2",
+                 "parameter":"sleep_2"
+               },
+               {
+                 "stepIdentifier":"sleep_3",
+                 "parameter":"sleep_3"
+               },
+               {
+                 "stepIdentifier":"food_1",
+                 "parameter":"food_1"
+               },
+               {
+                 "stepIdentifier":"food_2",
+                 "parameter":"food_2"
+               },
+               {
+                 "stepIdentifier":"food_3",
+                 "parameter":"food_3"
+               },
+               {
+                 "stepIdentifier":"food_4",
+                 "parameter":"food_4"
+               },
+               {
+                 "stepIdentifier":"commute_1",
+                 "parameter":"commute_1"
+               },
+               {
+                 "stepIdentifier":"commute_2",
+                 "parameter":"commute_2"
+               },
+               {
+                 "stepIdentifier":"commute_3",
+                 "parameter":"commute_3"
+               },
+               {
+                 "stepIdentifier":"commute_4",
+                 "parameter":"commute_4"
+               },
+               {
+                 "stepIdentifier":"commute_5",
+                 "parameter":"commute_5"
+               }
+             ]
+           }
+         ]
+      },
+      {
+         "identifier":"notificationTime",
+         "type":"activity",
+         "element":{
+            "identifier":"notificationTime",
+            "type":"timePicker",
+            "title":"Daily Survey Notification",
+            "text":"Please choose when you would like to be reminded to perform your daily survey.",
+            "optional":false
+         }
+      },
+      {
+        "identifier":"homeLocation",
+        "type":"activity",
+        "element":{
+          "identifier":"homeLocation",
+          "type":"location",
+          "title":"Home Location",
+          "text":"Please enter your home location",
+          "defaultLocationKey": "HOME_LOCATION"
+        }
+      },
+      {
+        "identifier":"workLocation",
+        "type":"activity",
+        "element":{
+          "identifier":"workLocation",
+          "type":"location",
+          "title":"Work Location",
+          "text":"Please enter your work location",
+          "defaultLocationKey": "WORK_LOCATION"
+        }
+      }
+   ]
+}

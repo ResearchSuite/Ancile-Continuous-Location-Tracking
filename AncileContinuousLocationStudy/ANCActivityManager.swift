@@ -11,6 +11,7 @@ import Gloss
 import ResearchSuiteTaskBuilder
 import ResearchSuiteResultsProcessor
 import ResearchKit
+import CoreLocation
 
 class ANCActivityManager: NSObject {
     
@@ -161,6 +162,57 @@ class ANCActivityManager: NSObject {
                 completion(true)
                 return
             }
+            
+        case "locationOnboarding":
+            fallthrough
+        case "homeLocation":
+            fallthrough
+        case "workLocation":
+            if let stepResult = taskResult.result(forIdentifier: "homeLocation") as? ORKStepResult,
+                let locationResult = stepResult.firstResult as? ORKLocationQuestionResult,
+                let location = locationResult.locationAnswer {
+                //set location, start monitoring
+                appDelegate.locationManager.home = location.coordinate
+            }
+            
+            if let stepResult = taskResult.result(forIdentifier: "workLocation") as? ORKStepResult,
+                let locationResult = stepResult.firstResult as? ORKLocationQuestionResult,
+                let location = locationResult.locationAnswer {
+                //set location, start monitoring
+                appDelegate.locationManager.work = location.coordinate
+            }
+            
+            if let home = appDelegate.locationManager.home,
+                let work = appDelegate.locationManager.work {
+                
+                let homeLocation = CLLocation(latitude: home.latitude, longitude: home.longitude)
+                let workLocation = CLLocation(latitude: work.latitude, longitude: work.longitude)
+                
+                let distance = homeLocation.distance(from: workLocation)
+                
+                let distanceSample = DistanceSample(
+                    uuid: UUID(),
+                    taskIdentifier: taskResult.identifier,
+                    taskRunUUID: taskResult.taskRunUUID,
+                    sampleDescription: "distance between home and work",
+                    distance: distance
+                )
+                
+                appDelegate.ohmageManager.addDatapoint(datapoint: distanceSample, completion: { (error) in
+                    completion(true)
+                })
+            }
+            else {
+                completion(false)
+            }
+            
+            appDelegate.store.locationsSet = true
+            
+            
+        case "dailySurvey":
+            completion(true)
+            
+            break;
             
         case "notificationTime":
             guard let stepResult = taskResult.result(forIdentifier: "notificationTime") as? ORKStepResult,

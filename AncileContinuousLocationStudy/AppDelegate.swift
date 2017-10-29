@@ -148,7 +148,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     }
     
     var locationsSet: Bool {
-        return false
+        return self.store.locationsSet
+    }
+    
+    func requestLocationPermissions() {
+        self.locationManager.locationManager.requestAlwaysAuthorization()
     }
   
     func getQueryStringParameter(url: String, param: String) -> String? {
@@ -441,6 +445,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             CTFOhmageRedirectLoginStepGenerator(),
             RSTBVisualConsentStepGenerator(),
             RSTBConsentReviewStepGenerator(),
+            ANCLocationPermissionRequestStepGenerator()
         ]
     }
     
@@ -493,143 +498,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             YADLFullRaw.self
         ]
     }
-    
-//    // LOCATION MANAGER
-//
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-//
-//        // do nothing: no need to send location always to server
-//
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion){
-//
-//        // updates when entered any of the 2 defined regions
-//
-//        let logicalLocation = LogicalLocationSample()
-//        logicalLocation.locationName = region.identifier
-//        logicalLocation.action = LogicalLocationSample.Action.enter
-//
-//        logicalLocation.acquisitionSourceCreationDateTime = Date()
-//        logicalLocation.acquisitionModality = .Sensed
-//        logicalLocation.acquisitionSourceName = "edu.cornell.tech.foundry.OhmageOMHSDK.Geofence"
-//
-//        self.ohmageManager.addDatapoint(datapoint: logicalLocation, completion: { (error) in
-//
-//            debugPrint(error)
-//
-//        })
-//
-//        NSLog("entered")
-//
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didExitRegion region:CLRegion){
-//
-//        // updates when exit any of the 2 defined regions
-//
-//        NSLog("exited region")
-//
-//        let logicalLocation = LogicalLocationSample()
-//        logicalLocation.locationName = region.identifier
-//        logicalLocation.action = LogicalLocationSample.Action.exit
-//
-//        logicalLocation.acquisitionSourceCreationDateTime = Date()
-//        logicalLocation.acquisitionModality = .Sensed
-//        logicalLocation.acquisitionSourceName = "edu.cornell.tech.foundry.OhmageOMHSDK.Geofence"
-//
-//        self.ohmageManager.addDatapoint(datapoint: logicalLocation, completion: { (error) in
-//
-//            debugPrint(error)
-//
-//        })
-//    }
-//
-//    func updateMonitoredRegions (regionChanged: String) {
-//
-//        NSLog("start monitoring updated locations")
-//
-//        if(regionChanged == "home"){
-//
-//            // Stop monitoring old region
-//
-//            let coordinateHomeLatOld = self.store.valueInState(forKey: "saved_region_lat_home") as! CLLocationDegrees
-//            let coordinateHomeLongOld = self.store.valueInState(forKey: "saved_region_long_home") as! CLLocationDegrees
-//            let radiusHomeOld = self.store.valueInState(forKey: "saved_region_distance_home") as! Double
-//            let coordinateHomeOld = CLLocationCoordinate2D(latitude: coordinateHomeLatOld, longitude: coordinateHomeLongOld)
-//
-//            let locationRegionHomeOld = CLCircularRegion(center: coordinateHomeOld, radius: radiusHomeOld, identifier: nameHome as String)
-//            self.locationManager.stopMonitoring(for: locationRegionHomeOld)
-//
-//            // Start monitoring new region
-//
-//            self.regionChangedWork()
-//
-//        }
-//
-//        if(regionChanged == "work"){
-//
-//            // Stop monitoring old region
-//
-//            let coordinateWorkLatOld = self.store.valueInState(forKey: "saved_region_lat_work") as! CLLocationDegrees
-//            let coordinateWorkLongOld = self.store.valueInState(forKey: "saved_region_long_work") as! CLLocationDegrees
-//            let radiusWorkOld = self.store.valueInState(forKey: "saved_region_distance_work") as! Double
-//            let coordinateWorkOld = CLLocationCoordinate2D(latitude: coordinateWorkLatOld, longitude: coordinateWorkLongOld)
-//
-//            let locationRegionWorkOld = CLCircularRegion(center: coordinateWorkOld, radius: radiusWorkOld, identifier: nameWork as String)
-//
-//            self.locationManager.stopMonitoring(for: locationRegionWorkOld)
-//
-//            // Start monitoring new region
-//
-//            self.regionChangedHome()
-//
-//        }
-//
-//        if(regionChanged == "onboarding_home"){
-//
-//            self.regionChangedHome()
-//
-//        }
-//
-//        if(regionChanged == "onboarding_work"){
-//
-//            self.regionChangedWork()
-//        }
-//    }
-//
-//    func regionChangedHome () {
-//
-//        let coordinateHomeLat = self.store.valueInState(forKey: "home_coordinate_lat") as! CLLocationDegrees
-//        let coordinateHomeLong = self.store.valueInState(forKey: "home_coordinate_long") as! CLLocationDegrees
-//        let coordinateHome = CLLocationCoordinate2D(latitude: coordinateHomeLat, longitude: coordinateHomeLong)
-//
-//        self.locationRegionHome = CLCircularRegion(center: coordinateHome, radius: distance.doubleValue, identifier: nameHome as String)
-//        self.locationManager.startMonitoring(for:locationRegionHome)
-//
-//        self.store.setValueInState(value: locationRegionHome.center.latitude as NSSecureCoding, forKey: "saved_region_lat_home")
-//        self.store.setValueInState(value: locationRegionHome.center.longitude as NSSecureCoding, forKey: "saved_region_long_home")
-//        self.store.setValueInState(value: distance.doubleValue as NSSecureCoding, forKey: "saved_region_distance_home")
-//
-//        self.locationManager.startMonitoringVisits()
-//
-//    }
-//
-//    func regionChangedWork () {
-//
-//        let coordinateWorkLat = self.store.valueInState(forKey: "work_coordinate_lat") as! CLLocationDegrees
-//        let coordinateWorkLong = self.store.valueInState(forKey: "work_coordinate_long") as! CLLocationDegrees
-//        let coordinateWork = CLLocationCoordinate2D(latitude: coordinateWorkLat, longitude: coordinateWorkLong)
-//
-//        self.locationRegionWork = CLCircularRegion(center: coordinateWork, radius: distance.doubleValue, identifier: nameWork as String)
-//        self.locationManager.startMonitoring(for:locationRegionWork)
-//
-//        self.store.setValueInState(value: locationRegionWork.center.latitude as NSSecureCoding, forKey: "saved_region_lat_work")
-//        self.store.setValueInState(value: locationRegionWork.center.longitude as NSSecureCoding, forKey: "saved_region_long_work")
-//        self.store.setValueInState(value: distance.doubleValue as NSSecureCoding, forKey: "saved_region_distance_work")
-//
-//        self.locationManager.startMonitoringVisits()
-//
-//    }
-    
+
 }

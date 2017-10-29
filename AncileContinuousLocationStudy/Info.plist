@@ -40,7 +40,11 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>health update usage</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>need location</string>
+	<string>We need access to your location to monitor time spent at home and work.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need access to your location to monitor time spent at home and work.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need access to your location to monitor time spent at home and work.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>need microphone</string>
 	<key>NSMotionUsageDescription</key>

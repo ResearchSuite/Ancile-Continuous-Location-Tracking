@@ -21,7 +21,7 @@
                },
                {
                "identifier": "sleep_3",
-               "type": "multipleChoiceText",
+               "type": "singleChoiceText",
                "text": "Did you sleep enough last night?",
                "items": [
                          {
@@ -36,7 +36,7 @@
                },
                {
                "identifier": "food_1",
-               "type": "multipleChoiceText",
+               "type": "singleChoiceText",
                "text": "Did you eat breakfast?",
                "items": [
                          {
@@ -59,7 +59,7 @@
                },
                {
                "identifier": "food_2",
-               "type": "multipleChoiceText",
+               "type": "singleChoiceText",
                "text": "What do you plan to eat for lunch?",
                "items": [
                          {
@@ -86,7 +86,7 @@
                },
                {
                "identifier": "food_3",
-               "type": "multipleChoiceText",
+               "type": "singleChoiceText",
                "text": "Where did you plan to eat for lunch?",
                "items": [
                          {
@@ -102,6 +102,14 @@
                          "value": "cafeteria with team"
                          },
                          {
+                         "prompt": "Common area with team",
+                         "value": "cafeteria with team"
+                         },
+                         {
+                         "prompt": "Conference room with team",
+                         "value": "cafeteria with team"
+                         },
+                         {
                          "prompt": "Off campus",
                          "value": "off campus"
                          }
@@ -109,7 +117,7 @@
                },
                {
                "identifier": "food_4",
-               "type": "multipleChoiceText",
+               "type": "singleChoiceText",
                "text": "Where did you eat dinner?",
                "items": [
                          {
@@ -122,6 +130,14 @@
                          },
                          {
                          "prompt": "Cafeteria with team",
+                         "value": "cafeteria with team"
+                         },
+                         {
+                         "prompt": "Common area with team",
+                         "value": "cafeteria with team"
+                         },
+                         {
+                         "prompt": "Conference room with team",
                          "value": "cafeteria with team"
                          },
                          {
@@ -203,10 +219,10 @@
                {
                "identifier": "commute_3",
                "type": "scale",
-               "text": "How much do you enjoy your commute to work?",
+               "title": "How much do you enjoy your commute to work?",
                "minimumValue": 1,
                "maximumValue": 5,
-               "defaultValue": 1,
+               "defaultValue": 3,
                "stepValue": 1,
                "minimumDescription":"Absolutely hated it",
                "maximumDescription":"Absolutely loved it"
@@ -214,10 +230,10 @@
                {
                "identifier": "commute_4",
                "type": "scale",
-               "text": "How much do you enjoy your commute to home?",
+               "title": "How much do you enjoy your commute to home?",
                "minimumValue": 1,
                "maximumValue": 5,
-               "defaultValue": 1,
+               "defaultValue": 3,
                "stepValue": 1,
                "minimumDescription":"Absolutely hated it",
                "maximumDescription":"Absolutely loved it"

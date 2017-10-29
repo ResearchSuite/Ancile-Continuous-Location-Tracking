@@ -1,57 +1,52 @@
 //
-//  LogicalLocationResult.swift
+//  DistanceSample.swift
 //  AncileContinuousLocationStudy
 //
-//  Created by James Kizer on 10/22/17.
+//  Created by James Kizer on 10/27/17.
 //  Copyright © 2017 Cornell Tech. All rights reserved.
 //
 
 import OMHClient
 import ResearchSuiteResultsProcessor
 
-open class LogicalLocationResult: RSRPIntermediateResult {
-    public enum Action: String {
-        case enter = "enter"
-        case exit = "exit"
-    }
+open class DistanceSample: RSRPIntermediateResult {
     
-    public let locationName: String
-    public let action: Action
-    public let eventTimestamp: Date
+    let sampleDescription: String
+    let distance: Double
+    let creationDate: Date
     
     public init(
         uuid: UUID,
         taskIdentifier: String,
         taskRunUUID: UUID,
-        locationName: String,
-        action: Action,
-        eventTimestamp: Date
+        sampleDescription: String,
+        distance: Double
         ) {
-        self.locationName = locationName
-        self.action = action
-        self.eventTimestamp = eventTimestamp
+        self.sampleDescription = sampleDescription
+        self.distance = distance
+        self.creationDate = Date()
         
         super.init(
-            type: "LogicalLocationResult",
+            type: "DistanceSample",
             uuid: uuid,
             taskIdentifier: taskIdentifier,
             taskRunUUID: taskRunUUID
         )
         
     }
-    
+
 }
 
-extension LogicalLocationResult: OMHDataPointBuilder {
+extension DistanceSample: OMHDataPointBuilder {
     open var schema: OMHSchema {
         return OMHSchema(
-            name: "logical-location",
+            name: "distance",
             version: "1.0",
             namespace: "cornell")
     }
     
     open var creationDateTime: Date {
-        return self.eventTimestamp
+        return self.creationDate
     }
     
     open var dataPointID: String {
@@ -63,7 +58,7 @@ extension LogicalLocationResult: OMHDataPointBuilder {
     }
     
     open var acquisitionSourceCreationDateTime: Date? {
-        return self.eventTimestamp
+        return self.creationDate
     }
     
     open var acquisitionSourceName: String? {
@@ -72,12 +67,12 @@ extension LogicalLocationResult: OMHDataPointBuilder {
     
     open var body: [String: Any] {
         return [
-            "location": self.locationName,
-            "action": self.action.rawValue,
+            "distance": self.distance,
+            "description": self.sampleDescription,
             "effective_time_frame": [
                 "date_time": self.stringFromDate(self.creationDateTime)
             ]
         ]
     }
-    
 }
+

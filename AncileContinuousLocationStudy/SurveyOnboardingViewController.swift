@@ -3,7 +3,7 @@
 //  AncileContinuousLocationStudy
 //
 //  Created by Christina Tsangouri on 8/2/17.
-//  Copyright © 2017 Christina Tsangouri. All rights reserved.
+//  Copyright © 2017 Cornell Tech. All rights reserved.
 //
 
 import UIKit

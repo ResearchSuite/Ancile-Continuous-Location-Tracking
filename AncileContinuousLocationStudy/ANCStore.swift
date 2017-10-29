@@ -23,6 +23,8 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
     static public let kPartcipantSince = "ancile_participant_since"
     static public let kNotificationTime = "ancile_notification_time"
     static public let kLocationsSet = "ancile_locations_set"
+    static public let kHomeLocationString = "ancile_home_location_string"
+    static public let kWorkLocationString = "ancile_work_location_string"
 
     public func valueInState(forKey: String) -> NSSecureCoding? {
         return self.get(key: forKey)
@@ -136,6 +138,21 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
         }
     }
     
+    open var homeLocationString: String? {
+        get {
+            return self.get(key: ANCStore.kHomeLocationString) as? String
+        }
+        set {
+            if let home = newValue {
+                self.set(value: home as NSString, key: ANCStore.kHomeLocationString)
+            }
+            else {
+                self.set(value: nil, key: ANCStore.kHomeLocationString)
+            }
+            
+        }
+    }
+    
     open var workLocation: CLLocationCoordinate2D? {
         get {
             if let lat = self.get(key: "work_coordinate_lat") as? CLLocationDegrees,
@@ -154,6 +171,21 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
             else {
                 self.set(value: nil, key: "work_coordinate_lat")
                 self.set(value: nil, key: "work_coordinate_lng")
+            }
+            
+        }
+    }
+    
+    open var workLocationString: String? {
+        get {
+            return self.get(key: ANCStore.kWorkLocationString) as? String
+        }
+        set {
+            if let work = newValue {
+                self.set(value: work as NSString, key: ANCStore.kWorkLocationString)
+            }
+            else {
+                self.set(value: nil, key: ANCStore.kWorkLocationString)
             }
             
         }

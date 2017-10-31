@@ -117,16 +117,16 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
     
     open var homeLocation: CLLocationCoordinate2D? {
         get {
-            if let lat = self.get(key: "home_coordinate_lat") as? CLLocationDegrees,
-                let lng = self.get(key: "home_coordinate_lng") as? CLLocationDegrees {
-                return CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            if let lat = self.get(key: "home_coordinate_lat") as? NSNumber,
+                let lng = self.get(key: "home_coordinate_lng") as? NSNumber {
+                return CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lng.doubleValue)
             }
             else {
                 return nil
             }
         }
         set {
-            if let location = homeLocation {
+            if let location = newValue {
                 self.set(value: NSNumber(value: location.latitude), key: "home_coordinate_lat")
                 self.set(value: NSNumber(value: location.longitude), key: "home_coordinate_lng")
             }
@@ -155,16 +155,16 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
     
     open var workLocation: CLLocationCoordinate2D? {
         get {
-            if let lat = self.get(key: "work_coordinate_lat") as? CLLocationDegrees,
-                let lng = self.get(key: "work_coordinate_lng") as? CLLocationDegrees {
-                return CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            if let lat = self.get(key: "work_coordinate_lat") as? NSNumber,
+                let lng = self.get(key: "work_coordinate_lng") as? NSNumber {
+                return CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lng.doubleValue)
             }
             else {
                 return nil
             }
         }
         set {
-            if let location = workLocation {
+            if let location = newValue {
                 self.set(value: NSNumber(value: location.latitude), key: "work_coordinate_lat")
                 self.set(value: NSNumber(value: location.longitude), key: "work_coordinate_lng")
             }

@@ -14,6 +14,7 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     
     let locationManager: CLLocationManager
     let ohmageManager: OhmageOMHManager
+    let store: ANCStore
     
     var initialHome = false
     var initialWork = false
@@ -23,16 +24,43 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     static let radius = 150.0
     
     
+    
+    func delay(_ delay:TimeInterval, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
+    }
+    
+    
     //change this to pure computed property
+    var _home: CLLocationCoordinate2D? = nil
     var home: CLLocationCoordinate2D? {
-        didSet {
-            //if new value is nil, stop monitoring
-            if let currentHome = home {
+        get {
+            if self._home == nil {
+                self._home = self.store.homeLocation
+            }
+            return self._home
+        }
+        set(newValue) {
+            let oldValue = self._home
+            self._home = newValue
+            self.store.homeLocation = newValue
+            
+            debugPrint("Setting Home")
+            
+            if let currentHome = newValue {
                 if CLLocationManager.authorizationStatus() == .authorizedAlways {
                     let region = CLCircularRegion(center: currentHome, radius: ANCLocationManager.radius, identifier: "home")
                     self.locationManager.startMonitoring(for: region)
                     self.initialHome = true
-                    self.locationManager.requestState(for: region)
+                    debugPrint("Requesting State For Home")
+                    
+                    //These requests don't seem to always be working
+                    //Add a delay
+                    let locationManager = self.locationManager
+                    delay(5.0) {
+                        locationManager.requestState(for: region)
+                    }
+                    
                 }
             }
             else {
@@ -46,31 +74,49 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    var _work: CLLocationCoordinate2D? = nil
     var work: CLLocationCoordinate2D? {
-        didSet {
-            //if new value is nil, stop monitoring
-            if let currentHome = work {
+        get {
+            if self._work == nil {
+                self._work = self.store.workLocation
+            }
+            return self._work
+        }
+        set(newValue) {
+            let oldValue = self._work
+            self._work = newValue
+            self.store.workLocation = newValue
+            debugPrint("Setting Work")
+            
+            if let currentWork = newValue {
                 if CLLocationManager.authorizationStatus() == .authorizedAlways {
-                    let region = CLCircularRegion(center: currentHome, radius: ANCLocationManager.radius, identifier: "work")
+                    let region = CLCircularRegion(center: currentWork, radius: ANCLocationManager.radius, identifier: "work")
                     self.locationManager.startMonitoring(for: region)
                     self.initialWork = true
-                    self.locationManager.requestState(for: region)
+                    debugPrint("Requesting State For Work")
+                    //These requests don't seem to always be working
+                    //Add a delay
+                    let locationManager = self.locationManager
+                    delay(10.0) {
+                        locationManager.requestState(for: region)
+                    }
                 }
             }
             else {
                 
                 //clear in store
-                if let previousHome = oldValue {
-                    let region = CLCircularRegion(center: previousHome, radius: ANCLocationManager.radius, identifier: "work")
+                if let previousWork = oldValue {
+                    let region = CLCircularRegion(center: previousWork, radius: ANCLocationManager.radius, identifier: "work")
                     self.locationManager.stopMonitoring(for: region)
                 }
             }
         }
     }
 
-    public init(ohmageManager: OhmageOMHManager) {
+    public init(ohmageManager: OhmageOMHManager, store: ANCStore) {
         
         self.ohmageManager = ohmageManager
+        self.store = store
         self.locationManager = CLLocationManager()
         
         super.init()
@@ -93,6 +139,9 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
             eventTimestamp: Date()
         )
         
+        debugPrint(logicalLocationResult)
+        debugPrint("Recording event for \(regionIdentifier): \(action.rawValue)")
+        
         self.ohmageManager.addDatapoint(datapoint: logicalLocationResult, completion: { (error) in
             
             debugPrint(error)
@@ -109,6 +158,8 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        
+        debugPrint("Determined state for \(region.identifier): \(state.rawValue)")
         
         if region.identifier == "home" &&
             self.initialHome {

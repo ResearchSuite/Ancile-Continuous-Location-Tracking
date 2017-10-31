@@ -246,7 +246,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
 
         self.ohmageManager = self.initializeOhmage(credentialsStore: self.store)
         
-        self.locationManager = ANCLocationManager(ohmageManager: self.ohmageManager)
+        self.locationManager = ANCLocationManager(ohmageManager: self.ohmageManager, store: self.store)
         
         self.store.setValueInState(value: false as NSSecureCoding, forKey: "shouldDoDaily")
         

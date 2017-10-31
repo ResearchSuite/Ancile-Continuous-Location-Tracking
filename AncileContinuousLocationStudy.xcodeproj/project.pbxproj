@@ -10,13 +10,10 @@
 		15811D7A6487EE55677C0088 /* Pods_AncileContinuousLocationStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211FBE6F438F4A2E44471DAD /* Pods_AncileContinuousLocationStudy.framework */; };
 		BBD6753E886B24DAF1543F9A /* Pods_AncileContinuousLocationStudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90FFBA1A2E8B33DC8F4412F /* Pods_AncileContinuousLocationStudyTests.framework */; };
 		CF11F9A41F3BA9EB00ED8759 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF11F9A31F3BA9EB00ED8759 /* HealthKit.framework */; };
-		CF39FE5D1F2F92DD0056E010 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */; };
-		CF39FE5F1F2F92F50056E010 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */; };
 		CFC941B81F3104DB008B5D9F /* ANCNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */; };
 		CFC941BA1F31052B008B5D9F /* ANCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941B91F31052B008B5D9F /* ANCHomeViewController.swift */; };
 		CFC941C01F3105A0008B5D9F /* ANCStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941BF1F3105A0008B5D9F /* ANCStore.swift */; };
 		CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */; };
-		CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */; };
 		CFED4F741F267B7B006D9C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F731F267B7B006D9C22 /* Assets.xcassets */; };
 		CFED4F771F267B7B006D9C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4F751F267B7B006D9C22 /* LaunchScreen.storyboard */; };
 		CFED4F821F267B7B006D9C22 /* AncileContinuousLocationStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4F811F267B7B006D9C22 /* AncileContinuousLocationStudyTests.swift */; };
@@ -33,6 +30,7 @@
 		E29658EB1FA3DE5B00B95B4A /* activities.json in Resources */ = {isa = PBXBuildFile; fileRef = E29658E81FA3DE5900B95B4A /* activities.json */; };
 		E29658EC1FA3DE5B00B95B4A /* consentDocument.json in Resources */ = {isa = PBXBuildFile; fileRef = E29658E91FA3DE5A00B95B4A /* consentDocument.json */; };
 		E29658ED1FA3DE5B00B95B4A /* dailySurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = E29658EA1FA3DE5A00B95B4A /* dailySurvey.json */; };
+		E29658EF1FA63C6800B95B4A /* ANCSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658EE1FA63C6800B95B4A /* ANCSettingsTableViewController.swift */; };
 		E2DB2F6A1F9CF14A00081388 /* AncileClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2DB2F691F9CF14A00081388 /* AncileClient.plist */; };
 		E2DB2F6E1F9D533600081388 /* ANCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB2F6D1F9D533600081388 /* ANCLocationManager.swift */; };
 		E2DB2F701F9D592A00081388 /* LogicalLocationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB2F6F1F9D592A00081388 /* LogicalLocationResult.swift */; };
@@ -56,13 +54,10 @@
 		C98F9C652BEF0774A2DD9E8A /* Pods-AncileContinuousLocationStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AncileContinuousLocationStudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AncileContinuousLocationStudy/Pods-AncileContinuousLocationStudy.debug.xcconfig"; sourceTree = "<group>"; };
 		CF11F9A21F3BA9EB00ED8759 /* AncileContinuousLocationStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AncileContinuousLocationStudy.entitlements; sourceTree = "<group>"; };
 		CF11F9A31F3BA9EB00ED8759 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCNotificationManager.swift; sourceTree = "<group>"; };
 		CFC941B91F31052B008B5D9F /* ANCHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCHomeViewController.swift; sourceTree = "<group>"; };
 		CFC941BF1F3105A0008B5D9F /* ANCStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCStore.swift; sourceTree = "<group>"; };
 		CFC941C11F3105EA008B5D9F /* ANCOpenURLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCOpenURLManager.swift; sourceTree = "<group>"; };
-		CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyOnboardingViewController.swift; sourceTree = "<group>"; };
 		CFED4F661F267B7B006D9C22 /* AncileContinuousLocationStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AncileContinuousLocationStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFED4F731F267B7B006D9C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFED4F761F267B7B006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,9 +75,10 @@
 		E29658E21FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStepViewController.swift; sourceTree = "<group>"; };
 		E29658E41FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStep.swift; sourceTree = "<group>"; };
 		E29658E61FA3DA3F00B95B4A /* ANCLocationPermissionRequestStepGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStepGenerator.swift; sourceTree = "<group>"; };
-		E29658E81FA3DE5900B95B4A /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = activities.json; path = config/json/activities.json; sourceTree = "<group>"; };
-		E29658E91FA3DE5A00B95B4A /* consentDocument.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = consentDocument.json; path = config/json/consentDocument.json; sourceTree = "<group>"; };
-		E29658EA1FA3DE5A00B95B4A /* dailySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dailySurvey.json; path = config/json/dailySurvey.json; sourceTree = "<group>"; };
+		E29658E81FA3DE5900B95B4A /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
+		E29658E91FA3DE5A00B95B4A /* consentDocument.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = consentDocument.json; sourceTree = "<group>"; };
+		E29658EA1FA3DE5A00B95B4A /* dailySurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dailySurvey.json; sourceTree = "<group>"; };
+		E29658EE1FA63C6800B95B4A /* ANCSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANCSettingsTableViewController.swift; sourceTree = "<group>"; };
 		E2DB2F691F9CF14A00081388 /* AncileClient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncileClient.plist; sourceTree = "<group>"; };
 		E2DB2F6D1F9D533600081388 /* ANCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationManager.swift; sourceTree = "<group>"; };
 		E2DB2F6F1F9D592A00081388 /* LogicalLocationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalLocationResult.swift; sourceTree = "<group>"; };
@@ -175,12 +171,6 @@
 				CFED4FB91F26860D006D9C22 /* Support Files */,
 				CFED4FB81F268600006D9C22 /* Storyboards */,
 				CFED4FA01F268459006D9C22 /* AppDelegate.swift */,
-				CF39FE5C1F2F92DD0056E010 /* SplashViewController.swift */,
-				E29658E81FA3DE5900B95B4A /* activities.json */,
-				E29658E91FA3DE5A00B95B4A /* consentDocument.json */,
-				E29658EA1FA3DE5A00B95B4A /* dailySurvey.json */,
-				CF39FE5E1F2F92F50056E010 /* SettingsViewController.swift */,
-				CFC941CB1F321C06008B5D9F /* SurveyOnboardingViewController.swift */,
 			);
 			path = AncileContinuousLocationStudy;
 			sourceTree = "<group>";
@@ -224,6 +214,7 @@
 				CFC941B71F3104DB008B5D9F /* ANCNotificationManager.swift */,
 				CFED4F8E1F268459006D9C22 /* ANCActivityManager.swift */,
 				CFED4F961F268459006D9C22 /* ANCOnboardingViewController.swift */,
+				E29658EE1FA63C6800B95B4A /* ANCSettingsTableViewController.swift */,
 			);
 			name = Ancile;
 			sourceTree = "<group>";
@@ -239,6 +230,9 @@
 		CFED4FBE1F268BF8006D9C22 /* json */ = {
 			isa = PBXGroup;
 			children = (
+				E29658E81FA3DE5900B95B4A /* activities.json */,
+				E29658E91FA3DE5A00B95B4A /* consentDocument.json */,
+				E29658EA1FA3DE5A00B95B4A /* dailySurvey.json */,
 			);
 			name = json;
 			sourceTree = "<group>";
@@ -498,11 +492,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF39FE5D1F2F92DD0056E010 /* SplashViewController.swift in Sources */,
 				E2DB2F701F9D592A00081388 /* LogicalLocationResult.swift in Sources */,
 				CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */,
 				CFC941C01F3105A0008B5D9F /* ANCStore.swift in Sources */,
-				CFC941CC1F321C06008B5D9F /* SurveyOnboardingViewController.swift in Sources */,
 				CFC941BA1F31052B008B5D9F /* ANCHomeViewController.swift in Sources */,
 				E2DB2F6E1F9D533600081388 /* ANCLocationManager.swift in Sources */,
 				E29658E31FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift in Sources */,
@@ -513,8 +505,8 @@
 				CFC941B81F3104DB008B5D9F /* ANCNotificationManager.swift in Sources */,
 				E29658E71FA3DA3F00B95B4A /* ANCLocationPermissionRequestStepGenerator.swift in Sources */,
 				CFED4FA11F268459006D9C22 /* ANCActivity.swift in Sources */,
+				E29658EF1FA63C6800B95B4A /* ANCSettingsTableViewController.swift in Sources */,
 				CFED4FA21F268459006D9C22 /* ANCActivityManager.swift in Sources */,
-				CF39FE5F1F2F92F50056E010 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,9 @@ open class LogicalLocationResult: RSRPIntermediateResult {
     public enum Action: String {
         case enter = "enter"
         case exit = "exit"
+        case startedInside = "startedInside"
+        case startedOutside = "startedOutside"
+        case startedUnknown = "startedUnknown"
     }
     
     public let locationName: String

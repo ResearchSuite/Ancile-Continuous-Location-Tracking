@@ -85,6 +85,10 @@ class ANCActivityManager: NSObject {
             return
         }
         
+        if let activity = AppDelegate.appDelegate.activityManager.activity(for: taskResult.identifier) {
+            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
+        }
+        
         switch taskResult.identifier {
         case "eligibility":
             guard let stepResult = taskResult.result(forIdentifier: "eligibility") as? ORKStepResult,
@@ -182,6 +186,9 @@ class ANCActivityManager: NSObject {
                 appDelegate.locationManager.work = location.coordinate
             }
             
+            
+            //TODO: FIX THIS
+            //this is not working due to not persisting the home and work locations
             if let home = appDelegate.locationManager.home,
                 let work = appDelegate.locationManager.work {
                 
@@ -210,6 +217,8 @@ class ANCActivityManager: NSObject {
             
             
         case "dailySurvey":
+            
+            AppDelegate.appDelegate.store.lastSurveyCompletionTime = Date()
             completion(true)
             
             break;

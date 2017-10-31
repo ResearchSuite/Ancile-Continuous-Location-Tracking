@@ -15,10 +15,15 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     let locationManager: CLLocationManager
     let ohmageManager: OhmageOMHManager
     
+    var initialHome = false
+    var initialWork = false
+    
     var permissionsCallback: (()->())?
     
     static let radius = 150.0
     
+    
+    //change this to pure computed property
     var home: CLLocationCoordinate2D? {
         didSet {
             //if new value is nil, stop monitoring
@@ -26,6 +31,8 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
                 if CLLocationManager.authorizationStatus() == .authorizedAlways {
                     let region = CLCircularRegion(center: currentHome, radius: ANCLocationManager.radius, identifier: "home")
                     self.locationManager.startMonitoring(for: region)
+                    self.initialHome = true
+                    self.locationManager.requestState(for: region)
                 }
             }
             else {
@@ -42,10 +49,12 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     var work: CLLocationCoordinate2D? {
         didSet {
             //if new value is nil, stop monitoring
-            if let currentHome = home {
+            if let currentHome = work {
                 if CLLocationManager.authorizationStatus() == .authorizedAlways {
                     let region = CLCircularRegion(center: currentHome, radius: ANCLocationManager.radius, identifier: "work")
                     self.locationManager.startMonitoring(for: region)
+                    self.initialWork = true
+                    self.locationManager.requestState(for: region)
                 }
             }
             else {
@@ -74,26 +83,13 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
         
     }
     
-    
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion){
-        
-        // updates when entered any of the 2 defined regions
-        
-//        let logicalLocation = LogicalLocationSample()
-//        logicalLocation.locationName = region.identifier
-//        logicalLocation.action = LogicalLocationSample.Action.enter
-//
-//        logicalLocation.acquisitionSourceCreationDateTime = Date()
-//        logicalLocation.acquisitionModality = .Sensed
-//        logicalLocation.acquisitionSourceName = "edu.cornell.tech.foundry.OhmageOMHSDK.Geofence"
-        
+    func recordEvent(regionIdentifier: String, action: LogicalLocationResult.Action) {
         let logicalLocationResult = LogicalLocationResult(
             uuid: UUID(),
             taskIdentifier: "ANCLocationManager",
             taskRunUUID: UUID(),
-            locationName: region.identifier,
-            action: .enter,
+            locationName: regionIdentifier,
+            action: action,
             eventTimestamp: Date()
         )
         
@@ -102,39 +98,43 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
             debugPrint(error)
             
         })
-        
-        NSLog("entered")
-        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion){
+        self.recordEvent(regionIdentifier: region.identifier, action: .enter)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region:CLRegion){
+        self.recordEvent(regionIdentifier: region.identifier, action: .exit)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         
-        // updates when exit any of the 2 defined regions
+        if region.identifier == "home" &&
+            self.initialHome {
+            self.initialHome = false
+        }
+        else if region.identifier == "work" &&
+            self.initialWork {
+            self.initialWork = false
+        }
+        else {
+            return
+        }
         
-        NSLog("exited region")
+        let action: LogicalLocationResult.Action = {
+            if state == .inside {
+                return .startedInside
+            }
+            else if state == .outside {
+                return .startedOutside
+            }
+            else {
+                return .startedUnknown
+            }
+        }()
         
-//        let logicalLocation = LogicalLocationSample()
-//        logicalLocation.locationName = region.identifier
-//        logicalLocation.action = LogicalLocationSample.Action.exit
-//
-//        logicalLocation.acquisitionSourceCreationDateTime = Date()
-//        logicalLocation.acquisitionModality = .Sensed
-//        logicalLocation.acquisitionSourceName = "edu.cornell.tech.foundry.OhmageOMHSDK.Geofence"
-
-        let logicalLocationResult = LogicalLocationResult(
-            uuid: UUID(),
-            taskIdentifier: "ANCLocationManager",
-            taskRunUUID: UUID(),
-            locationName: region.identifier,
-            action: .exit,
-            eventTimestamp: Date()
-        )
-        
-        self.ohmageManager.addDatapoint(datapoint: logicalLocationResult, completion: { (error) in
-            
-            debugPrint(error)
-            
-        })
+        self.recordEvent(regionIdentifier: region.identifier, action: action)
     }
     
     func requestPermissions(completion: @escaping ()->()) {

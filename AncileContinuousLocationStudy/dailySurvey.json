@@ -10,14 +10,12 @@
                {
                "identifier":"sleep_1",
                "type":"timePicker",
-               "text":"When did you sleep last night?",
-               "optional":false
+               "text":"When did you sleep last night?"
                },
                {
                "identifier":"sleep_2",
                "type":"timePicker",
-               "text":"What time did you wake up today?",
-               "optional":false
+               "text":"What time did you wake up today?"
                },
                {
                "identifier": "sleep_3",

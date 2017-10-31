@@ -112,11 +112,6 @@
               "type":"location",
               "title":"Work Location",
               "text":"Please enter your work location"
-            },
-            {
-              "identifier": "onboarding_completed_instructions",
-              "type": "instruction",
-              "title": "Onboarding Done!\n👏👏👏"
             }
           ]
         }
@@ -131,8 +126,16 @@
          },
          "resultTransforms":[
            {
-             "transform":"DailySurvey",
+             "transform":"defaultResult",
              "inputMapping":[
+               {
+                "parameter": "schema",
+                "constant": {
+                  "namespace": "cornell",
+                  "name": "ancile-study-daily-survey",
+                  "version": "1.0"
+                }
+              },
                {
                  "stepIdentifier":"sleep_1",
                  "parameter":"sleep_1"

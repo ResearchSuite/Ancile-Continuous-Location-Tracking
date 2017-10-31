@@ -26,13 +26,18 @@ open class ANCNotificationManager: NSObject {
             
             let center = UNUserNotificationCenter.current()
             
+            //The time components created by ResearchKit set year, month, day to 0
+            //this results in the trigger never firing
+            //create a new DateComponents object specifying only hour and minute
+            let selectedComponents = DateComponents(hour: components.hour, minute: components.minute)
+            
             // Enable or disable features based on authorization
             let content = UNMutableNotificationContent()
             content.title = kDailyNotificationTitle
             content.body = kDailyNotificationBody
             content.sound = UNNotificationSound.default()
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: selectedComponents, repeats: true)
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             
             center.add(request) { (error : Error?) in
@@ -129,7 +134,13 @@ open class ANCNotificationManager: NSObject {
     static public func printPendingNotifications() {
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (notificationRequests) in
-                notificationRequests.forEach { debugPrint($0) }
+                notificationRequests.forEach { notification in
+                    debugPrint(notification)
+                    if let trigger: UNCalendarNotificationTrigger = notification.trigger as? UNCalendarNotificationTrigger,
+                        let fireDate = trigger.nextTriggerDate() {
+                        debugPrint(fireDate)
+                    }
+                }
             })
         }
         else {

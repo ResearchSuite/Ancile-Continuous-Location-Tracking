@@ -20,16 +20,12 @@ class ANCHomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func signOut() {
-        AppDelegate.appDelegate.signOut()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,24 +54,22 @@ class ANCHomeViewController: UIViewController {
         
         debugPrint("launching task at \(Date())")
         
-        guard let task = AppDelegate.appDelegate.activityManager.task(for: "weeklySurvey"),
-            let activity = AppDelegate.appDelegate.activityManager.activity(for: "weeklySurvey") else {
+        guard let task = AppDelegate.appDelegate.activityManager.task(for: "dailySurvey") else {
                 return
         }
         
         let tvc = RSAFTaskViewController(activityUUID: UUID(), task: task, taskFinishedHandler: { [weak self] (taskViewController, reason, error) in
             
-            guard reason == ORKTaskViewControllerFinishReason.completed else {
-                self?.dismiss(animated: true, completion: nil)
-                return
+            guard reason == ORKTaskViewControllerFinishReason.completed,
+                let vc = self else {
+                    self?.dismiss(animated: true, completion: nil)
+                    return
             }
             
             let taskResult = taskViewController.result
-            
-            AppDelegate.appDelegate.resultsProcessor.processResult(taskResult: taskResult, resultTransforms: activity.resultTransforms)
-            
-            self?.dismiss(animated: true, completion: {
-                AppDelegate.appDelegate.store.lastSurveyCompletionTime = Date()
+            //view controller, taskResult, handle activity completion
+            ANCActivityManager.handleActivityResult(viewController: vc, taskResult: taskResult, completion: { success in
+                self?.dismiss(animated: true, completion: nil)
             })
             
         })

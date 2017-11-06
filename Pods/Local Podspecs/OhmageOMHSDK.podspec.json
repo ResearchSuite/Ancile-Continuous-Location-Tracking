@@ -1,6 +1,6 @@
 {
   "name": "OhmageOMHSDK",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "summary": "OhmageOMHSDK is data uploader for ohmage-OMH.",
   "description": "OhmageOMHSDK is data uploader for [ohmage-OMH](https://github.com/smalldatalab/omh-dsu).\n**This project is currently experimental and will be changing rapidly. You probably shouldn't use it yet!**",
   "homepage": "https://github.com/ResearchSuite/OhmageOMHSDK-ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ResearchSuite/OhmageOMHSDK-ios.git",
-    "tag": "0.5.0"
+    "tag": "0.5.2"
   },
   "platforms": {
     "ios": "9.0"
@@ -74,7 +74,7 @@
 
         ],
         "ResearchSuiteResultsProcessor": [
-          "~> 0.6"
+          "~> 0.8"
         ]
       }
     }

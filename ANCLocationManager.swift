@@ -129,6 +129,16 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
         
     }
     
+    public func clearRegions() {
+        if self.home != nil {
+            self.home = nil
+        }
+        
+        if self.work != nil {
+            self.work = nil
+        }
+    }
+    
     func recordEvent(regionIdentifier: String, action: LogicalLocationResult.Action) {
         let logicalLocationResult = LogicalLocationResult(
             uuid: UUID(),

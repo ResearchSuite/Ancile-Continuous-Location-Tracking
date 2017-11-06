@@ -1,6 +1,6 @@
 {
   "name": "ResearchSuiteResultsProcessor",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "summary": "The ResearchSuite Results Processor is an easy and extensible way to process results for ResearchKit.",
   "description": "Building cross-platform and portable ResearchSuite applications is hard.\n  The ResearchSuite Results Processor makes it easier!",
   "homepage": "https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios.git",
-    "tag": "0.6.0"
+    "tag": "0.8.0"
   },
   "platforms": {
     "ios": "9.0"

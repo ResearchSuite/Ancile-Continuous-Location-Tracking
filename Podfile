@@ -6,10 +6,15 @@ target 'AncileContinuousLocationStudy' do
   use_frameworks!
 
   # Pods for AncileContinuousLocationStudy
-  pod "OhmageOMHSDK", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
-  pod "OhmageOMHSDK/RKSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
-  pod "OhmageOMHSDK/RSRPSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
-  pod "OhmageOMHSDK/RSTBSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.0'
+  pod "OhmageOMHSDK", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.2'
+  pod "OhmageOMHSDK/RKSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.2'
+  pod "OhmageOMHSDK/RSRPSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.2'
+  pod "OhmageOMHSDK/RSTBSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.2'
+
+  # pod "OhmageOMHSDK", :path => '~/Developer/ResearchSuite/iOS/OhmageOMHSDK-ios'
+  # pod "OhmageOMHSDK/RKSupport", :path => '~/Developer/ResearchSuite/iOS/OhmageOMHSDK-ios'
+  # pod "OhmageOMHSDK/RSRPSupport", :path => '~/Developer/ResearchSuite/iOS/OhmageOMHSDK-ios'
+  # pod "OhmageOMHSDK/RSTBSupport", :path => '~/Developer/ResearchSuite/iOS/OhmageOMHSDK-ios'
 
   pod "sdlrkx"
   pod "ResearchKit", '~> 1.4'

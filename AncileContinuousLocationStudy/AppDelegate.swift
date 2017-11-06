@@ -107,6 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     func signOut() {
         
         ANCNotificationManager.cancelNotifications()
+        self.locationManager.clearRegions()
         
         self.ohmageManager.signOut { (error) in
             self.ancileClient.signOut()
@@ -198,6 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     }
     
     open func storyboardIDForCurrentState() -> String {
+        
         if self.isEligible &&
             self.isConsented &&
             self.isSignedIn &&
@@ -213,6 +215,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     
     open func showViewController(animated: Bool) {
         
+        if self.isSignedIn && !self.isPasscodeSet {
+            self.signOut()
+            return
+        }
+        
+        if !self.isSignedIn && self.isPasscodeSet {
+            self.signOut()
+            return
+        }
+        
         guard let _ = self.window else {
             return
         }
@@ -220,7 +232,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.storyboardIDForCurrentState())
         self.transition(toRootViewController: vc, animated: animated)
-        
     }
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

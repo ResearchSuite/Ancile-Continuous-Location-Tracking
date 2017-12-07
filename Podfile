@@ -5,6 +5,8 @@ target 'AncileContinuousLocationStudy' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  pod 'Charts'
+
   # Pods for AncileContinuousLocationStudy
   pod "OhmageOMHSDK", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.2'
   pod "OhmageOMHSDK/RKSupport", :git => 'https://github.com/ResearchSuite/OhmageOMHSDK-ios', :tag => '0.5.2'
@@ -16,6 +18,7 @@ target 'AncileContinuousLocationStudy' do
   # pod "OhmageOMHSDK/RSRPSupport", :path => '~/Developer/ResearchSuite/iOS/OhmageOMHSDK-ios'
   # pod "OhmageOMHSDK/RSTBSupport", :path => '~/Developer/ResearchSuite/iOS/OhmageOMHSDK-ios'
 
+  pod "SecureQueue", :path => '~/Developer/ResearchSuite/iOS/SecureQueue-ios'
   pod "sdlrkx"
   pod "ResearchKit", '~> 1.4'
   pod "ResearchSuiteTaskBuilder", '~> 0.7'

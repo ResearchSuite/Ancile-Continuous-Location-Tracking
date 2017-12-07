@@ -139,7 +139,7 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func recordEvent(regionIdentifier: String, action: LogicalLocationResult.Action) {
+    func recordEvent(regionIdentifier: String, action: LocationEventAction) {
         let logicalLocationResult = LogicalLocationResult(
             uuid: UUID(),
             taskIdentifier: "ANCLocationManager",
@@ -148,6 +148,8 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
             action: action,
             eventTimestamp: Date()
         )
+        
+        
         
         debugPrint(logicalLocationResult)
         debugPrint("Recording event for \(regionIdentifier): \(action.rawValue)")
@@ -183,7 +185,7 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
             return
         }
         
-        let action: LogicalLocationResult.Action = {
+        let action: LocationEventAction = {
             if state == .inside {
                 return .startedInside
             }

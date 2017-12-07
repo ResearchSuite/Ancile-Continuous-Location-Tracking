@@ -23,6 +23,9 @@
 		CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4FA01F268459006D9C22 /* AppDelegate.swift */; };
 		CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FB51F26847A006D9C22 /* Main.storyboard */; };
 		CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FBB1F268B75006D9C22 /* OMHClient.plist */; };
+		E23A25511FBE054100E0BE1E /* LocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A25501FBE054100E0BE1E /* LocationEvent.swift */; };
+		E23A25531FBE085F00E0BE1E /* LocationEventAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A25521FBE085F00E0BE1E /* LocationEventAction.swift */; };
+		E23A25551FBE0A3C00E0BE1E /* ANCLocationEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A25541FBE0A3C00E0BE1E /* ANCLocationEventManager.swift */; };
 		E29658DF1FA387C500B95B4A /* DistanceSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658DE1FA387C500B95B4A /* DistanceSample.swift */; };
 		E29658E31FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658E21FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift */; };
 		E29658E51FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658E41FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift */; };
@@ -71,6 +74,9 @@
 		CFED4FA01F268459006D9C22 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFED4FB61F26847A006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFED4FBB1F268B75006D9C22 /* OMHClient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OMHClient.plist; sourceTree = "<group>"; };
+		E23A25501FBE054100E0BE1E /* LocationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEvent.swift; sourceTree = "<group>"; };
+		E23A25521FBE085F00E0BE1E /* LocationEventAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEventAction.swift; sourceTree = "<group>"; };
+		E23A25541FBE0A3C00E0BE1E /* ANCLocationEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationEventManager.swift; sourceTree = "<group>"; };
 		E29658DE1FA387C500B95B4A /* DistanceSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSample.swift; sourceTree = "<group>"; };
 		E29658E21FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStepViewController.swift; sourceTree = "<group>"; };
 		E29658E41FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStep.swift; sourceTree = "<group>"; };
@@ -131,8 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				E2DB2F6F1F9D592A00081388 /* LogicalLocationResult.swift */,
+				E23A25501FBE054100E0BE1E /* LocationEvent.swift */,
+				E23A25521FBE085F00E0BE1E /* LocationEventAction.swift */,
 				E29658DE1FA387C500B95B4A /* DistanceSample.swift */,
 				E2DB2F6D1F9D533600081388 /* ANCLocationManager.swift */,
+				E23A25541FBE0A3C00E0BE1E /* ANCLocationEventManager.swift */,
 				E29658E41FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift */,
 				E29658E61FA3DA3F00B95B4A /* ANCLocationPermissionRequestStepGenerator.swift */,
 				E29658E21FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift */,
@@ -433,6 +442,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AncileContinuousLocationStudy/Pods-AncileContinuousLocationStudy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AncileStudyServerClient/AncileStudyServerClient.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GRMustache.swift/Mustache.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
 				"${BUILT_PRODUCTS_DIR}/OMHClient/OMHClient.framework",
@@ -451,6 +461,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AncileStudyServerClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mustache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OMHClient.framework",
@@ -501,6 +512,9 @@
 				CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */,
 				E29658DF1FA387C500B95B4A /* DistanceSample.swift in Sources */,
 				E29658E51FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift in Sources */,
+				E23A25511FBE054100E0BE1E /* LocationEvent.swift in Sources */,
+				E23A25551FBE0A3C00E0BE1E /* ANCLocationEventManager.swift in Sources */,
+				E23A25531FBE085F00E0BE1E /* LocationEventAction.swift in Sources */,
 				CFED4FAA1F268459006D9C22 /* ANCOnboardingViewController.swift in Sources */,
 				CFC941B81F3104DB008B5D9F /* ANCNotificationManager.swift in Sources */,
 				E29658E71FA3DA3F00B95B4A /* ANCLocationPermissionRequestStepGenerator.swift in Sources */,

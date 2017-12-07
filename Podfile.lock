@@ -4,6 +4,9 @@ PODS:
     - Alamofire (~> 4.0)
     - ResearchSuiteExtensions
     - ResearchSuiteTaskBuilder
+  - Charts (3.0.4):
+    - Charts/Core (= 3.0.4)
+  - Charts/Core (3.0.4)
   - Gloss (1.2.4)
   - GRMustache.swift (2.0.0)
   - OhmageOMHSDK (0.5.2):
@@ -106,6 +109,7 @@ PODS:
 
 DEPENDENCIES:
   - AncileStudyServerClient (from `~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient`)
+  - Charts
   - OhmageOMHSDK (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
   - OhmageOMHSDK/RKSupport (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
   - OhmageOMHSDK/RSRPSupport (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
@@ -116,6 +120,7 @@ DEPENDENCIES:
   - ResearchSuiteResultsProcessor (from `~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios`)
   - ResearchSuiteTaskBuilder (~> 0.7)
   - sdlrkx
+  - SecureQueue (from `~/Developer/ResearchSuite/iOS/SecureQueue-ios`)
 
 EXTERNAL SOURCES:
   AncileStudyServerClient:
@@ -131,6 +136,8 @@ EXTERNAL SOURCES:
     :tag: 0.6.0
   ResearchSuiteResultsProcessor:
     :path: ~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios
+  SecureQueue:
+    :path: ~/Developer/ResearchSuite/iOS/SecureQueue-ios
 
 CHECKOUT OPTIONS:
   OhmageOMHSDK:
@@ -146,6 +153,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AncileStudyServerClient: 8eff016baac540365ff50268e5b6c082205c97da
+  Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
   OhmageOMHSDK: ec1b2798d94980866b4303eea05679b41d71cc06
@@ -157,9 +165,9 @@ SPEC CHECKSUMS:
   ResearchSuiteTaskBuilder: d42b7d20a24c6da29b8585c97a694733c437322b
   ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
   sdlrkx: 4e075aaa9f1d8deff1076aab192c276f551c1324
-  SecureQueue: 3aa95a5bba534c3aa938ae634333cbcf5919060b
+  SecureQueue: b67e9df65a40f232296cb396ef6151862ce95967
   SwiftyMarkdown: 6dfc24a82dcb4410d89d8fe3159182395ee0c988
 
-PODFILE CHECKSUM: 0211889fee26d7d38a353da6fb843ff4357308b8
+PODFILE CHECKSUM: a35efb2fd2fbcbb64ef43dd53662411a0b2ddb78
 
 COCOAPODS: 1.3.1

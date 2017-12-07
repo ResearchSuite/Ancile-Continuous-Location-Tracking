@@ -10,16 +10,10 @@ import OMHClient
 import ResearchSuiteResultsProcessor
 
 open class LogicalLocationResult: RSRPIntermediateResult {
-    public enum Action: String {
-        case enter = "enter"
-        case exit = "exit"
-        case startedInside = "startedInside"
-        case startedOutside = "startedOutside"
-        case startedUnknown = "startedUnknown"
-    }
+    
     
     public let locationName: String
-    public let action: Action
+    public let action: LocationEventAction
     public let eventTimestamp: Date
     
     public init(
@@ -27,7 +21,7 @@ open class LogicalLocationResult: RSRPIntermediateResult {
         taskIdentifier: String,
         taskRunUUID: UUID,
         locationName: String,
-        action: Action,
+        action: LocationEventAction,
         eventTimestamp: Date
         ) {
         self.locationName = locationName

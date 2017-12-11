@@ -23,6 +23,8 @@
 		CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4FA01F268459006D9C22 /* AppDelegate.swift */; };
 		CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FB51F26847A006D9C22 /* Main.storyboard */; };
 		CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FBB1F268B75006D9C22 /* OMHClient.plist */; };
+		E231CE671FDA372000BB2AC3 /* AddEventTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CE661FDA372000BB2AC3 /* AddEventTiming.swift */; };
+		E231CE691FDA383000BB2AC3 /* ReadEventTimings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CE681FDA383000BB2AC3 /* ReadEventTimings.swift */; };
 		E23A25511FBE054100E0BE1E /* LocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A25501FBE054100E0BE1E /* LocationEvent.swift */; };
 		E23A25531FBE085F00E0BE1E /* LocationEventAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A25521FBE085F00E0BE1E /* LocationEventAction.swift */; };
 		E23A25551FBE0A3C00E0BE1E /* ANCLocationEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A25541FBE0A3C00E0BE1E /* ANCLocationEventManager.swift */; };
@@ -74,6 +76,8 @@
 		CFED4FA01F268459006D9C22 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFED4FB61F26847A006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFED4FBB1F268B75006D9C22 /* OMHClient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OMHClient.plist; sourceTree = "<group>"; };
+		E231CE661FDA372000BB2AC3 /* AddEventTiming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTiming.swift; sourceTree = "<group>"; };
+		E231CE681FDA383000BB2AC3 /* ReadEventTimings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadEventTimings.swift; sourceTree = "<group>"; };
 		E23A25501FBE054100E0BE1E /* LocationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEvent.swift; sourceTree = "<group>"; };
 		E23A25521FBE085F00E0BE1E /* LocationEventAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEventAction.swift; sourceTree = "<group>"; };
 		E23A25541FBE0A3C00E0BE1E /* ANCLocationEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationEventManager.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			children = (
 				E2DB2F6F1F9D592A00081388 /* LogicalLocationResult.swift */,
 				E23A25501FBE054100E0BE1E /* LocationEvent.swift */,
+				E231CE661FDA372000BB2AC3 /* AddEventTiming.swift */,
+				E231CE681FDA383000BB2AC3 /* ReadEventTimings.swift */,
 				E23A25521FBE085F00E0BE1E /* LocationEventAction.swift */,
 				E29658DE1FA387C500B95B4A /* DistanceSample.swift */,
 				E2DB2F6D1F9D533600081388 /* ANCLocationManager.swift */,
@@ -505,9 +511,11 @@
 			files = (
 				E2DB2F701F9D592A00081388 /* LogicalLocationResult.swift in Sources */,
 				CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */,
+				E231CE691FDA383000BB2AC3 /* ReadEventTimings.swift in Sources */,
 				CFC941C01F3105A0008B5D9F /* ANCStore.swift in Sources */,
 				CFC941BA1F31052B008B5D9F /* ANCHomeViewController.swift in Sources */,
 				E2DB2F6E1F9D533600081388 /* ANCLocationManager.swift in Sources */,
+				E231CE671FDA372000BB2AC3 /* AddEventTiming.swift in Sources */,
 				E29658E31FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift in Sources */,
 				CFC941C21F3105EA008B5D9F /* ANCOpenURLManager.swift in Sources */,
 				E29658DF1FA387C500B95B4A /* DistanceSample.swift in Sources */,

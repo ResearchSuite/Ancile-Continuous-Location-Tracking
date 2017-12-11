@@ -9,11 +9,13 @@
 import UIKit
 import CoreLocation
 import OhmageOMHSDK
+import ResearchSuiteResultsProcessor
 
 class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     
     let locationManager: CLLocationManager
     let ohmageManager: OhmageOMHManager
+    let csvManager: RSRPCSVBackEnd
     let store: ANCStore
     
     var initialHome = false
@@ -113,9 +115,10 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    public init(ohmageManager: OhmageOMHManager, store: ANCStore) {
+    public init(ohmageManager: OhmageOMHManager, csvManager: RSRPCSVBackEnd, store: ANCStore) {
         
         self.ohmageManager = ohmageManager
+        self.csvManager = csvManager
         self.store = store
         self.locationManager = CLLocationManager()
         
@@ -140,25 +143,23 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func recordEvent(regionIdentifier: String, action: LocationEventAction) {
-        let logicalLocationResult = LogicalLocationResult(
-            uuid: UUID(),
-            taskIdentifier: "ANCLocationManager",
-            taskRunUUID: UUID(),
-            locationName: regionIdentifier,
-            action: action,
-            eventTimestamp: Date()
-        )
+        let locationEvent = LocationEvent(uuid: UUID(), identifier: regionIdentifier, action: action, timestamp: Date())
         
-        
-        
-        debugPrint(logicalLocationResult)
+        debugPrint(locationEvent)
         debugPrint("Recording event for \(regionIdentifier): \(action.rawValue)")
         
-        self.ohmageManager.addDatapoint(datapoint: logicalLocationResult, completion: { (error) in
+        self.ohmageManager.addDatapoint(datapoint: locationEvent, completion: { (error) in
             
             debugPrint(error)
             
         })
+        
+        do {
+            try self.csvManager.add(encodable: locationEvent)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion){

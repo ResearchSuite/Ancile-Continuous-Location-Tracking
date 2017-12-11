@@ -37,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
 //    var locationRegionHome: CLCircularRegion!
 //    var locationRegionWork: CLCircularRegion!
     
+    var csvManager: RSRPCSVBackEnd!
+    var locationEventManager: ANCLocationEventManager!
+    
     func initializeOhmage(credentialsStore: OhmageOMHSDKCredentialStore) -> OhmageOMHManager {
         
         //load OMH client application credentials from OMHClient.plist
@@ -64,6 +67,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             fatalError("Could not initialze OhmageManager")
         }
         
+    }
+    
+    func initializeCSVBackend() -> RSRPCSVBackEnd {
+        guard let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first else {
+            fatalError("Could not initialze CSVBackend")
+        }
+        
+        let csvStoragePath = documentsPath.appending("/csvStorage")
+        let url = URL(fileURLWithPath: csvStoragePath)
+        return RSRPCSVBackEnd(outputDirectory: url)
     }
     
     func initializeAncile(credentialsStore: ANCClientCredentialStore) -> ANCClient {
@@ -256,8 +269,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
         self.ancileClient = self.initializeAncile(credentialsStore: self.store)
 
         self.ohmageManager = self.initializeOhmage(credentialsStore: self.store)
+        self.csvManager = self.initializeCSVBackend()
         
-        self.locationManager = ANCLocationManager(ohmageManager: self.ohmageManager, store: self.store)
+        self.locationEventManager = ANCLocationEventManager(csvBackend: self.csvManager)
+//        self.locationEventManager.runTests()
+        
+        
+        //run location event tests
+        
+        
+        self.locationManager = ANCLocationManager(ohmageManager: self.ohmageManager, csvManager: self.csvManager, store: self.store)
         
         self.store.setValueInState(value: false as NSSecureCoding, forKey: "shouldDoDaily")
         
@@ -508,6 +529,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             YADLSpotRaw.self,
             YADLFullRaw.self
         ]
+    }
+    
+    
+//    open func applicationProtectedDataDidBecomeAvailable(_ application: UIApplication) {
+//        
+//        
+//    }
+//    
+    open func applicationProtectedDataWillBecomeUnavailable(_ application: UIApplication) {
+        
+        self.locationManager.delay(1.0) {
+            let event = LocationEvent(uuid: UUID(), identifier: "home", action: LocationEventAction.enter, timestamp: Date())
+            do {
+                try self.csvManager.add(encodable: event)
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        
     }
 
 }

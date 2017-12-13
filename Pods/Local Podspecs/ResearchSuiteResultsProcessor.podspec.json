@@ -50,9 +50,6 @@
       "dependencies": {
         "ResearchSuiteResultsProcessor/Core": [
 
-        ],
-        "SecureQueue": [
-
         ]
       }
     }

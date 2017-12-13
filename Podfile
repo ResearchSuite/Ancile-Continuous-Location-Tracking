@@ -18,14 +18,12 @@ target 'AncileContinuousLocationStudy' do
 
   pod "sdlrkx"
   pod "ResearchKit", '~> 1.4'
-  pod "ResearchSuiteTaskBuilder", :git => 'https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios', :tag => '0.10.0'
+  pod "ResearchSuiteTaskBuilder", '~> 0.7'
   # pod "ResearchSuiteResultsProcessor", '~> 0.6'
-  # pod "ResearchSuiteResultsProcessor", :path => '~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios'
-  # pod "ResearchSuiteResultsProcessor/CSVBackend", :path => '~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios'
-  pod "ResearchSuiteResultsProcessor", :git => 'https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios', :tag => '0.8.0'
+  pod "ResearchSuiteResultsProcessor", :path => '~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios'
   pod "ResearchSuiteAppFramework", :git => 'https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git', :tag => '0.0.3'
   pod "ResearchSuiteExtensions", :git => 'https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git', :tag => '0.6.0'
-  pod "AncileStudyServerClient", :git => 'https://github.com/cornelltech/AncileStudyServerClient-iOS.git', :tag => '0.2.0'
+  pod "AncileStudyServerClient", :path => '~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient'
 
 
   target 'AncileContinuousLocationStudyTests' do

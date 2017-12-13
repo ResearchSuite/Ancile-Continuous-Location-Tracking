@@ -54,7 +54,7 @@ PODS:
   - ResearchSuiteResultsProcessor/Core (0.8.0):
     - Gloss (~> 1.1)
     - ResearchKit (~> 1.3)
-  - ResearchSuiteTaskBuilder (0.10.0):
+  - ResearchSuiteTaskBuilder (0.10.1):
     - Gloss (~> 1.1)
     - ResearchKit (~> 1.3)
   - ReSwift (3.0.0)
@@ -114,7 +114,7 @@ DEPENDENCIES:
   - ResearchSuiteAppFramework (from `https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git`, tag `0.0.3`)
   - ResearchSuiteExtensions (from `https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git`, tag `0.6.0`)
   - ResearchSuiteResultsProcessor (from `https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios`, tag `0.8.0`)
-  - ResearchSuiteTaskBuilder (from `https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios`, tag `0.10.0`)
+  - ResearchSuiteTaskBuilder (from `https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios`, tag `0.10.1`)
   - sdlrkx
 
 EXTERNAL SOURCES:
@@ -135,7 +135,7 @@ EXTERNAL SOURCES:
     :tag: 0.8.0
   ResearchSuiteTaskBuilder:
     :git: https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios
-    :tag: 0.10.0
+    :tag: 0.10.1
 
 CHECKOUT OPTIONS:
   AncileStudyServerClient:
@@ -155,7 +155,7 @@ CHECKOUT OPTIONS:
     :tag: 0.8.0
   ResearchSuiteTaskBuilder:
     :git: https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios
-    :tag: 0.10.0
+    :tag: 0.10.1
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -168,12 +168,12 @@ SPEC CHECKSUMS:
   ResearchSuiteAppFramework: f5da445fc31186019090f0b7c036738de7535765
   ResearchSuiteExtensions: ef22f8fac19ce43d9bbc77467a832c24d5fdb83b
   ResearchSuiteResultsProcessor: 3d264125fc667cb0e11f21badd01b3ee2f02ad2c
-  ResearchSuiteTaskBuilder: 1c61142768c90e19cb8d0f308b4b45851a88815f
+  ResearchSuiteTaskBuilder: 7974ef104244c1b51589a30bf8eae3ab83010ea0
   ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
   sdlrkx: 4e075aaa9f1d8deff1076aab192c276f551c1324
   SecureQueue: 3aa95a5bba534c3aa938ae634333cbcf5919060b
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
 
-PODFILE CHECKSUM: c2dee39d5118dc815338cb0b259fd35cbc359242
+PODFILE CHECKSUM: e27bfe98553bd96f6c3df4e46cdb12651c397046
 
 COCOAPODS: 1.3.1

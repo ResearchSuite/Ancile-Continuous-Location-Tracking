@@ -60,7 +60,7 @@ PODS:
   - ResearchSuiteResultsProcessor/CSVBackend (0.8.0):
     - ResearchSuiteResultsProcessor/Core
     - SecureQueue
-  - ResearchSuiteTaskBuilder (0.9.0):
+  - ResearchSuiteTaskBuilder (0.10.0):
     - Gloss (~> 1.1)
     - ResearchKit (~> 1.3)
   - ReSwift (3.0.0)
@@ -111,7 +111,7 @@ PODS:
   - SwiftyMarkdown (0.5.1)
 
 DEPENDENCIES:
-  - AncileStudyServerClient (from `~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient`)
+  - AncileStudyServerClient (from `https://github.com/cornelltech/AncileStudyServerClient-iOS.git`, tag `0.2.0`)
   - Charts
   - OhmageOMHSDK (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
   - OhmageOMHSDK/RKSupport (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
@@ -120,15 +120,16 @@ DEPENDENCIES:
   - ResearchKit (~> 1.4)
   - ResearchSuiteAppFramework (from `https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git`, tag `0.0.3`)
   - ResearchSuiteExtensions (from `https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git`, tag `0.6.0`)
-  - ResearchSuiteResultsProcessor (from `~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios`)
-  - ResearchSuiteResultsProcessor/CSVBackend (from `~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios`)
-  - ResearchSuiteTaskBuilder (~> 0.7)
+  - ResearchSuiteResultsProcessor (from `https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios`, tag `0.8.0`)
+  - ResearchSuiteResultsProcessor/CSVBackend (from `https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios`, tag `0.8.0`)
+  - ResearchSuiteTaskBuilder (from `https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios`, tag `0.10.0`)
   - sdlrkx
   - SecureQueue (from `~/Developer/ResearchSuite/iOS/SecureQueue-ios`)
 
 EXTERNAL SOURCES:
   AncileStudyServerClient:
-    :path: ~/Developer/Foundry/iOS/Ancile/AncileStudyServerClient
+    :git: https://github.com/cornelltech/AncileStudyServerClient-iOS.git
+    :tag: 0.2.0
   OhmageOMHSDK:
     :git: https://github.com/ResearchSuite/OhmageOMHSDK-ios
     :tag: 0.5.2
@@ -139,11 +140,18 @@ EXTERNAL SOURCES:
     :git: https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git
     :tag: 0.6.0
   ResearchSuiteResultsProcessor:
-    :path: ~/Developer/ResearchSuite/iOS/ResearchSuiteResultsProcessor-ios
+    :git: https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios
+    :tag: 0.8.0
+  ResearchSuiteTaskBuilder:
+    :git: https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios
+    :tag: 0.10.0
   SecureQueue:
     :path: ~/Developer/ResearchSuite/iOS/SecureQueue-ios
 
 CHECKOUT OPTIONS:
+  AncileStudyServerClient:
+    :git: https://github.com/cornelltech/AncileStudyServerClient-iOS.git
+    :tag: 0.2.0
   OhmageOMHSDK:
     :git: https://github.com/ResearchSuite/OhmageOMHSDK-ios
     :tag: 0.5.2
@@ -153,6 +161,12 @@ CHECKOUT OPTIONS:
   ResearchSuiteExtensions:
     :git: https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git
     :tag: 0.6.0
+  ResearchSuiteResultsProcessor:
+    :git: https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios
+    :tag: 0.8.0
+  ResearchSuiteTaskBuilder:
+    :git: https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios
+    :tag: 0.10.0
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -166,12 +180,12 @@ SPEC CHECKSUMS:
   ResearchSuiteAppFramework: f5da445fc31186019090f0b7c036738de7535765
   ResearchSuiteExtensions: ef22f8fac19ce43d9bbc77467a832c24d5fdb83b
   ResearchSuiteResultsProcessor: 3d264125fc667cb0e11f21badd01b3ee2f02ad2c
-  ResearchSuiteTaskBuilder: d42b7d20a24c6da29b8585c97a694733c437322b
+  ResearchSuiteTaskBuilder: 1c61142768c90e19cb8d0f308b4b45851a88815f
   ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
   sdlrkx: 4e075aaa9f1d8deff1076aab192c276f551c1324
   SecureQueue: b67e9df65a40f232296cb396ef6151862ce95967
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
 
-PODFILE CHECKSUM: 81b108cc47b80b1cd7a1bbd7483d264b98e6398e
+PODFILE CHECKSUM: 1d1b0ac304f0745e72cbe61b74a921dfb5e32e8f
 
 COCOAPODS: 1.3.1

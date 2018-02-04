@@ -12,6 +12,7 @@ import ResearchSuiteTaskBuilder
 import ResearchSuiteResultsProcessor
 import ResearchKit
 import CoreLocation
+import MobileCacheSDK
 
 class ANCActivityManager: NSObject {
     
@@ -186,17 +187,16 @@ class ANCActivityManager: NSObject {
                 
                 let distance = homeLocation.distance(from: workLocation)
                 
-                let distanceSample = DistanceSample(
-                    uuid: UUID(),
-                    taskIdentifier: taskResult.identifier,
-                    taskRunUUID: taskResult.taskRunUUID,
-                    sampleDescription: "distance between home and work",
+                let distanceSample = MCDistanceSample(
+                    date: Date(),
+                    data_description: "distance between home and work",
                     distance: distance
                 )
-                
-                appDelegate.ohmageManager.addDatapoint(datapoint: distanceSample, completion: { (error) in
+
+                appDelegate.mcManager.addSample(sample: distanceSample, completion: { (error) in
                     completion(true)
                 })
+                
             }
             else {
                 completion(false)

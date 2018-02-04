@@ -23,6 +23,7 @@
 		CFED4FB41F268459006D9C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED4FA01F268459006D9C22 /* AppDelegate.swift */; };
 		CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FB51F26847A006D9C22 /* Main.storyboard */; };
 		CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFED4FBB1F268B75006D9C22 /* OMHClient.plist */; };
+		E26A3F69200FBF14008ADCD3 /* MobileCacheClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = E26A3F68200FBF14008ADCD3 /* MobileCacheClient.plist */; };
 		E29658DF1FA387C500B95B4A /* DistanceSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658DE1FA387C500B95B4A /* DistanceSample.swift */; };
 		E29658E31FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658E21FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift */; };
 		E29658E51FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29658E41FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift */; };
@@ -71,6 +72,7 @@
 		CFED4FA01F268459006D9C22 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFED4FB61F26847A006D9C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFED4FBB1F268B75006D9C22 /* OMHClient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OMHClient.plist; sourceTree = "<group>"; };
+		E26A3F68200FBF14008ADCD3 /* MobileCacheClient.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MobileCacheClient.plist; sourceTree = "<group>"; };
 		E29658DE1FA387C500B95B4A /* DistanceSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSample.swift; sourceTree = "<group>"; };
 		E29658E21FA3D14E00B95B4A /* ANCLocationPermissionRequestStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStepViewController.swift; sourceTree = "<group>"; };
 		E29658E41FA3DA1500B95B4A /* ANCLocationPermissionRequestStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANCLocationPermissionRequestStep.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				E2DB2F691F9CF14A00081388 /* AncileClient.plist */,
 				CFED4FBB1F268B75006D9C22 /* OMHClient.plist */,
+				E26A3F68200FBF14008ADCD3 /* MobileCacheClient.plist */,
 				CFED4F731F267B7B006D9C22 /* Assets.xcassets */,
 				CFED4F781F267B7B006D9C22 /* Info.plist */,
 			);
@@ -339,6 +342,7 @@
 			files = (
 				E29658EC1FA3DE5B00B95B4A /* consentDocument.json in Resources */,
 				E29658ED1FA3DE5B00B95B4A /* dailySurvey.json in Resources */,
+				E26A3F69200FBF14008ADCD3 /* MobileCacheClient.plist in Resources */,
 				CFED4FBC1F268B75006D9C22 /* OMHClient.plist in Resources */,
 				CFED4FB71F26847A006D9C22 /* Main.storyboard in Resources */,
 				E29658EB1FA3DE5B00B95B4A /* activities.json in Resources */,
@@ -435,8 +439,8 @@
 				"${BUILT_PRODUCTS_DIR}/AncileStudyServerClient/AncileStudyServerClient.framework",
 				"${BUILT_PRODUCTS_DIR}/GRMustache.swift/Mustache.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/MobileCacheSDK/MobileCacheSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/OMHClient/OMHClient.framework",
-				"${BUILT_PRODUCTS_DIR}/OhmageOMHSDK/OhmageOMHSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ResearchKit/ResearchKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ResearchSuiteAppFramework/ResearchSuiteAppFramework.framework",
@@ -453,8 +457,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AncileStudyServerClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mustache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MobileCacheSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OMHClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OhmageOMHSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResearchKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResearchSuiteAppFramework.framework",

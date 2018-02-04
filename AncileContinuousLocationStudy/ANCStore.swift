@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import OhmageOMHSDK
+//import OhmageOMHSDK
 import ResearchSuiteTaskBuilder
 import ResearchSuiteAppFramework
 import AncileStudyServerClient
 import CoreLocation
+import MobileCacheSDK
 
-open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, OhmageManagerProvider, ANCClientProvider, ANCClientCredentialStore {
-    
+open class ANCStore: NSObject, MCCredentialStore, RSTBStateHelper, MCManagerProvider, ANCClientProvider, ANCClientCredentialStore {
     
     static public let kConsentDocURL = "ancile_study_consent_doc_URL"
     static public let kLastSurveyCompletionTime = "ancile_study_last_survey_completion_time"
@@ -41,8 +41,8 @@ open class ANCStore: NSObject, OhmageOMHSDKCredentialStore, RSTBStateHelper, Ohm
         return RSAFKeychainStateManager.valueInState(forKey: key)
     }
     
-    public func getOhmageManager() -> OhmageOMHManager? {
-        return (UIApplication.shared.delegate as? AppDelegate)?.ohmageManager
+    public func getManager() -> MCManager? {
+        return (UIApplication.shared.delegate as? AppDelegate)?.mcManager
     }
     
     public func getAncileClient() -> ANCClient? {

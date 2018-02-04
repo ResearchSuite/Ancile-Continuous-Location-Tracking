@@ -1,0 +1,68 @@
+{
+  "name": "MobileCacheSDK",
+  "version": "0.1.0",
+  "summary": "A short description of MobileCacheSDK.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/jdkizer9/MobileCacheSDK",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "jdkizer9": "jdkizer9@users.noreply.github.com"
+  },
+  "source": {
+    "git": "https://github.com/jdkizer9/MobileCacheSDK.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "Source/Core/**/*",
+      "dependencies": {
+        "SecureQueue": [
+
+        ],
+        "Alamofire": [
+          "~> 4"
+        ]
+      }
+    },
+    {
+      "name": "RSTBSupport",
+      "source_files": "Source/RSTBSupport/**/*",
+      "dependencies": {
+        "MobileCacheSDK/Core": [
+
+        ],
+        "ResearchSuiteTaskBuilder": [
+
+        ],
+        "Gloss": [
+          "~> 1"
+        ],
+        "ResearchSuiteExtensions": [
+          "~> 0.7"
+        ]
+      }
+    },
+    {
+      "name": "RSRPSupport",
+      "source_files": "Source/RSRPSupport/**/*",
+      "dependencies": {
+        "MobileCacheSDK/Core": [
+
+        ],
+        "ResearchSuiteResultsProcessor": [
+          "~> 0.8"
+        ],
+        "Gloss": [
+          "~> 1"
+        ]
+      }
+    }
+  ]
+}

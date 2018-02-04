@@ -14,12 +14,18 @@ open class RSBorderedButton: UIButton {
         super.init(frame: frame)
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 5.0
+        self.initButton()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 5.0
+        self.initButton()
+    }
+    
+    private func initButton() {
+        self.titleLabel?.font = self.defaultFont
     }
     
     private func setTitleColor(_ color: UIColor?) {
@@ -45,8 +51,6 @@ open class RSBorderedButton: UIButton {
         if let color = self.titleColor(for: self.state) {
             self.layer.borderColor = color.cgColor
         }
-        
-        
     }
     
     override open func tintColorDidChange() {
@@ -63,6 +67,18 @@ open class RSBorderedButton: UIButton {
     override open var intrinsicContentSize : CGSize {
         let superSize = super.intrinsicContentSize
         return CGSize(width: superSize.width + 20.0, height: superSize.height)
+    }
+    
+    open var defaultFont: UIFont {
+        // regular, 14
+        return RSBorderedButton.defaultFont
+    }
+    
+    open class var defaultFont: UIFont {
+        // regular, 14
+        let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.headline)
+        let fontSize: Double = (descriptor.object(forKey: UIFontDescriptorSizeAttribute) as! NSNumber).doubleValue
+        return UIFont.systemFont(ofSize: CGFloat(fontSize))
     }
 
 }

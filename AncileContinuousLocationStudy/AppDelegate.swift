@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OhmageOMHSDK
 import ResearchSuiteTaskBuilder
 import ResearchSuiteResultsProcessor
 import ResearchSuiteAppFramework
@@ -17,6 +16,7 @@ import CoreLocation
 import AncileStudyServerClient
 import ResearchKit
 import UserNotifications
+import MobileCacheSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUserNotificationCenterDelegate {
@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     var ancileClient: ANCClient!
     
     var store: ANCStore!
-    var ohmageManager: OhmageOMHManager!
+//    var ohmageManager: OhmageOMHManager!
+    var mcManager: MCManager!
     var taskBuilder: RSTBTaskBuilder!
     var resultsProcessor: RSRPResultsProcessor!
     var activityManager: ANCActivityManager!
@@ -37,34 +38,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
 //    var locationRegionHome: CLCircularRegion!
 //    var locationRegionWork: CLCircularRegion!
     
-    func initializeOhmage(credentialsStore: OhmageOMHSDKCredentialStore) -> OhmageOMHManager {
+    func initializeMobileCache(credentialsStore: MCCredentialStore) -> MCManager {
         
         //load OMH client application credentials from OMHClient.plist
-        guard let file = Bundle.main.path(forResource: "OMHClient", ofType: "plist") else {
+        guard let file = Bundle.main.path(forResource: "MobileCacheClient", ofType: "plist") else {
             fatalError("Could not initialze OhmageManager")
         }
         
         
         let omhClientDetails = NSDictionary(contentsOfFile: file)
         
-        guard let baseURL = omhClientDetails?["OMHBaseURL"] as? String,
-            let clientID = omhClientDetails?["OMHClientID"] as? String,
-            let clientSecret = omhClientDetails?["OMHClientSecret"] as? String else {
+        guard let baseURL = omhClientDetails?["baseURL"] as? String,
+            let clientID = omhClientDetails?["clientID"] as? String,
+            let clientSecret = omhClientDetails?["clientSecret"] as? String,
+            let mobileURLScheme = omhClientDetails?["mobileURLScheme"] as? String else {
                 fatalError("Could not initialze OhmageManager")
         }
         
-        if let ohmageManager = OhmageOMHManager(baseURL: baseURL,
-                                                clientID: clientID,
-                                                clientSecret: clientSecret,
-                                                queueStorageDirectory: "ohmageSDK",
-                                                store: credentialsStore) {
-            return ohmageManager
+        let redirectURL = "\(mobileURLScheme)://exchange"
+        
+        if let mcManager = MCManager(
+            baseURL: baseURL,
+            redirectURL: redirectURL,
+            clientID: clientID,
+            clientSecret: clientSecret,
+            queueStorageDirectory: "mobileCache",
+            sampleClasses: [MCDefaultSample.self, MCLogicalLocationSample.self, MCDistanceSample.self],
+            store: credentialsStore
+            ) {
+            return mcManager
         }
         else {
-            fatalError("Could not initialze OhmageManager")
+            fatalError("Could not initialze Mobile Cache Manager")
         }
-        
+
     }
+    
+//    func initializeOhmage(credentialsStore: OhmageOMHSDKCredentialStore) -> OhmageOMHManager {
+//
+//        //load OMH client application credentials from OMHClient.plist
+//        guard let file = Bundle.main.path(forResource: "OMHClient", ofType: "plist") else {
+//            fatalError("Could not initialze OhmageManager")
+//        }
+//
+//
+//        let omhClientDetails = NSDictionary(contentsOfFile: file)
+//
+//        guard let baseURL = omhClientDetails?["OMHBaseURL"] as? String,
+//            let clientID = omhClientDetails?["OMHClientID"] as? String,
+//            let clientSecret = omhClientDetails?["OMHClientSecret"] as? String else {
+//                fatalError("Could not initialze OhmageManager")
+//        }
+//
+//        if let ohmageManager = OhmageOMHManager(baseURL: baseURL,
+//                                                clientID: clientID,
+//                                                clientSecret: clientSecret,
+//                                                queueStorageDirectory: "ohmageSDK",
+//                                                store: credentialsStore) {
+//            return ohmageManager
+//        }
+//        else {
+//            fatalError("Could not initialze OhmageManager")
+//        }
+//
+//    }
     
     func initializeAncile(credentialsStore: ANCClientCredentialStore) -> ANCClient {
         
@@ -109,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
         ANCNotificationManager.cancelNotifications()
         self.locationManager.clearRegions()
         
-        self.ohmageManager.signOut { (error) in
+        self.mcManager.signOut { (error) in
             self.ancileClient.signOut()
             
             if let consentDocURL = self.store.consentDocURL {
@@ -126,10 +163,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             
             self.showViewController(animated: true)
         }
+        
+        
     }
     
     var isSignedIn: Bool {
-        return self.ancileClient.isSignedIn && self.ohmageManager.isSignedIn
+        return self.ancileClient.isSignedIn && self.mcManager.isSignedIn
     }
     
     var isPasscodeSet: Bool {
@@ -255,16 +294,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
         
         self.ancileClient = self.initializeAncile(credentialsStore: self.store)
 
-        self.ohmageManager = self.initializeOhmage(credentialsStore: self.store)
+//        self.ohmageManager = self.initializeOhmage(credentialsStore: self.store)
+        self.mcManager = self.initializeMobileCache(credentialsStore: self.store)
         
-        self.locationManager = ANCLocationManager(ohmageManager: self.ohmageManager, store: self.store)
+        self.locationManager = ANCLocationManager(mcManager: self.mcManager, store: self.store)
         
         self.store.setValueInState(value: false as NSSecureCoding, forKey: "shouldDoDaily")
         
         self.openURLManager = ANCOpenURLManager(openURLDelegates: [
             self.ancileClient.ancileAuthDelegate,
             self.ancileClient.coreAuthDelegate,
-            self.ohmageManager
+            self.mcManager
             ])
         
         self.taskBuilder = RSTBTaskBuilder(
@@ -279,7 +319,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
         
         self.resultsProcessor = RSRPResultsProcessor(
             frontEndTransformers: AppDelegate.resultsTransformers,
-            backEnd: ORBEManager(ohmageManager: self.ohmageManager)
+            backEnd: MCBackEnd(manager: self.mcManager, transformers: [MCDefaultTransformer.self])
         )
         
         self.activityManager = ANCActivityManager(activityFilename: "activities", taskBuilder: self.taskBuilder)
@@ -433,7 +473,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     open class var stepGeneratorServices: [RSTBStepGenerator] {
         return [
             RSTBLocationStepGenerator(),
-            CTFOhmageLoginStepGenerator(),
             CTFDelayDiscountingStepGenerator(),
             CTFBARTStepGenerator(),
             RSTBInstructionStepGenerator(),
@@ -453,10 +492,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
             YADLSpotStepGenerator(),
             ANCAncileAuthStepGenerator(),
             ANCCoreAuthStepGenerator(),
-            CTFOhmageRedirectLoginStepGenerator(),
             RSTBVisualConsentStepGenerator(),
             RSTBConsentReviewStepGenerator(),
-            ANCLocationPermissionRequestStepGenerator()
+            ANCLocationPermissionRequestStepGenerator(),
+            MCRedirectLoginStepGenerator()
         ]
     }
     
@@ -502,11 +541,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, UNUs
     
     open class var resultsTransformers: [RSRPFrontEndTransformer.Type] {
         return [
-            ORBEDefaultResult.self,
-            CTFBARTSummaryResultsTransformer.self,
-            CTFDelayDiscountingRawResultsTransformer.self,
-            YADLSpotRaw.self,
-            YADLFullRaw.self
+            MCDefaultResult.self
         ]
     }
 

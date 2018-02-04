@@ -10,25 +10,18 @@ import Gloss
 import ResearchSuiteTaskBuilder
 
 
-//open class RSEnhancedMultipleChoiceStepDescriptor<ChoiceItemType: RSTBChoiceStepDescriptor.ChoiceItem>: RSTBQuestionStepDescriptor {
-//    
-//    public let items: [ChoiceItemType]
-//    public let valueSuffix: String?
-//    public let shuffleItems: Bool
-//    public let maximumNumberOfItems: Int?
-//    
-//    public required init?(json: JSON) {
-//        
-//        guard let items: [ChoiceItemType] = "items" <~~ json else {
-//            return nil
-//        }
-//        
-//        self.items = items
-//        self.valueSuffix = "valueSuffix" <~~ json
-//        self.shuffleItems = "shuffleItems" <~~ json ?? false
-//        self.maximumNumberOfItems = "maximumNumberOfItems" <~~ json
-//        super.init(json: json)
-//        
-//    }
-//    
-//}
+open class RSEnhancedMultipleChoiceStepDescriptor: RSTBChoiceStepDescriptor<RSEnhancedChoiceItemDescriptor> {
+
+    public let formattedTitle: RSTemplatedTextDescriptor?
+    public let formattedText: RSTemplatedTextDescriptor?
+    
+    required public init?(json: JSON) {
+        
+        self.formattedTitle = "formattedTitle" <~~ json
+        self.formattedText = "formattedText" <~~ json
+        
+        super.init(json: json)
+    }
+    
+}
+

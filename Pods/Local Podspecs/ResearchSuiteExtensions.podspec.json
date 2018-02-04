@@ -1,6 +1,6 @@
 {
   "name": "ResearchSuiteExtensions",
-  "version": "0.6.0",
+  "version": "0.9.0",
   "summary": "ResearchSuiteExtensions provides components and helper functions for ResearchSuite based iOS applications.",
   "description": "ResearchSuiteExtensions provides components and helper functions for ResearchSuite based iOS applications.",
   "homepage": "https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git",
-    "tag": "0.6.0"
+    "tag": "0.9.0"
   },
   "platforms": {
     "ios": "9.0"

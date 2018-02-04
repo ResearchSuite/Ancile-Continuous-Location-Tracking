@@ -1,0 +1,6 @@
+framework module MobileCacheSDK {
+  umbrella header "MobileCacheSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

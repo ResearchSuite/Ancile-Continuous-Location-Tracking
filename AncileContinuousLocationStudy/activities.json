@@ -62,9 +62,9 @@
                   "optional": false
                },
                {
-                  "identifier":"ohmageLogin",
-                  "type":"OhmageOMHRedirectLogin",
-                  "title":"Authenticate with Ohmage",
+                  "identifier":"mcLogin",
+                  "type":"MCRedirectLogin",
+                  "title":"Authenticate with Mobile Cache",
                   "buttonText":"Authenticate",
                   "optional": false
                },
@@ -129,13 +129,13 @@
              "transform":"defaultResult",
              "inputMapping":[
                {
-                "parameter": "schema",
-                "constant": {
-                  "namespace": "cornell",
-                  "name": "ancile-study-daily-survey",
-                  "version": "1.0"
-                }
+                "parameter": "data_type",
+                "constant": "dailySurvey"
               },
+              {
+               "parameter": "url_path",
+               "constant": "/api/survey/"
+             },
                {
                  "stepIdentifier":"sleep_1",
                  "parameter":"sleep_1"

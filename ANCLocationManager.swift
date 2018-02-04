@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreLocation
-import OhmageOMHSDK
+//import OhmageOMHSDK
+import MobileCacheSDK
 
 class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     
     let locationManager: CLLocationManager
-    let ohmageManager: OhmageOMHManager
+//    let ohmageManager: OhmageOMHManager
+    let mcManager: MCManager
     let store: ANCStore
     
     var initialHome = false
@@ -113,9 +115,9 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    public init(ohmageManager: OhmageOMHManager, store: ANCStore) {
+    public init(mcManager: MCManager, store: ANCStore) {
         
-        self.ohmageManager = ohmageManager
+        self.mcManager = mcManager
         self.store = store
         self.locationManager = CLLocationManager()
         
@@ -140,23 +142,22 @@ class ANCLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func recordEvent(regionIdentifier: String, action: LogicalLocationResult.Action) {
-        let logicalLocationResult = LogicalLocationResult(
-            uuid: UUID(),
-            taskIdentifier: "ANCLocationManager",
-            taskRunUUID: UUID(),
-            locationName: regionIdentifier,
-            action: action,
-            eventTimestamp: Date()
-        )
+//        let logicalLocationResult = LogicalLocationResult(
+//            uuid: UUID(),
+//            taskIdentifier: "ANCLocationManager",
+//            taskRunUUID: UUID(),
+//            locationName: regionIdentifier,
+//            action: regionIdentifier,
+//            eventTimestamp: Date()
+//        )
+//
+//        debugPrint(logicalLocationResult)
+//        debugPrint("Recording event for \(regionIdentifier): \(action.rawValue)")
         
-        debugPrint(logicalLocationResult)
-        debugPrint("Recording event for \(regionIdentifier): \(action.rawValue)")
-        
-        self.ohmageManager.addDatapoint(datapoint: logicalLocationResult, completion: { (error) in
-            
+        let logicalLocationSample = MCLogicalLocationSample(date: Date(), location: regionIdentifier, action: action.rawValue)
+        self.mcManager.addSample(sample: logicalLocationSample) { (error) in
             debugPrint(error)
-            
-        })
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion){

@@ -6,22 +6,21 @@ PODS:
     - ResearchSuiteTaskBuilder
   - Gloss (1.2.4)
   - GRMustache.swift (2.0.0)
-  - OhmageOMHSDK (0.5.2):
-    - OhmageOMHSDK/Core (= 0.5.2)
-  - OhmageOMHSDK/Core (0.5.2):
+  - MobileCacheSDK (0.1.0):
+    - MobileCacheSDK/Core (= 0.1.0)
+    - MobileCacheSDK/RSRPSupport (= 0.1.0)
+    - MobileCacheSDK/RSTBSupport (= 0.1.0)
+  - MobileCacheSDK/Core (0.1.0):
     - Alamofire (~> 4)
-    - OMHClient (~> 0.1)
     - SecureQueue
-  - OhmageOMHSDK/RKSupport (0.5.2):
-    - OhmageOMHSDK/Core
-    - ResearchKit (~> 1.4)
-    - ResearchSuiteExtensions (~> 0.2)
-  - OhmageOMHSDK/RSRPSupport (0.5.2):
-    - OhmageOMHSDK/Core
+  - MobileCacheSDK/RSRPSupport (0.1.0):
+    - Gloss (~> 1)
+    - MobileCacheSDK/Core
     - ResearchSuiteResultsProcessor (~> 0.8)
-  - OhmageOMHSDK/RSTBSupport (0.5.2):
-    - OhmageOMHSDK/Core
-    - OhmageOMHSDK/RKSupport
+  - MobileCacheSDK/RSTBSupport (0.1.0):
+    - Gloss (~> 1)
+    - MobileCacheSDK/Core
+    - ResearchSuiteExtensions (~> 0.7)
     - ResearchSuiteTaskBuilder
   - OMHClient (0.1.0):
     - Alamofire (~> 4.0)
@@ -34,16 +33,16 @@ PODS:
     - ResearchSuiteResultsProcessor (~> 0.3)
     - ResearchSuiteTaskBuilder (~> 0.5)
     - ReSwift (~> 3.0)
-  - ResearchSuiteExtensions (0.6.0):
-    - ResearchSuiteExtensions/Common (= 0.6.0)
-    - ResearchSuiteExtensions/Core (= 0.6.0)
-    - ResearchSuiteExtensions/RSTBSupport (= 0.6.0)
-  - ResearchSuiteExtensions/Common (0.6.0):
+  - ResearchSuiteExtensions (0.9.0):
+    - ResearchSuiteExtensions/Common (= 0.9.0)
+    - ResearchSuiteExtensions/Core (= 0.9.0)
+    - ResearchSuiteExtensions/RSTBSupport (= 0.9.0)
+  - ResearchSuiteExtensions/Common (0.9.0):
     - ResearchKit (~> 1.4)
-  - ResearchSuiteExtensions/Core (0.6.0):
+  - ResearchSuiteExtensions/Core (0.9.0):
     - ResearchKit (~> 1.4)
     - ResearchSuiteExtensions/Common
-  - ResearchSuiteExtensions/RSTBSupport (0.6.0):
+  - ResearchSuiteExtensions/RSTBSupport (0.9.0):
     - Gloss (~> 1)
     - GRMustache.swift (~> 2.0)
     - ResearchSuiteExtensions/Core
@@ -106,13 +105,10 @@ PODS:
 
 DEPENDENCIES:
   - AncileStudyServerClient (from `https://github.com/cornelltech/AncileStudyServerClient-iOS.git`, tag `0.2.0`)
-  - OhmageOMHSDK (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
-  - OhmageOMHSDK/RKSupport (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
-  - OhmageOMHSDK/RSRPSupport (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
-  - OhmageOMHSDK/RSTBSupport (from `https://github.com/ResearchSuite/OhmageOMHSDK-ios`, tag `0.5.2`)
+  - MobileCacheSDK (from `https://github.com/cornelltech/MobileCacheSDK-iOS`, tag `0.1.0`)
   - ResearchKit (~> 1.4)
   - ResearchSuiteAppFramework (from `https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git`, tag `0.0.3`)
-  - ResearchSuiteExtensions (from `https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git`, tag `0.6.0`)
+  - ResearchSuiteExtensions (from `https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git`, tag `0.9.0`)
   - ResearchSuiteResultsProcessor (from `https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios`, tag `0.8.0`)
   - ResearchSuiteTaskBuilder (from `https://github.com/ResearchSuite/ResearchSuiteTaskBuilder-ios`, tag `0.10.1`)
   - sdlrkx
@@ -121,15 +117,15 @@ EXTERNAL SOURCES:
   AncileStudyServerClient:
     :git: https://github.com/cornelltech/AncileStudyServerClient-iOS.git
     :tag: 0.2.0
-  OhmageOMHSDK:
-    :git: https://github.com/ResearchSuite/OhmageOMHSDK-ios
-    :tag: 0.5.2
+  MobileCacheSDK:
+    :git: https://github.com/cornelltech/MobileCacheSDK-iOS
+    :tag: 0.1.0
   ResearchSuiteAppFramework:
     :git: https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git
     :tag: 0.0.3
   ResearchSuiteExtensions:
     :git: https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git
-    :tag: 0.6.0
+    :tag: 0.9.0
   ResearchSuiteResultsProcessor:
     :git: https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios
     :tag: 0.8.0
@@ -141,15 +137,15 @@ CHECKOUT OPTIONS:
   AncileStudyServerClient:
     :git: https://github.com/cornelltech/AncileStudyServerClient-iOS.git
     :tag: 0.2.0
-  OhmageOMHSDK:
-    :git: https://github.com/ResearchSuite/OhmageOMHSDK-ios
-    :tag: 0.5.2
+  MobileCacheSDK:
+    :git: https://github.com/cornelltech/MobileCacheSDK-iOS
+    :tag: 0.1.0
   ResearchSuiteAppFramework:
     :git: https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS.git
     :tag: 0.0.3
   ResearchSuiteExtensions:
     :git: https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git
-    :tag: 0.6.0
+    :tag: 0.9.0
   ResearchSuiteResultsProcessor:
     :git: https://github.com/ResearchSuite/ResearchSuiteResultsProcessor-ios
     :tag: 0.8.0
@@ -162,11 +158,11 @@ SPEC CHECKSUMS:
   AncileStudyServerClient: 8eff016baac540365ff50268e5b6c082205c97da
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
-  OhmageOMHSDK: ec1b2798d94980866b4303eea05679b41d71cc06
+  MobileCacheSDK: 2325df51b1fb3f12a6ac8897dfab3320fbf983fc
   OMHClient: 0cf53a006075ccb5de616e5e870458d1e6b1ff68
   ResearchKit: a5770681dd61afddd3d1f24d232b9abf00cba454
   ResearchSuiteAppFramework: f5da445fc31186019090f0b7c036738de7535765
-  ResearchSuiteExtensions: ef22f8fac19ce43d9bbc77467a832c24d5fdb83b
+  ResearchSuiteExtensions: 73f548e4ffe8fd35664ffba0cde554f196185908
   ResearchSuiteResultsProcessor: 3d264125fc667cb0e11f21badd01b3ee2f02ad2c
   ResearchSuiteTaskBuilder: 7974ef104244c1b51589a30bf8eae3ab83010ea0
   ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
@@ -174,6 +170,6 @@ SPEC CHECKSUMS:
   SecureQueue: 3aa95a5bba534c3aa938ae634333cbcf5919060b
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
 
-PODFILE CHECKSUM: e27bfe98553bd96f6c3df4e46cdb12651c397046
+PODFILE CHECKSUM: 7724e2831677a80d3656dc1f8eaca4f6cf543830
 
 COCOAPODS: 1.3.1

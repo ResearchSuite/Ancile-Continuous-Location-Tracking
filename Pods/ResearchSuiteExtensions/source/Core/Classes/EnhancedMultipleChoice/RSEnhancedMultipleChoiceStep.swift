@@ -9,7 +9,7 @@
 import UIKit
 import ResearchKit
 
-open class RSEnhancedMultipleChoiceStep: ORKStep {
+open class RSEnhancedMultipleChoiceStep: RSStep {
     
     open var answerFormat: ORKTextChoiceAnswerFormat?
     

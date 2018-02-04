@@ -9,13 +9,10 @@
 import UIKit
 import ResearchKit
 
-open class RSEnhancedInstructionStep: ORKInstructionStep {
-    
-    open var attributedTitle: NSAttributedString?
-    open var attributedText: NSAttributedString?
-    
+open class RSEnhancedInstructionStep: RSStep {
+
     override open func stepViewControllerClass() -> AnyClass {
-        return RSEnhancedInstructionStepViewController.self
+        return RSQuestionViewController.self
     }
 
 }

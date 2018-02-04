@@ -78,7 +78,7 @@ open class RSEnhancedChoiceStepGenerator: RSTBBaseStepGenerator {
     }
     
     open func generateAnswerFormat(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKTextChoiceAnswerFormat? {
-        guard let choiceStepDescriptor:RSTBChoiceStepDescriptor<RSEnhancedChoiceItemDescriptor> = RSTBChoiceStepDescriptor(json: jsonObject) else {
+        guard let choiceStepDescriptor:RSEnhancedMultipleChoiceStepDescriptor = RSEnhancedMultipleChoiceStepDescriptor(json: jsonObject) else {
             return nil
         }
         
@@ -109,17 +109,27 @@ open class RSEnhancedChoiceStepGenerator: RSTBBaseStepGenerator {
     
     open func generateStep(type: String, jsonObject: JSON, helper: RSTBTaskBuilderHelper) -> ORKStep? {
         guard let answerFormat = self.generateAnswerFormat(type: type, jsonObject: jsonObject, helper: helper),
-            let questionStepDescriptor = RSTBQuestionStepDescriptor(json: jsonObject) else {
+            let stepDescriptor = RSEnhancedMultipleChoiceStepDescriptor(json: jsonObject) else {
                 return nil
         }
         
         let step = RSEnhancedMultipleChoiceStep(
-            identifier: questionStepDescriptor.identifier,
-            title: questionStepDescriptor.title,
-            text: questionStepDescriptor.text,
+            identifier: stepDescriptor.identifier,
+            title: stepDescriptor.title,
+            text: stepDescriptor.text,
             answer: answerFormat)
         
-        step.isOptional = questionStepDescriptor.optional
+        if let stateHelper = helper.stateHelper,
+            let formattedTitle = stepDescriptor.formattedTitle {
+            step.attributedTitle = self.generateAttributedString(descriptor: formattedTitle, stateHelper: stateHelper)
+        }
+        
+        if let stateHelper = helper.stateHelper,
+            let formattedText = stepDescriptor.formattedText {
+            step.attributedText = self.generateAttributedString(descriptor: formattedText, stateHelper: stateHelper)
+        }
+        
+        step.isOptional = stepDescriptor.optional
         return step
     }
     

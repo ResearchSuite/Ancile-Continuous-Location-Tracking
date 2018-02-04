@@ -17,7 +17,7 @@ open class RSQuestionTableViewController: ORKStepViewController, UITableViewData
     @IBOutlet public weak var textLabel: UILabel!
     @IBOutlet weak var topPaddingView: UIView!
     @IBOutlet weak var bottomPaddingView: UIView!
-    @IBOutlet public weak var skipButton: UIButton!
+    @IBOutlet public weak var skipButton: RSLabelButton!
     @IBOutlet public weak var continueButton: RSBorderedButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIStackView!
@@ -49,6 +49,16 @@ open class RSQuestionTableViewController: ORKStepViewController, UITableViewData
         self.titleLabel.text = self.step?.title
         self.textLabel.text = self.step?.text
         
+        if let step = self.step as? RSStep {
+            if let attributedTitle = step.attributedTitle {
+                self.titleLabel.attributedText = attributedTitle
+            }
+            
+            if let attributedText = step.attributedText {
+                self.textLabel.attributedText = attributedText
+            }
+        }
+        
         if self.hasNextStep() {
             self.continueButton.setTitle("Next", for: .normal)
         }
@@ -62,6 +72,10 @@ open class RSQuestionTableViewController: ORKStepViewController, UITableViewData
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        if let step = self.step {
+            self.skipButton.isHidden = !step.isOptional
+        }
         
     }
     

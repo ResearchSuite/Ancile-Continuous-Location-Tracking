@@ -31,7 +31,7 @@ open class RSEnhancedInstructionStepGenerator: RSTBBaseStepGenerator {
         let step = RSEnhancedInstructionStep(identifier: stepDescriptor.identifier)
         step.title = stepDescriptor.title
         step.text = stepDescriptor.text
-        step.detailText = stepDescriptor.detailText
+//        step.detailText = stepDescriptor.detailText
         
         if let formattedTitle = stepDescriptor.formattedTitle {
             step.attributedTitle = self.generateAttributedString(descriptor: formattedTitle, stateHelper: stateHelper)
